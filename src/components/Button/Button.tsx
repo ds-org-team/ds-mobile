@@ -91,7 +91,7 @@ const Button: React.FC<ButtonProps> = ({
             )}
             <Text
               fontWeight="600"
-              fs="3xl"
+              fs="md"
               color={variantColor[variant]}
               {...textProps}
             >
