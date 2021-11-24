@@ -41,7 +41,7 @@ const Button: React.FC<ButtonProps> = ({
 
   const variantBorderWidth: BorderWidthOptions = {
     primary: 'none',
-    secondary: 'hairline',
+    secondary: 'xs',
     tertiary: 'none',
   };
 
@@ -73,7 +73,7 @@ const Button: React.FC<ButtonProps> = ({
         backgroundColor={variantBgColor[variant]}
         borderColor={variantBorderColor[variant]}
         bw={variantBorderWidth[variant]}
-        borderRadius="sm"
+        br="radius-1"
         shadowColor="black"
         height={{ phone: 48, tablet: 48 }}
         alignItems="center"
@@ -91,7 +91,7 @@ const Button: React.FC<ButtonProps> = ({
             )}
             <Text
               fontWeight="600"
-              fs="xxxs"
+              fs="3xl"
               color={variantColor[variant]}
               {...textProps}
             >
