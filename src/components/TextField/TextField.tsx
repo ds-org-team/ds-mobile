@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '@shopify/restyle';
@@ -41,17 +41,28 @@ const TextField: React.FC<TextFieldProps> = ({
     default: colors['neutral-dark'],
   };
 
+  const [variantArea] = useState<Custom.HeightComponent>(() => {
+    switch (variant) {
+      case 'small':
+        return 'xs';
+      case 'medium':
+        return 'sm';
+      default:
+        return variant;
+    }
+  });
+
   return (
     <SafeAreaView>
       {!!label && (
-        <Text fs="xxxs" fontWeight="700" color="neutral-darkest">
+        <Text fs="md" fontWeight="700" color="neutral-darkest">
           {label}
         </Text>
       )}
       <Input
         ref={textfieldRef}
         placeholder={placeholder}
-        variant={variant}
+        variant={variantArea}
         keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}
         returnKeyType={returnKeyType}
@@ -60,7 +71,7 @@ const TextField: React.FC<TextFieldProps> = ({
           onChange && onChange({ ...e, current: textfieldRef.current });
         }}
         my="quark"
-        p="nano"
+        p="sm"
         icon="close"
         style={{
           flex: 1,
@@ -82,7 +93,7 @@ const TextField: React.FC<TextFieldProps> = ({
               color={statusKeyPair[status]}
             />
           )}
-          <Text ml="quark" fs="xxxxs" color="neutral-darkest">
+          <Text ml="quark" fs="sm" color="neutral-darkest">
             {assistiveText}
           </Text>
         </Box>
