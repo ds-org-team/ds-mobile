@@ -4,6 +4,7 @@ import { createRestyleComponent, useTheme } from '@shopify/restyle';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {
+  borderRadius,
   borderWidth,
   opacity,
   shadowOffset,
@@ -73,7 +74,7 @@ const Button: React.FC<ButtonProps> = ({
         backgroundColor={variantBgColor[variant]}
         borderColor={variantBorderColor[variant]}
         bw={variantBorderWidth[variant]}
-        borderRadius="sm"
+        br="sm"
         shadowColor="black"
         height={{ phone: 48, tablet: 48 }}
         alignItems="center"
@@ -105,6 +106,13 @@ const Button: React.FC<ButtonProps> = ({
 };
 
 export default createRestyleComponent<ButtonProps, Theme>(
-  [borderWidth, opacity, shadowOffset, shadowRadius, shadowOpacity],
+  [
+    borderRadius,
+    borderWidth,
+    opacity,
+    shadowOffset,
+    shadowRadius,
+    shadowOpacity,
+  ],
   Button,
 );

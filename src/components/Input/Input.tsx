@@ -146,7 +146,11 @@ const Input: React.FC<InputProps> = (
             <Icon
               name={icon}
               size={24}
-              color={isFocused || isFilled ? 'primary-base' : 'neutral-dark'}
+              color={
+                isFocused || isFilled
+                  ? colors['primary-base']
+                  : colors['neutral-dark']
+              }
             />
           </Box>
         </TouchableWithoutFeedback>
