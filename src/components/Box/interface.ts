@@ -11,6 +11,7 @@ type CustomBoxProps = Partial<{
   sr: Custom.Shadow;
   sop: Custom.Shadow;
   h: Custom.HeightComponent;
+  sz?: Custom.Size;
 }> &
   Partial<BoxProps<Theme>>;
 
