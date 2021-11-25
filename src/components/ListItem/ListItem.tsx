@@ -1,23 +1,25 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { createRestyleComponent } from '@shopify/restyle';
 import Box from '../Box';
 import { ListItemProps } from './interfaces';
 import Text from '../Text';
+import { Theme } from '../../themes';
 
 const ListItem: React.FC<ListItemProps> = ({ title, icon, ...props }) => (
   <Box
     minHeight="nano"
-    backgroundColor="neutral-dark"
-    flexDirection="row"
-    {...props}
     py="nano"
     px="nano"
+    flexDirection="row"
+    backgroundColor="neutral-dark"
+    {...props}
   >
-    <Box mr="nano" borderRadius="circular">
-      {icon && <Icon name={icon} size={16} />}
+    <Box sz="xl" mr="nano" borderRadius="circular">
+      {icon && <Icon name={icon} />}
     </Box>
     <Text fs="md">{title}</Text>
   </Box>
 );
 
-export default ListItem;
+export default createRestyleComponent<ListItemProps, Theme>([], ListItem);
