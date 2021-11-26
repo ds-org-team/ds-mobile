@@ -1,16 +1,16 @@
 import React from 'react';
 import { ActivityIndicator, TouchableHighlight } from 'react-native';
-import { color, createRestyleComponent, useTheme } from '@shopify/restyle';
+import { createRestyleComponent, useTheme } from '@shopify/restyle';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {
-  borderWidth,
   opacity,
   shadowOffset,
   shadowOpacity,
   shadowRadius,
   Theme,
 } from '../../themes';
+
 import Text from '../Text/Text';
 import Box from '../Box/Box';
 import { BorderWidthOptions, ButtonProps, ColorsOptions } from './interface';
@@ -41,7 +41,7 @@ const Button: React.FC<ButtonProps> = ({
 
   const variantBorderWidth: BorderWidthOptions = {
     primary: 'none',
-    secondary: 'hairline',
+    secondary: 'xs',
     tertiary: 'none',
   };
 
@@ -64,14 +64,18 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <TouchableHighlight underlayColor="transparent" onPress={onPress}>
+    <TouchableHighlight
+      underlayColor="transparent"
+      onPress={onPress}
+      testID="ds-button"
+    >
       <Box
         backgroundColor={variantBgColor[variant]}
         borderColor={variantBorderColor[variant]}
         bw={variantBorderWidth[variant]}
-        borderRadius="sm"
+        borderRadius="nano"
         shadowColor="black"
-        height={{ phone: 48, tablet: 48 }}
+        h="xs"
         alignItems="center"
         justifyContent="center"
         {...props}
@@ -87,7 +91,7 @@ const Button: React.FC<ButtonProps> = ({
             )}
             <Text
               fontWeight="600"
-              fs="xxxs"
+              fs="md"
               color={variantColor[variant]}
               {...textProps}
             >
@@ -101,6 +105,6 @@ const Button: React.FC<ButtonProps> = ({
 };
 
 export default createRestyleComponent<ButtonProps, Theme>(
-  [borderWidth, opacity, shadowOffset, shadowRadius, shadowOpacity],
+  [opacity, shadowOffset, shadowRadius, shadowOpacity],
   Button,
 );

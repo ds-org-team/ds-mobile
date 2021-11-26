@@ -7,7 +7,7 @@ import { Theme } from '../../themes/institucional';
 import Text from '../Text';
 import Input from '../Input';
 import Box from '../Box';
-import { TextAreaProps } from './interfaces';
+import { TextAreaProps, TypeVariantHeight } from './interfaces';
 import { InputFowardEvents } from '../Input/interfaces';
 
 const TextArea: React.FC<TextAreaProps> = ({
@@ -26,16 +26,16 @@ const TextArea: React.FC<TextAreaProps> = ({
   const { colors, textVariants } = useTheme<Theme>();
   const textareaRef = useRef<InputFowardEvents>(null);
 
-  const [variantArea] = useState<Custom.HeightComponent>(() => {
-    switch (variant) {
-      case 'small':
-        return 'small-area';
-      case 'medium':
-        return 'medium-area';
-      default:
-        return variant;
-    }
-  });
+  const statusKeyPair = {
+    error: colors['feedback-error-base'],
+    success: colors['feedback-success-base'],
+    default: colors['neutral-dark'],
+  };
+
+  const variantHeight: TypeVariantHeight = {
+    small: 'lg',
+    medium: 'xl',
+  };
 
   useEffect(() => {
     if (status === 'error') {
@@ -47,33 +47,18 @@ const TextArea: React.FC<TextAreaProps> = ({
     }
   }, [status]);
 
-  const statusKeyPair = {
-    error: colors['feedback-error-base'],
-    success: colors['feedback-success-base'],
-    default: colors['neutral-dark'],
-  };
-
-  useEffect(() => {
-    if (status === 'error') {
-      textareaRef.current?.error();
-    } else if (status === 'success') {
-      textareaRef.current?.success();
-    }
-  }, [status]);
-
   return (
     <SafeAreaView>
       {!!label && (
-        <Text fs="xxxs" fontWeight="700" color="neutral-darkest">
+        <Text fs="md" fontWeight="700" color="neutral-darkest">
           {label}
         </Text>
       )}
 
       <Input
-        value={value}
         ref={textareaRef}
         placeholder={placeholder}
-        variant={variantArea}
+        variant={variantHeight[variant]}
         multiline
         keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}
@@ -82,9 +67,10 @@ const TextArea: React.FC<TextAreaProps> = ({
         my="quark"
         px="xs"
         py="nano"
-        onChange={() => {
-          onChange?.();
+        value={value}
+        onChange={e => {
           setCountChar(textareaRef.current?.value?.length || 0);
+          onChange && onChange({ ...e, current: textareaRef.current });
         }}
         onFocus={() => textareaRef.current?.focus()}
         onBlur={() => textareaRef.current?.blur()}
@@ -115,7 +101,7 @@ const TextArea: React.FC<TextAreaProps> = ({
                 color={statusKeyPair[status || 'default']}
               />
             )}
-            <Text ml="quark" fs="xxxxs" color="neutral-darkest">
+            <Text ml="quark" fs="sm" color="neutral-darkest">
               {assistiveText}
             </Text>
           </Box>

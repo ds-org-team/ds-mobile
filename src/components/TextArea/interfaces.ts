@@ -1,4 +1,14 @@
-import { KeyboardTypeOptions, ReturnKeyTypeOptions } from 'react-native';
+import {
+  KeyboardTypeOptions,
+  NativeSyntheticEvent,
+  ReturnKeyTypeOptions,
+  TextInputChangeEventData,
+} from 'react-native';
+import { InputFowardEvents } from '../Input/interfaces';
+
+type CustomOnChange = NativeSyntheticEvent<TextInputChangeEventData> & {
+  current: InputFowardEvents | null;
+};
 
 type TextAreaProps = {
   variant: 'small' | 'medium';
@@ -12,7 +22,11 @@ type TextAreaProps = {
   autoCapitalize: 'none' | 'sentences' | 'words' | 'characters' | undefined;
   returnKeyType: ReturnKeyTypeOptions;
   value: string;
-  onChange(): void;
+  onChange: ((e: CustomOnChange) => void) | undefined;
 }>;
 
-export { TextAreaProps };
+type TypeVariantHeight = {
+  [index: string]: Custom.HeightComponent;
+};
+
+export { TextAreaProps, TypeVariantHeight };

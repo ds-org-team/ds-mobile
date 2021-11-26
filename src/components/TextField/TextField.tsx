@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '@shopify/restyle';
@@ -7,7 +7,7 @@ import { Theme } from '../../themes/institucional';
 import Text from '../Text';
 import Box from '../Box';
 import Input from '../Input';
-import { TextFieldProps } from './interfaces';
+import { TextFieldProps, TypeVariantHeight } from './interfaces';
 import { InputFowardEvents } from '../Input/interfaces';
 
 const TextField: React.FC<TextFieldProps> = ({
@@ -19,9 +19,22 @@ const TextField: React.FC<TextFieldProps> = ({
   keyboardType,
   autoCapitalize,
   returnKeyType,
+  value,
+  onChange,
 }) => {
   const { colors } = useTheme<Theme>();
   const textfieldRef = useRef<InputFowardEvents>(null);
+
+  const statusKeyPair = {
+    error: colors['feedback-error-base'],
+    success: colors['feedback-success-base'],
+    default: colors['neutral-dark'],
+  };
+
+  const variantHeight: TypeVariantHeight = {
+    small: 'xs',
+    medium: 'sm',
+  };
 
   useEffect(() => {
     if (status === 'error') {
@@ -33,28 +46,26 @@ const TextField: React.FC<TextFieldProps> = ({
     }
   }, [status]);
 
-  const statusKeyPair = {
-    error: colors['feedback-error-base'],
-    success: colors['feedback-success-base'],
-    default: colors['neutral-dark'],
-  };
-
   return (
     <SafeAreaView>
       {!!label && (
-        <Text fs="xxxs" fontWeight="700" color="neutral-darkest">
+        <Text fs="md" fontWeight="700" color="neutral-darkest">
           {label}
         </Text>
       )}
       <Input
         ref={textfieldRef}
         placeholder={placeholder}
-        variant={variant}
+        variant={variantHeight[variant]}
         keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}
         returnKeyType={returnKeyType}
+        value={value}
+        onChange={e => {
+          onChange && onChange({ ...e, current: textfieldRef.current });
+        }}
         my="quark"
-        p="nano"
+        px="xs"
         icon="close"
         style={{
           flex: 1,
@@ -76,7 +87,7 @@ const TextField: React.FC<TextFieldProps> = ({
               color={statusKeyPair[status]}
             />
           )}
-          <Text ml="quark" fs="xxxxs" color="neutral-darkest">
+          <Text ml="quark" fs="sm" color="neutral-darkest">
             {assistiveText}
           </Text>
         </Box>
