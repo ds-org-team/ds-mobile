@@ -6,4 +6,5 @@ export type ListItemProps = {
   children?: ReactNode;
   title?: string;
   icon?: string;
+  avatar?: string;
 } & Partial<BoxProps<Theme>>;

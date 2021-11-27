@@ -10,14 +10,18 @@ const Icon: React.FC<IconProps> = props => {
 
   return (
     <Box
-      sz="xs"
+      sz="sm"
       alignItems="center"
       justifyContent="center"
       borderRadius="circular"
       backgroundColor="transparent"
       {...props}
     >
-      <MaterialIcon color={colors['neutral-dark']} {...props} />
+      <MaterialIcon
+        style={{ width: '100%', height: '100%' }}
+        color={colors['neutral-dark']}
+        {...props}
+      />
     </Box>
   );
 };

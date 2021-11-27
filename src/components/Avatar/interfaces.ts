@@ -4,4 +4,4 @@ import { CustomBoxProps } from '../Box/interface';
 export type AvatarProps = {
   image?: string;
 } & CustomBoxProps &
-  ImageProps;
+  Partial<ImageProps>;
