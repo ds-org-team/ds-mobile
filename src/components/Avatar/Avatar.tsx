@@ -7,13 +7,13 @@ import { AvatarProps } from './interfaces';
 
 const DIMENSIONS = { width: '100%', height: '100%' };
 
-const Avatar: React.FC<AvatarProps> = ({ image }) => {
+const Avatar: React.FC<AvatarProps> = ({ image, ...props }) => {
   const { borderRadii } = useTheme<Theme>();
   const style = { ...DIMENSIONS, borderRadius: borderRadii.circular };
 
   return (
-    <Box sz="xl" borderRadius="circular">
-      {image && <Image source={{ uri: image }} style={style} />}
+    <Box sz="xl" borderRadius="circular" {...props}>
+      {image && <Image style={style} {...props} source={{ uri: image }} />}
     </Box>
   );
 };

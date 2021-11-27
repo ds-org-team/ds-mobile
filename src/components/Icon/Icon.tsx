@@ -11,11 +11,11 @@ const Icon: React.FC<IconProps> = props => {
   return (
     <Box
       sz="xs"
-      mr="nano"
       alignItems="center"
       justifyContent="center"
       borderRadius="circular"
       backgroundColor="transparent"
+      {...props}
     >
       <MaterialIcon color={colors['neutral-dark']} {...props} />
     </Box>

@@ -14,3 +14,7 @@ export { default as TextArea } from './TextArea';
 export * from './TextArea';
 export { default as Listitem } from './ListItem';
 export * from './ListItem';
+export { default as Icon } from './Icon';
+export * from './Icon';
+export { default as Avatar } from './Avatar';
+export * from './Avatar';
