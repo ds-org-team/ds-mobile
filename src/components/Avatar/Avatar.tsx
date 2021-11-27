@@ -1,7 +1,7 @@
 import { useTheme } from '@shopify/restyle';
 import React from 'react';
 import { Image } from 'react-native';
-import { Box } from '..';
+import Box from '../Box';
 import { Theme } from '../..';
 import { AvatarProps } from './interfaces';
 

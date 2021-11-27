@@ -1,24 +1,53 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createRestyleComponent } from '@shopify/restyle';
-import Box from '../Box';
 import { ListItemProps } from './interfaces';
 import Text from '../Text';
 import { Theme } from '../../themes';
+import Avatar from '../Avatar';
+import Box from '../Box';
+import Icon from '../Icon';
 
-const ListItem: React.FC<ListItemProps> = ({ title, icon, ...props }) => (
-  <Box
-    minHeight="nano"
-    py="nano"
-    px="nano"
-    flexDirection="row"
-    backgroundColor="neutral-dark"
-    {...props}
-  >
-    <Box sz="xl" mr="nano" borderRadius="circular">
-      {icon && <Icon name={icon} />}
+const ListItem: React.FC<ListItemProps> = ({
+  label,
+  icon,
+  avatar,
+  text,
+  tags,
+  children,
+  ...props
+}) => (
+  <Box minHeight="nano" backgroundColor="transparent" {...props}>
+    <Box py="xs" px="xs" flexDirection="row" alignItems="center">
+      {avatar && <Avatar image={avatar} />}
+      {icon && !avatar && <Icon name={icon} />}
+      <Box ml="xs" flexDirection="column" justifyContent="center">
+        <Box>
+          <Text fs="md" fontWeight="500" lh="sm" color="neutral-darkest">
+            {label}
+          </Text>
+        </Box>
+        {text && (
+          <Box>
+            <Text fs="md" fontWeight="400" lh="sm" color="neutral-dark">
+              {text}
+            </Text>
+          </Box>
+        )}
+        {tags && (
+          <Box flexDirection="row">
+            {tags.map(tag => (
+              <Text mr="quark">{tag}</Text>
+            ))}
+          </Box>
+        )}
+      </Box>
+      {children && (
+        <Box position="absolute" right={0} mx="xs" alignItems="flex-end">
+          {children}
+        </Box>
+      )}
     </Box>
-    <Text fs="md">{title}</Text>
+    <Box borderColor="neutral-light" borderWidth={1} />
   </Box>
 );
 

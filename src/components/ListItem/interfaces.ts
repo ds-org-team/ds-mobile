@@ -4,7 +4,9 @@ import { Theme } from '../../themes/institucional';
 
 export type ListItemProps = {
   children?: ReactNode;
-  title?: string;
+  label: string;
+  text?: string;
   icon?: string;
   avatar?: string;
+  tags?: string[];
 } & Partial<BoxProps<Theme>>;
