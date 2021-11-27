@@ -131,9 +131,15 @@ export const fontSize = createRestyleFunction({
   transform: ({ value }: { value: Custom.FontSize }) => fontSizeValues[value],
 });
 
-export const size = createRestyleFunction({
+export const widthSize = createRestyleFunction({
   property: 'sz',
   styleProperty: 'width',
+  transform: ({ value }: { value: Custom.Size }) => sizeValues[value],
+});
+
+export const heightSize = createRestyleFunction({
+  property: 'sz',
+  styleProperty: 'height',
   transform: ({ value }: { value: Custom.Size }) => sizeValues[value],
 });
 
