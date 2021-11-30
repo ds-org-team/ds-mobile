@@ -58,3 +58,11 @@ export const WithInput = (props: ListItemProps): React.ReactNode => (
     <Icon name="arrow-right" style={{ transform: [{ scale: 1.5 }] }} />
   </ListItem>
 );
+
+export const WithTags = (props: ListItemProps): React.ReactNode => (
+  <ListItem
+    avatar="https://picsum.photos/200"
+    tags={['obs', 'importante']}
+    {...props}
+  />
+);

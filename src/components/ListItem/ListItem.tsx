@@ -6,6 +6,7 @@ import { Theme } from '../../themes';
 import Avatar from '../Avatar';
 import Box from '../Box';
 import Icon from '../Icon';
+import { Tag } from '..';
 
 const ListItem: React.FC<ListItemProps> = ({
   label,
@@ -40,9 +41,11 @@ const ListItem: React.FC<ListItemProps> = ({
           </Box>
         )}
         {tags && (
-          <Box flexDirection="row">
+          <Box flexDirection="row" mt="quark">
             {tags.map(tag => (
-              <Text mr="quark">{tag}</Text>
+              <Box mr="quark">
+                <Tag label={tag} size="small" />
+              </Box>
             ))}
           </Box>
         )}

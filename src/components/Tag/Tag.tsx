@@ -5,7 +5,6 @@ import { Theme } from '../../themes';
 import Text from '../Text';
 import Box from '../Box';
 import Icon from '../Icon';
-import { Small } from '../TextArea/TextArea.stories';
 
 const Tag: React.FC<TagProps> = ({ label, size, icon, color }) => {
   const contrastColor = color?.includes('dark') ? 'white' : 'black';
