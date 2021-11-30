@@ -18,5 +18,3 @@ export { default as Icon } from './Icon';
 export * from './Icon';
 export { default as Avatar } from './Avatar';
 export * from './Avatar';
-export { default as Tag } from './Tag';
-export * from './Tag';
