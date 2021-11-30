@@ -1,47 +1,19 @@
-import React, { useRef, useState } from 'react';
-import { StatusBar, ScrollView } from 'react-native';
-
+import React, { useState } from 'react';
+import { StatusBar } from 'react-native';
 import {
   Box,
   Button,
   TextField,
-  Text,
   TextArea,
   Checkbox,
-  Switch,
-  Radiobutton,
+  Input,
 } from '../../src/components';
-
-import { InputRef } from '../../src/components/Input/interfaces';
-import { RadioButtonRef } from '../../src/components/RadioButton/interfaces';
 
 const Forms: React.FC = () => {
   const [checked, setChecked] = useState(false);
-  const [checkedSwitch, setCheckedSwitch] = useState(false);
-
-  const [result, setResult] = useState<any>({
-    name: '',
-    email: '',
-    feedback: '',
-    checkbox: '',
-    petPreferido: '',
-  });
-
-  const radioButtonOptions = [
-    { value: 'cat', label: 'Gato 🐈' },
-    { value: 'dog', label: 'Cachorro 🐕' },
-    { value: 'fish', label: 'Peixe 🐟' },
-    { value: 'snake', label: 'Cobra 🐍' },
-    { value: 'horse', label: 'Cavalo 🐴' },
-  ];
-
-  const nameRef = useRef<InputRef>(null);
-  const textFieldRef = useRef<InputRef>(null);
-  const textAreaRef = useRef<InputRef>(null);
-  const radioButtonRef = useRef<RadioButtonRef>(null);
 
   return (
-    <ScrollView>
+    <>
       <StatusBar />
 
       <Box
@@ -49,87 +21,59 @@ const Forms: React.FC = () => {
         flexDirection="column"
         justifyContent="space-between"
         backgroundColor="white"
+        flex={1}
       >
         <Box>
           <TextField
-            ref={nameRef}
-            label="Nome"
+            label="Email"
             variant="medium"
-            placeholder="Digite seu Nome"
+            status="success"
+            assistiveText="Texto de suporte"
+            placeholder="Digite seu email"
             autoCapitalize="none"
             onChange={e => console.log(e.current?.value)}
           />
 
-          <Box mt="sm">
-            <TextField
-              ref={textFieldRef}
-              label="Email"
-              variant="medium"
-              status="success"
-              assistiveText="Texto de suporte"
-              placeholder="Digite seu email"
-              autoCapitalize="none"
-            />
-          </Box>
-
-          <Box mt="sm">
+          <Box my="sm">
             <TextArea
-              ref={textAreaRef}
               label="Feedback"
               placeholder="Digite aqui..."
               variant="medium"
               status="error"
               maxLength={100}
               assistiveText="Texto de suporte"
+              onChange={e => console.log(e.current?.value)}
             />
           </Box>
 
-          <Box mt="sm">
-            <Checkbox
-              value={checked}
-              onChange={() => setChecked(!checked)}
-              required
-              label="Exemplo de checkbox"
-            />
-          </Box>
-
-          <Box mt="sm" flexDirection="row" alignItems="center">
-            <Switch
-              value={checkedSwitch}
-              onChange={() => setCheckedSwitch(!checkedSwitch)}
-            />
-            <Text ml="nano">Exemplo de uso do Switch</Text>
-          </Box>
-
-          <Box my="sm" mb="lg">
-            <Radiobutton
-              ref={radioButtonRef}
-              label="Qual seu pet preferido"
-              options={radioButtonOptions}
+          <Box my="nano">
+            <Input
+              placeholder="Digite aqui..."
+              variant="medium"
+              px="nano"
+              onChange={e => console.log(e)}
             />
           </Box>
         </Box>
 
         <Box>
-          <Text>{JSON.stringify(result)}</Text>
-        </Box>
+          <Checkbox
+            value={checked}
+            onChange={() => setChecked(!checked)}
+            required
+            label="Li e concordo com os termos de serviço"
+          />
 
-        <Button
-          mt="sm"
-          onPress={() =>
-            setResult({
-              name: nameRef.current?.value || '',
-              email: textFieldRef.current?.value || '',
-              feedback: textAreaRef.current?.value || '',
-              checkbox: checked,
-              petPreferido: radioButtonRef.current?.value || '',
-            })
-          }
-        >
-          Obter Valores do Formulário
-        </Button>
+          <Button mt="sm" onPress={() => undefined}>
+            Enviar comentários
+          </Button>
+
+          <Button variant="secondary" my="nano" onPress={() => undefined}>
+            Cancelar
+          </Button>
+        </Box>
       </Box>
-    </ScrollView>
+    </>
   );
 };
 

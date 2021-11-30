@@ -1,5 +1,14 @@
-import { KeyboardTypeOptions, ReturnKeyTypeOptions } from 'react-native';
-import { Theme } from '../../themes/institucional';
+import {
+  KeyboardTypeOptions,
+  NativeSyntheticEvent,
+  ReturnKeyTypeOptions,
+  TextInputChangeEventData,
+} from 'react-native';
+import { InputFowardEvents } from '../Input/interfaces';
+
+type CustomOnChange = NativeSyntheticEvent<TextInputChangeEventData> & {
+  current: InputFowardEvents | null;
+};
 
 type TextFieldProps = {
   variant: 'small' | 'medium';
@@ -19,8 +28,4 @@ type TypeVariantHeight = {
   [index: string]: Custom.HeightComponent;
 };
 
-type ColorOptions = {
-  [index: string]: keyof Theme['colors'];
-};
-
-export { TextFieldProps, TypeVariantHeight, ColorOptions };
+export { TextFieldProps, TypeVariantHeight };

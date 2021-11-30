@@ -5,18 +5,20 @@ import React, {
   useState,
   useImperativeHandle,
   forwardRef,
+  ForwardRefRenderFunction,
 } from 'react';
 
-import { useTheme } from '@shopify/restyle';
+import { createRestyleComponent, spacing, useTheme } from '@shopify/restyle';
 import { Keyboard, TextInput, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Theme } from '../../themes';
+import { Theme, borderWidth } from '../../themes';
 import Box from '../Box';
-import { InputRef, InputProps, TextInputRef } from './interfaces';
+import { InputFowardEvents, InputProps, InputRef } from './interfaces';
 
-const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
+const Input: React.FC<InputProps> = (
   {
     placeholder,
+    variant,
     editable,
     multiline,
     numberOfLines,
@@ -32,10 +34,33 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   },
   ref,
 ) => {
-  const [isFilled, setIsFilled] = useState(false);
-  const inputElementRef = useRef<TextInputRef>(null);
-
   const { colors } = useTheme<Theme>();
+  const [isFocused, setIsFocused] = useState(false);
+  const [isFilled, setIsFilled] = useState(false);
+
+  const [hasError, setHasError] = useState(false);
+  const [hasSuccess, setHasSuccess] = useState(false);
+
+  const [colorStatus, setColorStatus] =
+    useState<keyof Theme['colors']>('neutral-dark');
+
+  const inputElementRef = useRef<InputRef>(null);
+
+  const handleInputFocus = useCallback(() => {
+    setIsFocused(true);
+
+    if (!hasError && !hasSuccess) {
+      setColorStatus('primary-base');
+    }
+  }, [hasError, hasSuccess]);
+
+  const handleInputBlur = useCallback(() => {
+    setIsFocused(false);
+
+    if (!hasError && !hasSuccess) {
+      setColorStatus('neutral-dark');
+    }
+  }, [hasError, hasSuccess]);
 
   const handleClear = useCallback(() => {
     inputElementRef.current?.clear();
@@ -44,34 +69,65 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
 
   const handleChange = useCallback(
     (newValue: string) => {
-      if (onChangeText) {
-        onChangeText(newValue);
-      }
+      // eslint-disable-next-line no-param-reassign
+      ref.current.value = newValue;
 
-      if (inputElementRef.current) {
-        inputElementRef.current.value = newValue;
+      if (newValue.length > 0) {
+        setIsFilled(true);
+      } else {
+        setIsFilled(false);
       }
-
-      setIsFilled(!!inputElementRef.current?.value);
     },
-    [onChangeText],
+    [ref],
   );
 
-  useImperativeHandle(ref, () => ({
-    value: inputElementRef.current?.value,
-  }));
+  useImperativeHandle(
+    ref,
+    () =>
+      ({
+        focus: () => {
+          handleInputFocus();
+        },
+        blur: () => {
+          handleInputBlur();
+        },
+        error: () => {
+          setHasError(true);
+          setColorStatus('feedback-error-base');
+        },
+        success: () => {
+          setHasSuccess(true);
+          setColorStatus('feedback-success-base');
+        },
+        clear: () => {
+          setHasError(false);
+          setHasSuccess(false);
+          setColorStatus('neutral-dark');
+        },
+      } as InputFowardEvents),
+  );
 
   return (
-    <Box flexDirection="row" alignItems="center" {...props}>
+    <Box
+      bw={hasError || hasSuccess || isFocused ? 'sm' : 'xs'}
+      borderColor={colorStatus}
+      borderRadius="nano"
+      flexDirection="row"
+      alignItems="center"
+      h={variant}
+      {...props}
+    >
       <TextInput
         testID="Input"
         ref={inputElementRef}
         placeholder={placeholder}
         placeholderTextColor={colors['neutral-dark']}
-        onChangeText={handleChange}
+        onBlur={handleInputBlur}
         onSubmitEditing={() => {
           Keyboard.dismiss();
         }}
+        onFocus={handleInputFocus}
+        onChangeText={onChangeText || handleChange}
         value={value}
         editable={editable}
         multiline={multiline}
@@ -90,7 +146,11 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
             <Icon
               name={icon}
               size={24}
-              color={isFilled ? colors['primary-base'] : colors['neutral-dark']}
+              color={
+                isFocused || isFilled
+                  ? colors['primary-base']
+                  : colors['neutral-dark']
+              }
             />
           </Box>
         </TouchableWithoutFeedback>
@@ -99,4 +159,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   );
 };
 
-export default forwardRef(Input);
+export default createRestyleComponent<InputProps, Theme>(
+  [spacing, borderWidth],
+  forwardRef(Input as ForwardRefRenderFunction<InputProps>),
+);

@@ -64,31 +64,21 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <Box
-      backgroundColor={variantBgColor[variant]}
-      borderColor={variantBorderColor[variant]}
-      bw={variantBorderWidth[variant]}
-      borderRadius="nano"
-      shadowColor="black"
-      height={{ phone: 48, tablet: 48 }}
-      width={{ phone: '100%', tablet: '100%' }}
-      alignItems="center"
-      justifyContent="center"
-      flexShrink={1}
-      {...props}
+    <TouchableHighlight
+      underlayColor="transparent"
+      onPress={onPress}
+      testID="ds-button"
     >
-      <TouchableHighlight
-        underlayColor="transparent"
-        onPress={() => (!disabled ? onPress() : null)}
-        activeOpacity={!disabled ? 0.5 : 1}
-        testID="ds-button"
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
-          height: '100%',
-        }}
+      <Box
+        backgroundColor={variantBgColor[variant]}
+        borderColor={variantBorderColor[variant]}
+        bw={variantBorderWidth[variant]}
+        borderRadius="nano"
+        shadowColor="black"
+        h="xs"
+        alignItems="center"
+        justifyContent="center"
+        {...props}
       >
         {loading ? (
           <ActivityIndicator size={16} color={variantLoadingColor[variant]} />
@@ -109,8 +99,8 @@ const Button: React.FC<ButtonProps> = ({
             </Text>
           </Box>
         )}
-      </TouchableHighlight>
-    </Box>
+      </Box>
+    </TouchableHighlight>
   );
 };
 

@@ -1,5 +1,4 @@
-/* eslint-disable react/destructuring-assignment */
-import React, { useState, forwardRef, useCallback } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '@shopify/restyle';
@@ -8,26 +7,24 @@ import { Theme } from '../../themes/institucional';
 import Text from '../Text';
 import Input from '../Input';
 import Box from '../Box';
-import { ColorOptions, TextAreaProps, TypeVariantHeight } from './interfaces';
-import { InputRef } from '../Input/interfaces';
+import { TextAreaProps, TypeVariantHeight } from './interfaces';
+import { InputFowardEvents } from '../Input/interfaces';
 
-const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
-  {
-    label,
-    placeholder,
-    variant,
-    status,
-    maxLength,
-    assistiveText,
-    autoCapitalize,
-    keyboardType,
-    value,
-  },
-  ref,
-) => {
-  const [isFocused, setIsFocused] = useState(false);
+const TextArea: React.FC<TextAreaProps> = ({
+  label,
+  placeholder,
+  variant,
+  status,
+  maxLength,
+  assistiveText,
+  autoCapitalize,
+  keyboardType,
+  value,
+  onChange,
+}) => {
   const [countChar, setCountChar] = useState(0);
   const { colors, textVariants } = useTheme<Theme>();
+  const textareaRef = useRef<InputFowardEvents>(null);
 
   const statusKeyPair = {
     error: colors['feedback-error-base'],
@@ -40,19 +37,15 @@ const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
     medium: 'xl',
   };
 
-  const statusBorderColor: ColorOptions = {
-    error: 'feedback-error-base',
-    success: 'feedback-success-base',
-    default: 'neutral-dark',
-  };
+  useEffect(() => {
+    if (status === 'error') {
+      textareaRef.current?.error();
+    }
 
-  const handleFocus = useCallback(() => {
-    setIsFocused(true);
-  }, []);
-
-  const handleBlur = useCallback(() => {
-    setIsFocused(false);
-  }, []);
+    if (status === 'success') {
+      textareaRef.current?.success();
+    }
+  }, [status]);
 
   return (
     <SafeAreaView>
@@ -63,14 +56,9 @@ const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
       )}
 
       <Input
-        ref={ref}
+        ref={textareaRef}
         placeholder={placeholder}
-        h={variantHeight[variant]}
-        bw="sm"
-        borderColor={
-          isFocused ? 'primary-base' : statusBorderColor[status || 'default']
-        }
-        borderRadius="sm"
+        variant={variantHeight[variant]}
         multiline
         keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}
@@ -80,9 +68,12 @@ const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
         px="xs"
         py="nano"
         value={value}
-        onChangeText={newValue => setCountChar(newValue.length)}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
+        onChange={e => {
+          setCountChar(textareaRef.current?.value?.length || 0);
+          onChange && onChange({ ...e, current: textareaRef.current });
+        }}
+        onFocus={() => textareaRef.current?.focus()}
+        onBlur={() => textareaRef.current?.blur()}
         style={{
           flex: 1,
           fontFamily: textVariants?.regular?.fontFamily,
@@ -98,15 +89,15 @@ const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
           <Box flexDirection="row" alignItems="center">
             {status === 'success' && (
               <Icon
-                name="check-circle"
-                size={16}
+                name="check-circle-outline"
+                size={24}
                 color={statusKeyPair[status || 'default']}
               />
             )}
             {status === 'error' && (
               <Icon
-                name="alert-circle"
-                size={16}
+                name="alert-circle-outline"
+                size={24}
                 color={statusKeyPair[status || 'default']}
               />
             )}
@@ -125,4 +116,4 @@ const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
   );
 };
 
-export default forwardRef(TextArea);
+export default TextArea;

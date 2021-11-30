@@ -42,7 +42,6 @@
     "import/prefer-default-export": "off",
     "no-unused-expressions": "off",
     "no-use-before-define": "off",
-    "no-return-assign": "off",
     "import/extensions": [
       "error",
       "ignorePackages",

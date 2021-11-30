@@ -107,8 +107,9 @@ export const sizeValues = {
   sm: 20,
   md: 24,
   lg: 32,
-  xl: 48,
-  '2xl': 96,
+  xl: 40,
+  '2xl': 48,
+  '3xl': 96,
 };
 
 export const borderWidth = createRestyleFunction({

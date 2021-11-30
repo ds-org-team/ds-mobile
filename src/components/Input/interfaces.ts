@@ -2,16 +2,18 @@ import { BoxProps } from '@shopify/restyle';
 import { TextInputProps, TextInput } from 'react-native';
 import { Theme } from '../../themes/institucional';
 
-type InputProps = Partial<{
+type InputProps = {
+  variant: Custom.HeightComponent;
+} & Partial<{
   placeholder: string;
   icon: string;
-  bw?: Custom.BorderWidth;
-  h?: Custom.HeightComponent;
+  bw: Custom.BorderWidth;
+  p: Custom.Spacing;
 }> &
   Partial<BoxProps<Theme>> &
   TextInputProps;
 
-type TextInputRef = HTMLInputElement &
+type InputRef = HTMLInputElement &
   TextInput & {
     focus(): void;
     blur(): void;
@@ -20,8 +22,13 @@ type TextInputRef = HTMLInputElement &
     clearStatus(): void;
   };
 
-type InputRef = {
-  value: string | undefined;
+type InputFowardEvents = {
+  value: string;
+  focus: () => void;
+  blur: () => void;
+  error: () => void;
+  success: () => void;
+  clear: () => void;
 };
 
-export { InputProps, TextInputRef, InputRef };
+export { InputProps, InputRef, InputFowardEvents };

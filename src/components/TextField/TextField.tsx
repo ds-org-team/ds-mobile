@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '@shopify/restyle';
@@ -7,25 +7,23 @@ import { Theme } from '../../themes/institucional';
 import Text from '../Text';
 import Box from '../Box';
 import Input from '../Input';
-import { ColorOptions, TextFieldProps, TypeVariantHeight } from './interfaces';
-import { InputRef } from '../Input/interfaces';
+import { TextFieldProps, TypeVariantHeight } from './interfaces';
+import { InputFowardEvents } from '../Input/interfaces';
 
-const TextField: React.ForwardRefRenderFunction<InputRef, TextFieldProps> = (
-  {
-    label,
-    placeholder,
-    variant,
-    assistiveText,
-    status,
-    keyboardType,
-    autoCapitalize,
-    returnKeyType,
-    value,
-  },
-  ref,
-) => {
-  const [isFocused, setIsFocused] = useState(false);
+const TextField: React.FC<TextFieldProps> = ({
+  label,
+  placeholder,
+  variant,
+  assistiveText,
+  status,
+  keyboardType,
+  autoCapitalize,
+  returnKeyType,
+  value,
+  onChange,
+}) => {
   const { colors } = useTheme<Theme>();
+  const textfieldRef = useRef<InputFowardEvents>(null);
 
   const statusKeyPair = {
     error: colors['feedback-error-base'],
@@ -33,24 +31,20 @@ const TextField: React.ForwardRefRenderFunction<InputRef, TextFieldProps> = (
     default: colors['neutral-dark'],
   };
 
-  const statusBorderColor: ColorOptions = {
-    error: 'feedback-error-base',
-    success: 'feedback-success-base',
-    default: 'neutral-dark',
-  };
-
   const variantHeight: TypeVariantHeight = {
     small: 'xs',
     medium: 'sm',
   };
 
-  const handleFocus = useCallback(() => {
-    setIsFocused(true);
-  }, []);
+  useEffect(() => {
+    if (status === 'error') {
+      textfieldRef.current?.error();
+    }
 
-  const handleBlur = useCallback(() => {
-    setIsFocused(false);
-  }, []);
+    if (status === 'success') {
+      textfieldRef.current?.success();
+    }
+  }, [status]);
 
   return (
     <SafeAreaView>
@@ -60,23 +54,19 @@ const TextField: React.ForwardRefRenderFunction<InputRef, TextFieldProps> = (
         </Text>
       )}
       <Input
-        ref={ref}
+        ref={textfieldRef}
         placeholder={placeholder}
-        h={variantHeight[variant]}
+        variant={variantHeight[variant]}
         keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}
         returnKeyType={returnKeyType}
-        borderColor={
-          isFocused ? 'primary-base' : statusBorderColor[status || 'default']
-        }
-        bw="sm"
         value={value}
-        borderRadius="sm"
+        onChange={e => {
+          onChange && onChange({ ...e, current: textfieldRef.current });
+        }}
         my="quark"
         px="xs"
         icon="close"
-        onFocus={handleFocus}
-        onBlur={handleBlur}
         style={{
           flex: 1,
         }}
@@ -84,10 +74,18 @@ const TextField: React.ForwardRefRenderFunction<InputRef, TextFieldProps> = (
       {!!assistiveText && (
         <Box flexDirection="row" alignItems="center">
           {status === 'success' && (
-            <Icon name="check-circle" size={16} color={statusKeyPair[status]} />
+            <Icon
+              name="check-circle-outline"
+              size={24}
+              color={statusKeyPair[status]}
+            />
           )}
           {status === 'error' && (
-            <Icon name="alert-circle" size={16} color={statusKeyPair[status]} />
+            <Icon
+              name="alert-circle-outline"
+              size={24}
+              color={statusKeyPair[status]}
+            />
           )}
           <Text ml="quark" fs="sm" color="neutral-darkest">
             {assistiveText}
@@ -98,4 +96,4 @@ const TextField: React.ForwardRefRenderFunction<InputRef, TextFieldProps> = (
   );
 };
 
-export default forwardRef(TextField);
+export default TextField;
