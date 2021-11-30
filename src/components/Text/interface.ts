@@ -8,6 +8,7 @@ type CustomTextProps = Partial<{
   lh?: Custom.LineHeight;
   ls?: Custom.LetterSpacing;
   testID?: string;
+  op?: Custom.Opacity;
 }> &
   Partial<TextProps<Theme>>;
 

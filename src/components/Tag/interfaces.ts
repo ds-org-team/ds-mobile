@@ -1,4 +1,6 @@
 export type TagProps = {
   label: string;
-  color?: Custom.Colors;
+  size: 'small' | 'medium';
+  icon?: string;
+  color?: Exclude<Custom.Colors, 'black' | 'white'>;
 };

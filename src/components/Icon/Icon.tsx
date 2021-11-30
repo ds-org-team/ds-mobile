@@ -3,6 +3,7 @@ import { createRestyleComponent, useTheme } from '@shopify/restyle';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { IconProps } from './interfaces';
 import { Theme } from '../../themes';
+import { opacity } from '../../themes/properties';
 import Box from '../Box';
 
 const Icon: React.FC<IconProps> = props => {
@@ -26,4 +27,4 @@ const Icon: React.FC<IconProps> = props => {
   );
 };
 
-export default createRestyleComponent<IconProps, Theme>([], Icon);
+export default createRestyleComponent<IconProps, Theme>([opacity], Icon);
