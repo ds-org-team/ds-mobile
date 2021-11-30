@@ -1,4 +1,4 @@
 export type TagProps = {
   label: string;
-  color?: string;
+  color?: Custom.Colors;
 };

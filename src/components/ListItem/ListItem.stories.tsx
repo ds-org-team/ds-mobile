@@ -12,6 +12,11 @@ export default {
       control: { type: 'text' },
       defaultValue: 'Este é um item',
     },
+    text: {
+      control: {
+        type: 'text',
+      },
+    },
     icon: {
       control: {
         type: 'text',
@@ -20,16 +25,6 @@ export default {
     avatar: {
       control: {
         type: 'text',
-      },
-    },
-    text: {
-      control: {
-        type: 'text',
-      },
-    },
-    tags: {
-      control: {
-        type: 'array',
       },
     },
   },
@@ -50,15 +45,15 @@ Default.parameters = {
   },
 };
 
-export const ComIcon = (props: ListItemProps): React.ReactNode => (
+export const WithIcon = (props: ListItemProps): React.ReactNode => (
   <ListItem icon="account" {...props} />
 );
 
-export const ComAvatar = (props: ListItemProps): React.ReactNode => (
+export const WithAvatar = (props: ListItemProps): React.ReactNode => (
   <ListItem avatar="https://picsum.photos/200" {...props} />
 );
 
-export const ComInput = (props: ListItemProps): React.ReactNode => (
+export const WithInput = (props: ListItemProps): React.ReactNode => (
   <ListItem {...props}>
     <Icon name="arrow-right" style={{ transform: [{ scale: 1.5 }] }} />
   </ListItem>
