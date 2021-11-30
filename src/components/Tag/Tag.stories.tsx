@@ -22,6 +22,7 @@ export default {
     },
     size: {
       control: { type: 'select', options: ['small', 'medium'] },
+      defaultValue: 'medium',
     },
   },
 };
