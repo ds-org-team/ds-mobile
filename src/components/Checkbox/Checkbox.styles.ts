@@ -1,6 +1,6 @@
 import { useTheme } from '@shopify/restyle';
 import { StyleSheet } from 'react-native';
-import { Theme } from '../..';
+import { Theme } from '../../themes';
 
 interface Props {
   checked: boolean;

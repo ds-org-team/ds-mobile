@@ -2,9 +2,9 @@ import { useTheme } from '@shopify/restyle';
 import React from 'react';
 import { Image } from 'react-native';
 import Box from '../Box';
-import { Theme } from '../..';
+import { Theme } from '../../themes';
 import { AvatarProps } from './interfaces';
-import { Text } from '..';
+import Text from '../Text';
 
 const DIMENSIONS = { width: '100%', height: '100%' };
 

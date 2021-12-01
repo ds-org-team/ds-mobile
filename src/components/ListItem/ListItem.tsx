@@ -6,7 +6,7 @@ import { Theme } from '../../themes';
 import Avatar from '../Avatar';
 import Box from '../Box';
 import Icon from '../Icon';
-import { Tag } from '..';
+import Tag from '../Tag';
 
 const ListItem: React.FC<ListItemProps> = ({
   label,
@@ -19,15 +19,9 @@ const ListItem: React.FC<ListItemProps> = ({
 }) => (
   <Box minHeight="nano" backgroundColor="transparent" {...props}>
     <Box py="xs" px="xs" flexDirection="row" alignItems="center">
-      {(avatar || icon) && (
-        <Box mr="xs">
-          {avatar && <Avatar image={avatar} />}
-          {icon && (
-            <Icon name={icon} style={{ transform: [{ scale: 1.25 }] }} />
-          )}
-        </Box>
-      )}
-      <Box flexDirection="column" justifyContent="center">
+      {avatar && <Avatar image={avatar} />}
+      {icon && !avatar && <Icon name={icon} />}
+      <Box ml="xs" flexDirection="column" justifyContent="center">
         <Box>
           <Text fs="md" fontWeight="500" lh="sm" color="neutral-darkest">
             {label}

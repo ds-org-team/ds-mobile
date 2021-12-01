@@ -1,6 +1,6 @@
 import React from 'react';
 import { withDesign } from 'storybook-addon-designs';
-import { Icon } from '..';
+import Icon from '../Icon';
 import { ListItemProps } from './interfaces';
 import ListItem from './ListItem';
 
@@ -12,19 +12,26 @@ export default {
       control: { type: 'text' },
       defaultValue: 'Este é um item',
     },
+    icon: {
+      control: {
+        type: 'text',
+      },
+      defaultValue: 'account',
+    },
+    avatar: {
+      control: {
+        type: 'text',
+      },
+      defaultValue: 'https://picsum.photos/200',
+    },
     text: {
       control: {
         type: 'text',
       },
     },
-    icon: {
+    tags: {
       control: {
-        type: 'text',
-      },
-    },
-    avatar: {
-      control: {
-        type: 'text',
+        type: 'array',
       },
     },
   },
@@ -34,24 +41,16 @@ export default {
 const urlHandoff =
   'https://www.figma.com/file/3raVfIADTUZCzFOOaQ9PMQ/HANDOFF-%7C-Core-Components-Mobile-%7C-Institucional?node-id=228%3A5457';
 
-export const Default = (props: ListItemProps): React.ReactNode => (
-  <ListItem {...props} />
+export const Primary = ({ tags, ...props }: ListItemProps): React.ReactNode => (
+  <ListItem tags={tags && Object.values(tags)} {...props} />
 );
 
-Default.parameters = {
+Primary.parameters = {
   design: {
     type: 'figma',
     url: urlHandoff,
   },
 };
-
-export const WithIcon = (props: ListItemProps): React.ReactNode => (
-  <ListItem icon="account" {...props} />
-);
-
-export const WithAvatar = (props: ListItemProps): React.ReactNode => (
-  <ListItem avatar="https://picsum.photos/200" {...props} />
-);
 
 export const WithInput = (props: ListItemProps): React.ReactNode => (
   <ListItem {...props}>
