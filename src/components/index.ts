@@ -20,3 +20,5 @@ export { default as Avatar } from './Avatar';
 export * from './Avatar';
 export { default as Tag } from './Tag';
 export * from './Tag';
+export { default as List } from './List';
+export * from './List';
