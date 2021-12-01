@@ -8,8 +8,8 @@ import Icon from '../Icon';
 
 const Tag: React.FC<TagProps> = ({ label, size, icon, color }) => {
   const contrastColor = color?.includes('dark') ? 'white' : 'black';
-  const style = size === 'medium' ? { height: '26px' } : { height: '20px' };
-  const spacins = icon ? { pl: 'quark' } : {};
+  const sizing = size === 'medium' ? { height: '26px' } : { height: '20px' };
+  const padding = icon ? 'quark' : 'nano';
 
   return (
     <Box
@@ -18,10 +18,10 @@ const Tag: React.FC<TagProps> = ({ label, size, icon, color }) => {
       borderRadius="nano"
       backgroundColor={color || 'neutral-light'}
       flexDirection="row"
-      style={{ ...style, width: 'min-content' }}
-      display="flex"
       alignItems="center"
-      {...spacins}
+      width="min-content"
+      pl={padding}
+      {...sizing}
     >
       {icon && (
         <Icon sz="xs" color={contrastColor} name={icon} op="opacity-4" />
