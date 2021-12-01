@@ -17,12 +17,12 @@ export const Default = (): React.ReactNode => (
       },
       {
         label: 'Segundo item',
-        avatar: 'https://picsum.photos/200',
+        avatar: 'https://picsum.photos/300',
         tags: ['aviso', 'detalhes'],
       },
       {
         label: 'Terceiro item',
-        avatar: 'https://picsum.photos/200',
+        avatar: 'https://picsum.photos/400',
         text: 'Subtexto descritivo',
       },
     ]}
