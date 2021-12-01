@@ -11,13 +11,19 @@ export default {
       },
       defaultValue: 'https://picsum.photos/200',
     },
+    label: {
+      control: {
+        type: 'text',
+      },
+      defaultValue: 'Nome Proprio',
+    },
   },
 };
 
-interface AvatarProps {
-  image: string;
-}
+export const Default = ({ label }: any): React.ReactNode => (
+  <Avatar label={label} />
+);
 
-export const Default = ({ image }: AvatarProps): React.ReactNode => (
+export const WithImage = ({ image }: any): React.ReactNode => (
   <Avatar image={image} />
 );
