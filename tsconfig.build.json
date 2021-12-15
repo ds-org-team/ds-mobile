@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "esModuleInterop": true,
+    "jsx": "react-native",
+    "lib": ["DOM", "ESNext"],
     "allowSyntheticDefaultImports": true,
-    "jsx": "react",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "noEmit": false,
     "module": "es6",
     "moduleResolution": "node",
     "declaration": true,
@@ -15,7 +15,7 @@
     "removeComments": true,
     "sourceMap": true,
     "strict": true,
-    "target": "es6"
+    "target": "ESNext"
   },
   "include": [
     "src/**/*",
@@ -29,5 +29,4 @@
     "**/*.test.[tj]sx",
     "**/*.js"
   ],
-  "extends": "expo/tsconfig.base"
 }
