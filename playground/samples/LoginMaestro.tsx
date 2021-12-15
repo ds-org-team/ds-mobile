@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, StatusBar } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import pathImg from '../../assets/client/icon.webp';
-import { Box, Button, Text, Pressable } from '../../src/components';
+import { Box, Button, Text } from '../../src/components';
 
 const LoginMaestro: React.FC = () => (
   <KeyboardAwareScrollView
@@ -17,15 +17,6 @@ const LoginMaestro: React.FC = () => (
       justifyContent="center"
       flex={1}
     >
-      <Pressable
-        flexDirection="row"
-        justifyContent="space-between"
-        alignItems="baseline"
-        bg="feedback-error-base"
-      >
-        <Box width={100} height={100} bg="black"></Box>
-        <Box width={100} height={100} ml="md" bg="black"></Box>
-      </Pressable>
       <Box mb="sm">
         <Image source={pathImg} style={{ width: 75, height: 75 }} />
       </Box>

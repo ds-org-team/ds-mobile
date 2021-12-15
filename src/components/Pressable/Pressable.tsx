@@ -24,6 +24,8 @@ const CustomPressable: React.FC<CustomPressableProps> = ({
   testID,
   ...props
 }: CustomPressableProps) => {
+  const styles = useSyles();
+
   const pressableProps = {
     onPress,
     onPressIn,
@@ -39,7 +41,7 @@ const CustomPressable: React.FC<CustomPressableProps> = ({
     android_ripple,
     testOnly_pressed,
   };
-  const styles = useSyles();
+
   return (
     <Pressable
       testID={testID || 'pressable'}
