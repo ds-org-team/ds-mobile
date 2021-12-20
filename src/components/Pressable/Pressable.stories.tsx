@@ -1,5 +1,7 @@
+import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { withDesign } from 'storybook-addon-designs';
+import { StoriesView } from '../../stories/StorieView';
 import { COLORS } from '../../themes/tokens';
 import Box from '../Box';
 import Pressable from './Pressable';
@@ -43,3 +45,16 @@ BasicPressable.parameters = {
     url: urlHandoff,
   },
 };
+
+// Add all stories to RN/Expo storybook
+storiesOf('Pressable-ds', module)
+  .addDecorator(getStory => <StoriesView>{getStory()}</StoriesView>)
+  .add('Default', () => (
+    <>
+      <Text mb="sm">Pressable </Text>
+
+      <Pressable boxProps={{ bg: 'white' }}>
+        <Text p="md">Clique-me!</Text>
+      </Pressable>
+    </>
+  ));
