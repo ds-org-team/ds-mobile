@@ -4,6 +4,7 @@ import { withDesign } from 'storybook-addon-designs';
 import { StoriesView } from '../../stories/StorieView';
 import { COLORS } from '../../themes/tokens';
 import Box from '../Box';
+import Text from '../Text';
 import Pressable from './Pressable';
 
 type Props = {
@@ -53,7 +54,7 @@ storiesOf('Pressable-ds', module)
     <>
       <Text mb="sm">Pressable </Text>
 
-      <Pressable boxProps={{ bg: 'white' }}>
+      <Pressable mt="lg" p="lg">
         <Text p="md">Clique-me!</Text>
       </Pressable>
     </>
