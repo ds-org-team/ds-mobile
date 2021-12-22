@@ -13,10 +13,10 @@ import {
   Theme,
 } from '../../themes';
 import Box from '../Box';
-import { CustomPressableProps } from './interfaces';
-import useStyles from './Pressable.styles';
+import { CustomPaperProps } from './interfaces';
+import useStyles from './Paper.styles';
 
-const CustomPressable: React.FC<CustomPressableProps> = ({
+const CustomPaper: React.FC<CustomPaperProps> = ({
   children,
   style,
   testID,
@@ -42,7 +42,7 @@ const CustomPressable: React.FC<CustomPressableProps> = ({
   justifyContent,
   alignItems,
   ...props
-}: CustomPressableProps) => {
+}: CustomPaperProps) => {
   const styles = useStyles();
   const { spacing } = useTheme<Theme>();
   const pressableProps = {
@@ -108,7 +108,7 @@ const CustomPressable: React.FC<CustomPressableProps> = ({
   );
 };
 
-export default createRestyleComponent<CustomPressableProps, Theme>(
+export default createRestyleComponent<CustomPaperProps, Theme>(
   [
     borderRadius,
     borderWidth,
@@ -118,5 +118,5 @@ export default createRestyleComponent<CustomPressableProps, Theme>(
     shadowOpacity,
     heightComponent,
   ],
-  CustomPressable,
+  CustomPaper,
 );
