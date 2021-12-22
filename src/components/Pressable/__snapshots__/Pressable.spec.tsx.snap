@@ -9,7 +9,6 @@ exports[`should render correctly 1`] = `
         "display": "flex",
         "minHeight": "auto",
         "minWidth": "auto",
-        "width": "100%",
       },
       Array [
         Object {
@@ -39,19 +38,12 @@ exports[`should render correctly 1`] = `
           "elevation": 3,
         },
         Object {
-          "padding": undefined,
-          "paddingBottom": undefined,
-          "paddingLeft": undefined,
-          "paddingRight": undefined,
-          "paddingTop": undefined,
-        },
-        Object {
           "backgroundColor": "#FFFFFF",
           "borderRadius": 16,
           "minHeight": "auto",
           "minWidth": "auto",
           "padding": 0,
-          "shadowColor": "#000000",
+          "shadowColor": "#a9a9b8",
           "shadowOffset": Object {
             "height": 16,
             "width": 0,
@@ -59,6 +51,16 @@ exports[`should render correctly 1`] = `
           "shadowOpacity": 0.3,
           "shadowRadius": 8,
           "width": "100%",
+        },
+        Object {
+          "alignItems": undefined,
+          "flexDirection": undefined,
+          "justifyContent": undefined,
+          "padding": undefined,
+          "paddingBottom": undefined,
+          "paddingLeft": undefined,
+          "paddingRight": undefined,
+          "paddingTop": undefined,
         },
         Object {
           "0": Object {},
