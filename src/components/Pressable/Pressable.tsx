@@ -70,7 +70,6 @@ const CustomPressable: React.FC<CustomPressableProps> = ({
       minHeight="auto"
       minWidth="auto"
       br="md"
-      width="100%"
       testID="pressable-box"
       {...props}
     >
