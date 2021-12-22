@@ -4,5 +4,5 @@ export { default as Text } from './Text';
 export * from './Text';
 export { default as Button } from './Button';
 export * from './Button';
-export { default as Pressable } from './Pressable';
-export * from './Pressable';
+export { default as Paper } from './Paper';
+export * from './Paper';
