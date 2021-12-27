@@ -22,15 +22,10 @@ const LoginMaestro: React.FC = () => (
       </Box>
 
       <Box flexDirection="row" mt="lg">
-        <Button
-          variant="secondary"
-          mr="nano"
-          onPress={() => undefined}
-          flex={1}
-        >
+        <Button variant="secondary" mr="nano" onPress={() => undefined}>
           Primeiro acesso
         </Button>
-        <Button flex={1} variant="primary" onPress={() => undefined}>
+        <Button variant="primary" onPress={() => undefined}>
           Entrar
         </Button>
       </Box>
@@ -42,6 +37,7 @@ const LoginMaestro: React.FC = () => (
       <Box flexDirection="row" alignItems="center" justifyContent="center">
         <Text mr="nano">Usar impressão digital</Text>
       </Box>
+
       <Box alignItems="center" flexDirection="column" mt="lg">
         <Button variant="tertiary" onPress={() => undefined}>
           Ouvidoria
