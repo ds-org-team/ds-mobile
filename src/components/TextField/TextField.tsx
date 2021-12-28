@@ -10,18 +10,22 @@ import Input from '../Input';
 import { TextFieldProps, TypeVariantHeight } from './interfaces';
 import { InputFowardEvents } from '../Input/interfaces';
 
-const TextField: React.FC<TextFieldProps> = ({
-  label,
-  placeholder,
-  variant,
-  assistiveText,
-  status,
-  keyboardType,
-  autoCapitalize,
-  returnKeyType,
-  value,
-  onChange,
-}) => {
+const TextField: React.ForwardRefRenderFunction<InputRef, TextFieldProps> = (
+  {
+    label,
+    placeholder,
+    variant,
+    assistiveText,
+    status,
+    keyboardType,
+    autoCapitalize,
+    returnKeyType,
+    value,
+    ...props
+  },
+  ref,
+) => {
+  const [isFocused, setIsFocused] = useState(false);
   const { colors } = useTheme<Theme>();
   const textfieldRef = useRef<InputFowardEvents>(null);
 
@@ -70,6 +74,7 @@ const TextField: React.FC<TextFieldProps> = ({
         style={{
           flex: 1,
         }}
+        {...props}
       />
       {!!assistiveText && (
         <Box flexDirection="row" alignItems="center">

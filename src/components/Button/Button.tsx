@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, TouchableHighlight } from 'react-native';
+import { ActivityIndicator, Pressable } from 'react-native';
 import { createRestyleComponent, useTheme } from '@shopify/restyle';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -25,12 +25,18 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   ...props
 }) => {
-  const { colors } = useTheme<Theme>();
+  const { colors, borderRadii } = useTheme<Theme>();
 
   const variantBgColor: ColorsOptions = {
     primary: !disabled ? 'primary-base' : 'neutral-lightest',
     secondary: !disabled ? 'transparent' : 'neutral-lightest',
     tertiary: 'transparent',
+  };
+
+  const variantPressedBgColor = {
+    primary: colors['primary-dark'],
+    secondary: colors.white,
+    tertiary: colors.white,
   };
 
   const variantBorderColor: ColorsOptions = {
@@ -64,43 +70,73 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <TouchableHighlight
-      underlayColor="transparent"
-      onPress={onPress}
-      testID="ds-button"
+    <Box
+      backgroundColor={variantBgColor[variant]}
+      borderColor={variantBorderColor[variant]}
+      bw={variantBorderWidth[variant]}
+      borderRadius="nano"
+      shadowColor="black"
+      height={{ phone: 48, tablet: 48 }}
+      alignItems="center"
+      justifyContent="center"
+      flexShrink={1}
+      testID="button-box"
+      {...props}
     >
-      <Box
-        backgroundColor={variantBgColor[variant]}
-        borderColor={variantBorderColor[variant]}
-        bw={variantBorderWidth[variant]}
-        borderRadius="nano"
-        shadowColor="black"
-        h="xs"
-        alignItems="center"
-        justifyContent="center"
-        {...props}
+      <Pressable
+        android_disableSound={loading}
+        onPress={() => (!loading ? onPress() : () => undefined)}
+        disabled={disabled}
+        testID="ds-button"
+        style={({ pressed }) => [
+          {
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+            height: '100%',
+            opacity: disabled ? 0.5 : 1,
+            borderRadius: borderRadii.nano,
+          },
+          {
+            backgroundColor:
+              pressed && !loading
+                ? variantPressedBgColor[variant]
+                : 'transparent',
+          },
+        ]}
       >
-        {loading ? (
-          <ActivityIndicator size={16} color={variantLoadingColor[variant]} />
-        ) : (
-          <Box flexDirection="row" alignItems="center" justifyContent="center">
-            {icon && (
-              <Box mr="quark">
-                <Icon name={icon} size={24} color={variantIconColor[variant]} />
-              </Box>
-            )}
-            <Text
-              fontWeight="600"
-              fs="md"
-              color={variantColor[variant]}
-              {...textProps}
+        {({ pressed }) =>
+          loading ? (
+            <ActivityIndicator size={16} color={variantLoadingColor[variant]} />
+          ) : (
+            <Box
+              flexDirection="row"
+              alignItems="center"
+              justifyContent="center"
             >
-              {children}
-            </Text>
-          </Box>
-        )}
-      </Box>
-    </TouchableHighlight>
+              {icon && (
+                <Box mr="quark">
+                  <Icon
+                    name={icon}
+                    size={24}
+                    color={variantIconColor[variant]}
+                  />
+                </Box>
+              )}
+              <Text
+                fontWeight="600"
+                fs="md"
+                color={pressed ? 'primary-light' : variantColor[variant]}
+                {...textProps}
+              >
+                {children}
+              </Text>
+            </Box>
+          )
+        }
+      </Pressable>
+    </Box>
   );
 };
 

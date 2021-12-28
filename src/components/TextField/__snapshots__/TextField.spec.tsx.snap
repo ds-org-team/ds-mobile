@@ -25,7 +25,7 @@ exports[`should TextField render correctly 1`] = `
         ],
       ]
     }
-    testID="Box"
+    testID="input-box"
   >
     <TextInput
       allowFontScaling={true}
@@ -46,6 +46,7 @@ exports[`should TextField render correctly 1`] = `
         ]
       }
       testID="Input"
+      textContentType="password"
       underlineColorAndroid="transparent"
     />
     <View
@@ -125,7 +126,7 @@ exports[`should have a error feedback 1`] = `
         ],
       ]
     }
-    testID="Box"
+    testID="input-box"
   >
     <TextInput
       allowFontScaling={true}
@@ -146,6 +147,7 @@ exports[`should have a error feedback 1`] = `
         ]
       }
       testID="Input"
+      textContentType="password"
       underlineColorAndroid="transparent"
     />
     <View
@@ -225,7 +227,7 @@ exports[`should have a success feedback 1`] = `
         ],
       ]
     }
-    testID="Box"
+    testID="input-box"
   >
     <TextInput
       allowFontScaling={true}
@@ -246,6 +248,7 @@ exports[`should have a success feedback 1`] = `
         ]
       }
       testID="Input"
+      textContentType="password"
       underlineColorAndroid="transparent"
     />
     <View

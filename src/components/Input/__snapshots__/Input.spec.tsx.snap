@@ -19,7 +19,7 @@ exports[`should Input render correctly 1`] = `
       ],
     ]
   }
-  testID="Box"
+  testID="input-box"
 >
   <TextInput
     allowFontScaling={true}
@@ -37,6 +37,7 @@ exports[`should Input render correctly 1`] = `
       ]
     }
     testID="Input"
+    textContentType="password"
     underlineColorAndroid="transparent"
   />
 </View>

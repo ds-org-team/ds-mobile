@@ -1,19 +1,28 @@
-/* eslint-disable react/destructuring-assignment */
+import { useTheme } from '@shopify/restyle';
 import React, {
+  forwardRef,
+  LegacyRef,
   useCallback,
+  useImperativeHandle,
   useRef,
   useState,
-  useImperativeHandle,
-  forwardRef,
-  ForwardRefRenderFunction,
 } from 'react';
-
-import { createRestyleComponent, spacing, useTheme } from '@shopify/restyle';
 import { Keyboard, TextInput, TouchableWithoutFeedback } from 'react-native';
+import { TextInputMask } from 'react-native-masked-text';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Theme, borderWidth } from '../../themes';
 import Box from '../Box';
-import { InputFowardEvents, InputProps, InputRef } from './interfaces';
+import { InputProps, InputRef, TextInputRef } from './interfaces';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const optionsPerType: any = {
+  date: {
+    mask: '99/99/9999',
+  },
+  money: {
+    unit: 'R$ ',
+  },
+};
 
 const Input: React.FC<InputProps> = (
   {
@@ -28,8 +37,10 @@ const Input: React.FC<InputProps> = (
     autoCapitalize,
     style,
     returnKeyType,
-    value,
     onChangeText,
+    type,
+    options,
+    value,
     ...props
   },
   ref,
@@ -62,11 +73,6 @@ const Input: React.FC<InputProps> = (
     }
   }, [hasError, hasSuccess]);
 
-  const handleClear = useCallback(() => {
-    inputElementRef.current?.clear();
-    setIsFilled(false);
-  }, []);
-
   const handleChange = useCallback(
     (newValue: string) => {
       // eslint-disable-next-line no-param-reassign
@@ -81,64 +87,64 @@ const Input: React.FC<InputProps> = (
     [ref],
   );
 
-  useImperativeHandle(
-    ref,
-    () =>
-      ({
-        focus: () => {
-          handleInputFocus();
-        },
-        blur: () => {
-          handleInputBlur();
-        },
-        error: () => {
-          setHasError(true);
-          setColorStatus('feedback-error-base');
-        },
-        success: () => {
-          setHasSuccess(true);
-          setColorStatus('feedback-success-base');
-        },
-        clear: () => {
-          setHasError(false);
-          setHasSuccess(false);
-          setColorStatus('neutral-dark');
-        },
-      } as InputFowardEvents),
-  );
+  const handleClear = useCallback(() => {
+    handleChange('');
+    inputElementRef.current?.clear?.();
+    setIsFilled(false);
+  }, [handleChange]);
+
+  useImperativeHandle(ref, () => ({
+    value: inputElementRef.current?.value,
+  }));
 
   return (
-    <Box
-      bw={hasError || hasSuccess || isFocused ? 'sm' : 'xs'}
-      borderColor={colorStatus}
-      borderRadius="nano"
-      flexDirection="row"
-      alignItems="center"
-      h={variant}
-      {...props}
-    >
-      <TextInput
-        testID="Input"
-        ref={inputElementRef}
-        placeholder={placeholder}
-        placeholderTextColor={colors['neutral-dark']}
-        onBlur={handleInputBlur}
-        onSubmitEditing={() => {
-          Keyboard.dismiss();
-        }}
-        onFocus={handleInputFocus}
-        onChangeText={onChangeText || handleChange}
-        value={value}
-        editable={editable}
-        multiline={multiline}
-        maxLength={maxLength}
-        keyboardType={keyboardType}
-        returnKeyType={returnKeyType}
-        numberOfLines={numberOfLines}
-        autoCapitalize={autoCapitalize}
-        selectionColor={colors['neutral-dark']}
-        style={style}
-      />
+    <Box flexDirection="row" alignItems="center" testID="input-box" {...props}>
+      {type ? (
+        <TextInputMask
+          type={type === 'date' ? 'custom' : type}
+          options={optionsPerType[type] || options}
+          testID="Input"
+          ref={inputElementRef as unknown as LegacyRef<TextInputMask>}
+          placeholder={placeholder}
+          placeholderTextColor={colors['neutral-dark']}
+          onChangeText={handleChange}
+          onSubmitEditing={() => {
+            Keyboard.dismiss();
+          }}
+          value={inputElementRef.current?.value}
+          editable={editable}
+          multiline={multiline}
+          maxLength={maxLength}
+          keyboardType={keyboardType}
+          returnKeyType={returnKeyType}
+          numberOfLines={numberOfLines}
+          autoCapitalize={autoCapitalize}
+          selectionColor={colors['neutral-dark']}
+          style={style}
+        />
+      ) : (
+        <TextInput
+          textContentType="password"
+          testID="Input"
+          ref={inputElementRef}
+          placeholder={placeholder}
+          placeholderTextColor={colors['neutral-dark']}
+          onChangeText={handleChange}
+          onSubmitEditing={() => {
+            Keyboard.dismiss();
+          }}
+          value={value}
+          editable={editable}
+          multiline={multiline}
+          maxLength={maxLength}
+          keyboardType={keyboardType}
+          returnKeyType={returnKeyType}
+          numberOfLines={numberOfLines}
+          autoCapitalize={autoCapitalize}
+          selectionColor={colors['neutral-dark']}
+          style={style}
+        />
+      )}
 
       {icon && (
         <TouchableWithoutFeedback onPress={handleClear}>
