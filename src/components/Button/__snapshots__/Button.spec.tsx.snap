@@ -2,41 +2,61 @@
 
 exports[`should Button render correctly 1`] = `
 <View
-  accessible={true}
-  focusable={true}
-  onClick={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  testID="ds-button"
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#0A7E19",
+        "borderColor": "#0A7E19",
+        "borderRadius": 4,
+        "display": "flex",
+        "flexShrink": 1,
+        "height": 48,
+        "justifyContent": "center",
+        "shadowColor": "#000000",
+      },
+      Array [
+        Object {
+          "borderWidth": 0,
+        },
+        Array [
+          Object {},
+        ],
+      ],
+    ]
+  }
+  testID="button-box"
 >
   <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#0A7E19",
-          "borderColor": "#0A7E19",
           "borderRadius": 4,
-          "display": "flex",
+          "flex": 1,
+          "height": "100%",
           "justifyContent": "center",
-          "shadowColor": "#000000",
+          "opacity": 1,
+          "width": "100%",
         },
-        Array [
-          Object {
-            "borderWidth": 0,
-            "height": 40,
-          },
-          Array [
-            Object {},
-          ],
-        ],
+        Object {
+          "backgroundColor": "transparent",
+        },
       ]
     }
-    testID="Box"
+    testID="ds-button"
   >
     <View
       style={

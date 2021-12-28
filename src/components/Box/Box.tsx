@@ -5,6 +5,10 @@ import {
   heightSize,
   borderRadius,
   borderWidth,
+  borderBottomWidth,
+  borderTopWidth,
+  borderLeftWidth,
+  borderRightWidth,
   opacity,
   shadowOffset,
   shadowOpacity,
@@ -16,8 +20,14 @@ import { CustomBoxProps } from './interface';
 
 const Box = createBox<Theme>();
 
-const CustomBox: React.FC<CustomBoxProps> = ({ children, ...props }) => (
-  <Box {...props}>{children}</Box>
+const CustomBox: React.FC<CustomBoxProps> = ({
+  children,
+  testID,
+  ...props
+}) => (
+  <Box testID={testID || 'Box'} {...props}>
+    {children}
+  </Box>
 );
 
 export default createRestyleComponent<CustomBoxProps, Theme>(
@@ -26,6 +36,10 @@ export default createRestyleComponent<CustomBoxProps, Theme>(
     heightSize,
     borderRadius,
     borderWidth,
+    borderBottomWidth,
+    borderTopWidth,
+    borderLeftWidth,
+    borderRightWidth,
     opacity,
     shadowOffset,
     shadowRadius,

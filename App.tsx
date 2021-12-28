@@ -12,12 +12,11 @@ import {
   PublicSans_700Bold,
 } from '@expo-google-fonts/public-sans';
 
-import { ThemeProvider } from '@shopify/restyle';
-import Storybook from './.storybook-mobile';
-import theme from './src/themes/institucional';
-import Forms from './playground/pages/Forms';
+import Storybook from './playground/.storybook/index.js';
+import { themeMaestro, ThemeProvider } from './src/themes';
+import Forms from './playground/samples/Forms';
 import Playground from './playground';
-import ButtonDialogs from './playground/pages/ButtonDialogs';
+import LoginMaestro from './playground/samples/LoginMaestro';
 
 const Stack = createNativeStackNavigator();
 
@@ -64,11 +63,6 @@ const App: React.FC = () => {
               name="Forms"
               component={Forms}
               options={{ title: 'Formulários' }}
-            />
-            <Stack.Screen
-              name="ButtonDialogs"
-              component={ButtonDialogs}
-              options={{ title: 'Botões e Diálogos' }}
             />
             <Stack.Screen name="Storybook" component={Storybook} />
           </Stack.Navigator>
