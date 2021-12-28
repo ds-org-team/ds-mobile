@@ -102,6 +102,7 @@
     "jest": "^26.4.2",
     "jest-expo": "^43.0.0",
     "lint-staged": "^12.1.2",
+    "npm-version": "^1.1.0",
     "plop": "^2.7.6",
     "prettier": "^2.4.1",
     "react": "17.0.1",
