@@ -67,7 +67,7 @@ workflows:
           filters:
             branches:
               only:
-                - publish-config
+                - test-publish-config
           requires:
             - lint
             - test_node_14
