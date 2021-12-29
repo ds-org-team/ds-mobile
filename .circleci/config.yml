@@ -1,7 +1,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: ~/design-system-mobile
+  working_directory: ~/ds-mobile
   docker:
     - image: circleci/node:14
 
@@ -20,14 +20,14 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - persist_to_workspace:
-          root: ~/design-system-mobile
+          root: ~/ds-mobile
           paths: .
 
   test_node_14:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/design-system-mobile
+          at: ~/ds-mobile
 
       - run:
           name: Running tests
@@ -39,17 +39,17 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - persist_to_workspace:
-          root: ~/design-system-mobile
+          root: ~/ds-mobile
           paths: .
 
   release:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/design-system-mobile
+          at: ~/ds-mobile
       - run:
           - name: Authenticate with registry
-          - command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/design-system-mobile/.npmrc
+          - command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/ds-mobile/.npmrc
       - run:
           name: Publish package
           command: npm publish
