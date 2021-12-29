@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import { Text, Box, Button } from '../src/components';
 
 interface PlaygroundProps {
@@ -35,7 +36,7 @@ const Playground: React.FC<PlaygroundProps> = ({ navigation }) => (
         </Button>
       </Box>
     </Box>
-  </Box>
+  </ScrollView>
 );
 
 export default Playground;
