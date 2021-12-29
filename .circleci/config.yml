@@ -52,7 +52,7 @@ jobs:
           command: npm set registry http://verdaccio.hom.infra.mateus/design/@ds/mobile/npm/
       - run:
           - name: Authenticate with registry
-          - command: echo "//verdaccio.hom.infra.mateus/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+          - command: echo "//verdaccio.hom.infra.mateus/:_authToken=$NPM_TOKEN" > ~/design-system-mobile/.npmrc
       - run:
           name: Publish package
           command: npm publish
