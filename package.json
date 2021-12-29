@@ -31,7 +31,12 @@
     "release": "semantic-release",
     "clean": "rm -rf dist && rm -rf node_modules",
     "lint-staged": "lint-staged --config lint-staged.js",
-    "husky-install": "husky install"
+    "husky-install": "husky install",
+    "set-registry": "eval $(grep '^NPM_REGISTRY' .env) && eval $(grep '^NPM_USER' .env) && npm set registry http://$NPM_REGISTRY/$NPM_USER/ds-mobile/npm/",
+    "authenticate": "eval $(grep '^NPM_TOKEN' .env) && echo //verdaccio.hom.infra.mateus/:_authToken=$NPM_TOKEN > .npmrc",
+    "publish:patch": "yarn set-registry && yarn authenticate && npm version patch && eval $(grep '^NPM_REGISTRY' .env) && npm publish --registry http://$NPM_REGISTRY",
+    "publish:minor": "yarn set-registry && yarn authenticate && npm version minor && eval $(grep '^NPM_REGISTRY' .env) && npm publish --registry http://$NPM_REGISTRY",
+    "publish:major": "yarn set-registry && yarn authenticate && npm version major && eval $(grep '^NPM_REGISTRY' .env) && npm publish --registry http://$NPM_REGISTRY"
   },
   "peerDependencies": {
     "react": ">=16.x",
@@ -102,6 +107,7 @@
     "jest": "^26.4.2",
     "jest-expo": "^43.0.0",
     "lint-staged": "^12.1.2",
+    "npm-version": "^1.1.0",
     "plop": "^2.7.6",
     "prettier": "^2.4.1",
     "react": "17.0.1",
