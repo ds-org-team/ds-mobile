@@ -1,31 +1,61 @@
 version: 2
+
+defaults: &defaults
+  working_directory: ~/design-system-mobile
+  docker:
+    - image: circleci/node:14
+
 jobs:
   lint:
-    docker:
-      - image: circleci/node:14
+    <<: *defaults
     steps:
       - checkout
       - run: yarn install --frozen-lockfile
       - run: yarn run lint
       - run: yarn run format
 
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - persist_to_workspace:
+          root: ~/design-system-mobile
+          paths: .
+
   test_node_14:
-    docker:
-      - image: circleci/node:14
+    <<: *defaults
     steps:
-      - checkout
-      - run: yarn install --frozen-lockfile
-      - run: yarn run test -u
+      - attach_workspace:
+          at: ~/design-system-mobile
+
+      - run:
+          name: Running tests
+          command: yarn run test -u
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - persist_to_workspace:
+          root: ~/design-system-mobile
+          paths: .
 
   release:
-    docker:
-      - image: circleci/node:14
+    <<: *defaults
     steps:
-      - checkout
-      - run: yarn install --frozen-lockfile
-      # Run optional required steps before releasing
-      # - run: npm run build-script
-      - run: npx semantic-release
+      - attach_workspace:
+          at: ~/design-system-mobile
+      - run:
+          name: Set registry URL
+          command: npm set registry http://verdaccio.hom.infra.mateus/design/@ds/mobile/npm/
+      - run:
+          - name: Authenticate with registry
+          - command: echo "//verdaccio.hom.infra.mateus/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
 
 workflows:
   version: 2
@@ -40,8 +70,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
-                - beta
+                - publish-config
           requires:
             - lint
             - test_node_14
