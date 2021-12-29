@@ -49,7 +49,7 @@ jobs:
           at: ~/ds-mobile
       - run:
           - name: Authenticate with registry
-          - command: echo "//registry.npmjs.org/:_authToken=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" > ~/ds-mobile/.npmrc
+          - command: echo //registry.npmjs.org/:_authToken=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 > ~/ds-mobile/.npmrc
       - run:
           name: Publish package
           command: npm publish
