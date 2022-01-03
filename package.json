@@ -23,7 +23,7 @@
     "build": "rm -rf dist && rollup -c",
     "prepare": "rm -rf dist && rollup -c",
     "build-storybook": "build-storybook",
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "eslint .",
     "format": "prettier *.{js,tsx} -w",
     "commit": "git-cz",
@@ -97,6 +97,7 @@
     "husky": "^7.0.4",
     "jest": "^26.4.2",
     "jest-expo": "^43.0.0",
+    "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^12.1.2",
     "plop": "^2.7.6",
     "prettier": "^2.4.1",
@@ -147,7 +148,14 @@
       "json",
       "node"
     ],
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "collectCoverage": true,
+    "testResultsProcessor": "jest-sonar-reporter"
+  },
+  "jestSonar": {
+    "sonar56x": true,
+    "reportFile": "genericTestExecution.xml",
+    "indent": 4
   },
   "eslintIgnore": [
     "node_modules/",
