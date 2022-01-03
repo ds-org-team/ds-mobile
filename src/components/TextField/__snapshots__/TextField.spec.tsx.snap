@@ -45,36 +45,23 @@ exports[`should TextField render correctly 1`] = `
       textContentType="password"
       underlineColorAndroid="transparent"
     />
-    <View
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Array [
-          Object {
-            "display": "flex",
-            "marginLeft": 4,
-          },
-          Array [
-            Object {},
-          ],
-        ]
-      }
-      testID="Box"
-    >
-      <Icon
-        color="#5D6A75"
-        name="close"
-        size={24}
-      />
-    </View>
   </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "height": 16,
+        },
+        Array [
+          Object {},
+        ],
+      ]
+    }
+    testID="Box"
+  />
 </RCTSafeAreaView>
 `;
 
@@ -142,35 +129,28 @@ exports[`should have a error feedback 1`] = `
       textContentType="password"
       underlineColorAndroid="transparent"
     />
-    <View
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "height": 16,
+        },
         Array [
-          Object {
-            "display": "flex",
-            "marginLeft": 4,
-          },
-          Array [
-            Object {},
-          ],
-        ]
-      }
-      testID="Box"
-    >
-      <Icon
-        color="#5D6A75"
-        name="close"
-        size={24}
-      />
-    </View>
+          Object {},
+        ],
+      ]
+    }
+    testID="Box"
+  >
+    <Icon
+      color="#E20A0A"
+      name="alert-circle"
+      size={16}
+    />
   </View>
 </RCTSafeAreaView>
 `;
@@ -239,35 +219,28 @@ exports[`should have a success feedback 1`] = `
       textContentType="password"
       underlineColorAndroid="transparent"
     />
-    <View
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "height": 16,
+        },
         Array [
-          Object {
-            "display": "flex",
-            "marginLeft": 4,
-          },
-          Array [
-            Object {},
-          ],
-        ]
-      }
-      testID="Box"
-    >
-      <Icon
-        color="#5D6A75"
-        name="close"
-        size={24}
-      />
-    </View>
+          Object {},
+        ],
+      ]
+    }
+    testID="Box"
+  >
+    <Icon
+      color="#00B649"
+      name="check-circle"
+      size={16}
+    />
   </View>
 </RCTSafeAreaView>
 `;

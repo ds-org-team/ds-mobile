@@ -123,7 +123,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
         />
       )}
 
-      {icon && (
+      {icon && inputElementRef?.current?.value && (
         <TouchableWithoutFeedback onPress={handleClear}>
           <Box ml="quark">
             <Icon
