@@ -71,7 +71,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   }, [handleChange]);
 
   useImperativeHandle(ref, () => ({
-    value: inputElementRef.current?.value,
+    value: inputElementRef.current?.value?.replace(/[^a-z0-9]/gi, ''),
   }));
 
   return (
