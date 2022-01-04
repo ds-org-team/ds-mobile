@@ -6,6 +6,7 @@ exports[`should Input render correctly 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
         "display": "flex",
         "flexDirection": "row",
       },

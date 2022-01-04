@@ -75,7 +75,13 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   }));
 
   return (
-    <Box flexDirection="row" alignItems="center" testID="input-box" {...props}>
+    <Box
+      flexDirection="row"
+      alignItems="center"
+      testID="input-box"
+      bg="white"
+      {...props}
+    >
       {type ? (
         <TextInputMask
           type={type === 'date' ? 'custom' : type}

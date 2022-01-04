@@ -11,6 +11,7 @@ exports[`should be TextArea render correctly 1`] = `
       Array [
         Object {
           "alignItems": "center",
+          "backgroundColor": "#FFFFFF",
           "borderColor": "#5D6A75",
           "borderRadius": 8,
           "display": "flex",
@@ -100,6 +101,7 @@ exports[`should have a error feedback 1`] = `
       Array [
         Object {
           "alignItems": "center",
+          "backgroundColor": "#FFFFFF",
           "borderColor": "#E20A0A",
           "borderRadius": 8,
           "display": "flex",
@@ -189,6 +191,7 @@ exports[`should have a success feedback 1`] = `
       Array [
         Object {
           "alignItems": "center",
+          "backgroundColor": "#FFFFFF",
           "borderColor": "#00B649",
           "borderRadius": 8,
           "display": "flex",
