@@ -33,6 +33,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
     icon,
     maxLength,
     keyboardType,
+    keyboardAppearance,
     autoCapitalize,
     style,
     returnKeyType,
@@ -93,6 +94,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           multiline={multiline}
           maxLength={maxLength}
           keyboardType={keyboardType}
+          keyboardAppearance={keyboardAppearance}
           returnKeyType={returnKeyType}
           numberOfLines={numberOfLines}
           autoCapitalize={autoCapitalize}
@@ -115,6 +117,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           multiline={multiline}
           maxLength={maxLength}
           keyboardType={keyboardType}
+          keyboardAppearance={keyboardAppearance}
           returnKeyType={returnKeyType}
           numberOfLines={numberOfLines}
           autoCapitalize={autoCapitalize}

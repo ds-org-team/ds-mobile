@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableHighlight } from 'react-native';
+import { Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Box from '../Box';
 import { CustomBoxProps } from '../Box/interface';
@@ -29,14 +29,14 @@ const Checkbox: React.FC<CheckboxProps & CustomBoxProps> = ({
 
   return (
     <Box flexDirection="row" alignItems="center" {...props}>
-      <TouchableHighlight
+      <Pressable
         style={styles.checkBox}
         onPress={handleChange}
         disabled={disabled}
         testID="checkbox"
       >
         {value ? <Icon name="check" size={16} color="#fff" /> : <Box />}
-      </TouchableHighlight>
+      </Pressable>
 
       <Text
         fs="md"
