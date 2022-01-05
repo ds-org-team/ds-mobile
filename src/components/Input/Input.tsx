@@ -47,6 +47,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
 ) => {
   const [isFilled, setIsFilled] = useState(false);
   const inputElementRef = useRef<TextInputRef>(null);
+  const [textInputElementRef, set] = useState<TextInputRef>();
 
   const { colors } = useTheme<Theme>();
 
@@ -73,6 +74,9 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
 
   useImperativeHandle(ref, () => ({
     value: inputElementRef.current?.value?.replace(/[^a-z0-9]/gi, ''),
+    clear: () => handleClear(),
+    focus: () => inputElementRef.current?.focus?.(),
+    blur: () => inputElementRef.current?.blur?.(),
   }));
 
   return (
@@ -132,7 +136,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
         />
       )}
 
-      {icon && inputElementRef?.current?.value && (
+      {icon && isFilled && (
         <TouchableWithoutFeedback onPress={handleClear}>
           <Box ml="quark">
             <Icon
