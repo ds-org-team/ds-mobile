@@ -44,7 +44,7 @@ exports[`should render correctly 1`] = `
           "minHeight": "auto",
           "minWidth": "auto",
           "padding": 0,
-          "shadowColor": "#a9a9b8",
+          "shadowColor": "#2D3338",
           "shadowOffset": Object {
             "height": 16,
             "width": 0,

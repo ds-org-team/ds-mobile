@@ -72,11 +72,17 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   }, [handleChange]);
 
   useImperativeHandle(ref, () => ({
-    value: inputElementRef.current?.value,
+    value: inputElementRef.current?.value?.replace(/[^a-z0-9]/gi, ''),
   }));
 
   return (
-    <Box flexDirection="row" alignItems="center" testID="input-box" {...props}>
+    <Box
+      flexDirection="row"
+      alignItems="center"
+      testID="input-box"
+      bg="white"
+      {...props}
+    >
       {type ? (
         <TextInputMask
           type={type === 'date' ? 'custom' : type}
@@ -126,7 +132,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
         />
       )}
 
-      {icon && (
+      {icon && inputElementRef?.current?.value && (
         <TouchableWithoutFeedback onPress={handleClear}>
           <Box ml="quark">
             <Icon
