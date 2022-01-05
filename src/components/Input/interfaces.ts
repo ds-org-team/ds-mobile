@@ -41,6 +41,9 @@ type TextInputRef = HTMLInputElement &
 
 type InputRef = {
   value: string | undefined;
+  focus: () => void;
+  blur: () => void;
+  clear: () => void;
 };
 
 export { InputProps, TextInputRef, InputRef };
