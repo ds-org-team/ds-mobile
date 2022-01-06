@@ -18,8 +18,11 @@ exports[`should Checkbox render correctly 1`] = `
 >
   <View
     accessible={true}
+    collapsable={false}
     focusable={true}
+    onBlur={[Function]}
     onClick={[Function]}
+    onFocus={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
@@ -88,8 +91,11 @@ exports[`should Checkbox render required feedback 1`] = `
 >
   <View
     accessible={true}
+    collapsable={false}
     focusable={true}
+    onBlur={[Function]}
     onClick={[Function]}
+    onFocus={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
