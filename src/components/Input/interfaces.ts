@@ -37,6 +37,9 @@ type TextInputRef = HTMLInputElement &
     error(): void;
     success(): void;
     clearStatus(): void;
+    _inputElement: {
+      focus(): void;
+    };
   };
 
 type InputRef = {
