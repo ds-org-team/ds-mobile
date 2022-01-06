@@ -16,6 +16,7 @@ type CustomBoxProps = Partial<{
   sr: Custom.Shadow;
   sop: Custom.Shadow;
   h: Custom.HeightComponent;
+  w: Custom.HeightComponent;
   style: ViewStyle;
   testID: string;
 }> &

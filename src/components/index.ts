@@ -1,3 +1,5 @@
+export { default as Avatar } from './Avatar';
+export * from './Avatar';
 export { default as Box } from './Box';
 export * from './Box';
 export { default as Text } from './Text';

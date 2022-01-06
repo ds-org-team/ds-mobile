@@ -165,6 +165,13 @@ export const heightComponent = createRestyleFunction({
     sizeHeightValues[value],
 });
 
+export const widthComponent = createRestyleFunction({
+  property: 'w',
+  styleProperty: 'width',
+  transform: ({ value }: { value: Custom.HeightComponent }) =>
+    sizeHeightValues[value],
+});
+
 export const lineHeight = createRestyleFunction({
   property: 'lh',
   styleProperty: 'lineHeight',

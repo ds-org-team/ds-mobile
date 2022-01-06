@@ -13,6 +13,7 @@ import {
   shadowRadius,
   Theme,
   heightComponent,
+  widthComponent,
 } from '../../themes';
 import { CustomBoxProps } from './interface';
 
@@ -41,6 +42,7 @@ export default createRestyleComponent<CustomBoxProps, Theme>(
     shadowRadius,
     shadowOpacity,
     heightComponent,
+    widthComponent,
   ],
   CustomBox,
 );
