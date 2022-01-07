@@ -3,56 +3,33 @@ version: 2.1
 orbs:
   sonarqube: clicklogiq/sonarqube@1.0.1
 
-defaults: &defaults
-  working_directory: ~/ds-mobile
-  docker:
-    - image: circleci/node:14
-
 jobs:
   lint:
-    <<: *defaults
+    docker:
+      - image: circleci/node:14
     steps:
       - checkout
       - run: yarn install --frozen-lockfile
       - run: yarn run lint
       - run: yarn run format
 
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - persist_to_workspace:
-          root: ~/ds-mobile
-          paths: .
-
   test_node_14:
-    <<: *defaults
+    docker:
+      - image: circleci/node:14
     steps:
-      - attach_workspace:
-          at: ~/ds-mobile
-
-      - run:
-          name: Running tests
-          command: yarn run test -u
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - persist_to_workspace:
-          root: ~/ds-mobile
-          paths: .
+      - checkout
+      - run: yarn install --frozen-lockfile
+      - run: yarn run test -u
 
   release:
-    <<: *defaults
+    docker:
+      - image: circleci/node:14
     steps:
-      - attach_workspace:
-          at: ~/ds-mobile
-      - run:
-          - name: Semantic release
-          - command: npx semantic-release
+      - checkout
+      - run: yarn install --frozen-lockfile
+      # Run optional required steps before releasing
+      # - run: npm run build-script
+      - run: npx semantic-release
 
 workflows:
   version: 2
@@ -68,6 +45,7 @@ workflows:
             branches:
               only:
                 - master
+                - beta
           requires:
             - lint
             - test_node_14
