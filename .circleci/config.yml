@@ -3,10 +3,14 @@ version: 2.1
 orbs:
   sonarqube: clicklogiq/sonarqube@1.0.1
 
+defaults: &defaults
+  working_directory: ~/ds-mobile
+  docker:
+    - image: circleci/node:14
+
 jobs:
   lint:
-    docker:
-      - image: circleci/node:14
+    <<: *defaults
     steps:
       - checkout
       - run: yarn install --frozen-lockfile
@@ -14,16 +18,14 @@ jobs:
       - run: yarn run format
 
   test_node_14:
-    docker:
-      - image: circleci/node:14
+    <<: *defaults
     steps:
       - checkout
       - run: yarn install --frozen-lockfile
       - run: yarn run test -u
 
   release:
-    docker:
-      - image: circleci/node:14
+    <<: *defaults
     steps:
       - checkout
       - run: yarn install --frozen-lockfile
