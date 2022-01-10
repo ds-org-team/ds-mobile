@@ -7,9 +7,14 @@ orbs:
 defaults: &defaults
   working_directory: ~/ds-mobile
   docker:
-    - image: circleci/node:14
+    - image: 'node:latest'
 
 jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - sonarcloud/scan
   lint:
     <<: *defaults
     steps:
