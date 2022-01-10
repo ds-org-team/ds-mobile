@@ -3,8 +3,6 @@ import { COLORS } from '../../themes/tokens';
 import { TagProps } from './interfaces';
 import Tag from './Tag';
 
-const [black, white, ...colors] = COLORS;
-
 export default {
   title: 'Componente/Tag',
   component: Tag,
@@ -14,7 +12,7 @@ export default {
       defaultValue: 'Label',
     },
     color: {
-      control: { type: 'select', options: colors },
+      control: { type: 'select', options: COLORS },
     },
     icon: {
       control: { type: 'text' },

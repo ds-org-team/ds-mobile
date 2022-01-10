@@ -1,39 +1,41 @@
 import React from 'react';
-import { createRestyleComponent } from '@shopify/restyle';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '../../themes/institucional';
 import { TagProps } from './interfaces';
-import { Theme } from '../../themes';
 import Text from '../Text';
 import Box from '../Box';
 import Icon from '../Icon';
 
-const Tag: React.FC<TagProps> = ({ label, size, icon, color }) => {
-  const contrastColor = color?.includes('dark') ? 'white' : 'black';
-  const sizing = size === 'medium' ? { height: '26px' } : { height: '20px' };
-  const padding = icon ? 'quark' : 'nano';
+const Tag: React.FC<TagProps> = ({ label, size, icon, color, ...props }) => {
+  const { colors } = useTheme<Theme>();
 
   return (
     <Box
-      py="nano"
+      py="quark"
       px="nano"
-      borderRadius="nano"
-      backgroundColor={color || 'neutral-light'}
+      borderRadius="sm"
+      backgroundColor="highlight-03-light"
       flexDirection="row"
+      justifyContent="center"
       alignItems="center"
-      width="min-content"
-      pl={padding}
-      {...sizing}
+      {...props}
     >
       {icon && (
-        <Icon sz="xs" color={contrastColor} name={icon} op="opacity-4" />
+        <Icon
+          color={colors[color || 'highlight-03-dark']}
+          name={icon}
+          size={16}
+        />
       )}
       <Text
-        fs={size === 'small' ? 'sm' : 'md'}
-        color={contrastColor}
-        op="opacity-4"
+        fs={size === 'small' ? 'xs' : 'sm'}
+        fontWeight="500"
+        color={color || 'highlight-03-dark'}
+        m="quark"
       >
         {label}
       </Text>
     </Box>
   );
 };
-export default createRestyleComponent<TagProps, Theme>([], Tag);
+export default Tag;

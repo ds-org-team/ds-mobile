@@ -7,6 +7,7 @@ import { ListProps } from './interfaces';
 const List: React.FC<ListProps> = props => (
   <FlatList
     {...props}
+    keyExtractor={(item, i) => item.label + i.toString()}
     renderItem={({ item }: { item: ListItemProps }) => <ListItem {...item} />}
   />
 );

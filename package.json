@@ -19,7 +19,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "storybook": "start-storybook -p 6006 -c ./.storybook",
+    "storybook": "start-storybook --no-open -p 6006 -c ./.storybook",
     "build": "rm -rf dist && rollup -c",
     "prepare": "rm -rf dist && rollup -c",
     "build-storybook": "build-storybook",

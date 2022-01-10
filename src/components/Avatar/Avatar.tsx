@@ -19,17 +19,15 @@ const Avatar: React.FC<AvatarProps> = ({ image, label, ...props }) => {
 
   return (
     <Box
-      h="xl"
-      w="xl"
+      h="xs"
+      w="xs"
       borderRadius="circular"
       alignItems="center"
       justifyContent="center"
-      {...props}
       backgroundColor={color as Custom.Colors}
+      {...props}
     >
-      {image && !label && (
-        <Image style={style} {...props} source={{ uri: image }} />
-      )}
+      {image && !label && <Image style={style} source={{ uri: image }} />}
       {label && !image && <Text>{initials.substring(0, 2).toUpperCase()}</Text>}
     </Box>
   );

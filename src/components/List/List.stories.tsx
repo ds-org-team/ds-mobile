@@ -1,5 +1,4 @@
 import React from 'react';
-import { ListProps } from './interfaces';
 import List from './List';
 
 export default {

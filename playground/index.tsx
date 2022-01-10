@@ -21,6 +21,10 @@ const Playground: React.FC<PlaygroundProps> = ({ navigation }) => (
           Formulários
         </Button>
 
+        <Button mt="sm" onPress={() => navigation.navigate('Lists')}>
+          Listas
+        </Button>
+
         <Button mt="sm" onPress={() => navigation.navigate('Buttons')}>
           Botões
         </Button>

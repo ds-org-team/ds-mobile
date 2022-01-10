@@ -47,7 +47,6 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
 ) => {
   const [isFilled, setIsFilled] = useState(false);
   const inputElementRef = useRef<TextInputRef>(null);
-  const [textInputElementRef, set] = useState<TextInputRef>();
 
   const { colors } = useTheme<Theme>();
 

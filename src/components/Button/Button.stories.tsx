@@ -2,7 +2,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { withDesign } from 'storybook-addon-designs';
-import { Alert, View } from 'react-native';
+import { View } from 'react-native';
 import Text from '../Text/Text';
 import Button from './Button';
 import { COLORS } from '../../themes/tokens';

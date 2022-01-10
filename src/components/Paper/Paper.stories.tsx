@@ -2,7 +2,6 @@ import React from 'react';
 import { withDesign } from 'storybook-addon-designs';
 import { COLORS } from '../../themes/tokens';
 import Box from '../Box';
-import Text from '../Text';
 import Paper from './Paper';
 
 type Props = {

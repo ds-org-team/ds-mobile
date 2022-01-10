@@ -1,17 +1,15 @@
 import React from 'react';
-import { createRestyleComponent, useTheme } from '@shopify/restyle';
+import { useTheme } from '@shopify/restyle';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { IconProps } from './interfaces';
 import { Theme } from '../../themes';
-import { opacity } from '../../themes/properties';
 import Box from '../Box';
 
-const Icon: React.FC<IconProps> = props => {
+const Icon: React.FC<IconProps> = ({ name, color, size, ...props }) => {
   const { colors } = useTheme<Theme>();
 
   return (
     <Box
-      sz="sm"
       alignItems="center"
       justifyContent="center"
       borderRadius="circular"
@@ -19,12 +17,12 @@ const Icon: React.FC<IconProps> = props => {
       {...props}
     >
       <MaterialIcon
-        style={{ width: '100%', height: '100%' }}
-        color={colors['neutral-dark']}
-        {...props}
+        name={name}
+        size={size || 16}
+        color={color || colors['neutral-dark']}
       />
     </Box>
   );
 };
 
-export default createRestyleComponent<IconProps, Theme>([opacity], Icon);
+export default Icon;

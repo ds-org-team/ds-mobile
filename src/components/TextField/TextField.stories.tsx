@@ -1,6 +1,5 @@
 import React from 'react';
 import { withDesign } from 'storybook-addon-designs';
-import Text from '../Text';
 import TextField from './TextField';
 
 export default {

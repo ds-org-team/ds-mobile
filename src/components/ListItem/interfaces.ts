@@ -1,6 +1,4 @@
-import { BoxProps } from '@shopify/restyle';
 import { ReactNode } from 'react';
-import { Theme } from '../../themes/institucional';
 
 export type ListItemProps = {
   children?: ReactNode;
@@ -9,4 +7,4 @@ export type ListItemProps = {
   icon?: string;
   avatar?: string;
   tags?: string[];
-} & Partial<BoxProps<Theme>>;
+};
