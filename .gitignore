@@ -10,7 +10,6 @@
 # testing
 /coverage
 genericTestExecution.xml
-sonar-project.properties
 .scannerwork
 
 # next.js
