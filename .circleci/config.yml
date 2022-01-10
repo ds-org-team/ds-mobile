@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   sonarqube: clicklogiq/sonarqube@1.0.1
+  sonarcloud: sonarsource/sonarcloud@1.0.3
 
 defaults: &defaults
   working_directory: ~/ds-mobile
@@ -38,6 +39,8 @@ workflows:
   test_and_release:
     # Run the test jobs first, then the release only when all the test jobs are successful
     jobs:
+      - build:
+          context: sonarcloud
       - lint
       - test_node_14:
           requires:
