@@ -74,7 +74,11 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   useImperativeHandle(ref, () => ({
     value: inputElementRef.current?.value?.replace(/[^a-z0-9]/gi, ''),
     clear: () => handleClear(),
-    focus: () => inputElementRef.current?.focus?.(),
+    focus: () => {
+      inputElementRef.current?.focus?.();
+      // eslint-disable-next-line no-underscore-dangle
+      inputElementRef.current?._inputElement?.focus();
+    },
     blur: () => inputElementRef.current?.blur?.(),
   }));
 
