@@ -10,11 +10,40 @@ defaults: &defaults
     - image: 'node:latest'
 
 jobs:
-  build:
+  test_node_14:
     <<: *defaults
     steps:
+      - attach_workspace:
+          at: ~/ds-mobile
+      - checkout
+      - run: yarn install --frozen-lockfile
+      - run: yarn run test -u
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - persist_to_workspace:
+          root: ~/ds-mobile
+          paths: .
+
+  sonarcloud:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/ds-mobile
+
       - checkout
       - sonarcloud/scan
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - persist_to_workspace:
+          root: ~/ds-mobile
+          paths: .
   lint:
     <<: *defaults
     steps:
@@ -22,13 +51,6 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn run lint
       - run: yarn run format
-
-  test_node_14:
-    <<: *defaults
-    steps:
-      - checkout
-      - run: yarn install --frozen-lockfile
-      - run: yarn run test -u
 
   release:
     <<: *defaults
@@ -44,10 +66,12 @@ workflows:
   test_and_release:
     # Run the test jobs first, then the release only when all the test jobs are successful
     jobs:
-      - build:
-          context: sonarcloud
       - lint
       - test_node_14:
+          requires:
+            - lint
+      - sonarcloud:
+          context: sonarcloud
           requires:
             - lint
       - release:
