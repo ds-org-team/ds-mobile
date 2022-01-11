@@ -12,11 +12,12 @@ import {
   PublicSans_700Bold,
 } from '@expo-google-fonts/public-sans';
 
-import { themeMaestro, ThemeProvider } from './src/themes';
+import { themeInstitucional, ThemeProvider } from './src/themes';
 import Forms from './playground/samples/Forms';
 import Playground from './playground';
 import LoginMaestro from './playground/samples/LoginMaestro';
 import Buttons from './playground/samples/Buttons';
+import Lists from './playground/samples/Lists';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,7 +30,7 @@ const App: React.FC = () => {
   });
 
   const themeWithFont = {
-    ...themeMaestro,
+    ...themeInstitucional,
     textVariants: {
       bold: {
         fontFamily: 'bold',
@@ -68,6 +69,11 @@ const App: React.FC = () => {
               name="Buttons"
               component={Buttons}
               options={{ title: 'Botões' }}
+            />
+            <Stack.Screen
+              name="Lists"
+              component={Lists}
+              options={{ title: 'Lista' }}
             />
             <Stack.Screen name="LoginMaestro" component={LoginMaestro} />
           </Stack.Navigator>

@@ -1,3 +1,5 @@
+export { default as Avatar } from './Avatar';
+export * from './Avatar';
 export { default as Box } from './Box';
 export * from './Box';
 export { default as Text } from './Text';
@@ -10,6 +12,10 @@ export { default as Checkbox } from './Checkbox';
 export * from './Checkbox';
 export { default as Input } from './Input';
 export * from './Input';
+export { default as List } from './List';
+export * from './List';
+export { default as ListItem } from './ListItem';
+export * from './ListItem';
 export { default as RadioButton } from './RadioButton';
 export * from './RadioButton';
 export { default as Switch } from './Switch';

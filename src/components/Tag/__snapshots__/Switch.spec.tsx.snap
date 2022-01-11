@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should Checkbox render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#EEE6F8",
+        "borderRadius": 8,
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "paddingHorizontal": 8,
+        "paddingVertical": 4,
+      },
+      Array [
+        Object {},
+      ],
+    ]
+  }
+  testID="Box"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#420099",
+          "display": "flex",
+          "fontFamily": "\\"Inter\\", sans-serif",
+          "fontWeight": "500",
+          "margin": 4,
+        },
+        Array [
+          Object {
+            "fontSize": 10,
+          },
+        ],
+      ]
+    }
+  >
+    Label tag
+  </Text>
+</View>
+`;
