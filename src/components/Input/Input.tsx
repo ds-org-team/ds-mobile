@@ -41,6 +41,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
     type,
     options,
     value,
+    secureTextEntry,
     ...props
   },
   ref,
@@ -113,6 +114,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           autoCapitalize={autoCapitalize}
           selectionColor={colors['neutral-dark']}
           style={style}
+          secureTextEntry={secureTextEntry}
         />
       ) : (
         <TextInput
@@ -136,6 +138,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           autoCapitalize={autoCapitalize}
           selectionColor={colors['neutral-dark']}
           style={style}
+          secureTextEntry={secureTextEntry}
         />
       )}
 

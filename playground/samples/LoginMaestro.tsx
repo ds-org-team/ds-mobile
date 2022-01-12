@@ -69,6 +69,7 @@ const LoginMaestro: React.FC = () => {
               placeholder="Digite sua senha"
               autoCapitalize="none"
               onSubmitEditing={handleSubmit}
+              secureTextEntry
             />
 
             <Box flexDirection="row" mt="lg">
