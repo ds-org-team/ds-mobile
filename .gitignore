@@ -9,6 +9,8 @@
 
 # testing
 /coverage
+genericTestExecution.xml
+.scannerwork
 
 # next.js
 /.next/

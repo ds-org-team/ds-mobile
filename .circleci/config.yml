@@ -1,25 +1,59 @@
-version: 2
+version: 2.1
+
+orbs:
+  sonarqube: clicklogiq/sonarqube@1.0.1
+  sonarcloud: sonarsource/sonarcloud@1.0.3
+
+defaults: &defaults
+  working_directory: /ds-mobile
+  docker:
+    - image: 'node:latest'
+
 jobs:
+  test_node_14:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /ds-mobile
+      - checkout
+      - run: yarn install --frozen-lockfile
+      - run: yarn run test -u
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - persist_to_workspace:
+          root: /ds-mobile
+          paths: .
+
+  sonarcloud:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /ds-mobile
+
+      - checkout
+      - sonarcloud/scan
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - persist_to_workspace:
+          root: /ds-mobile
+          paths: .
   lint:
-    docker:
-      - image: circleci/node:14
+    <<: *defaults
     steps:
       - checkout
       - run: yarn install --frozen-lockfile
       - run: yarn run lint
       - run: yarn run format
 
-  test_node_14:
-    docker:
-      - image: circleci/node:14
-    steps:
-      - checkout
-      - run: yarn install --frozen-lockfile
-      - run: yarn run test -u
-
   release:
-    docker:
-      - image: circleci/node:14
+    <<: *defaults
     steps:
       - checkout
       - run: yarn install --frozen-lockfile
@@ -36,6 +70,11 @@ workflows:
       - test_node_14:
           requires:
             - lint
+      - sonarcloud:
+          context: sonarcloud
+          requires:
+            - lint
+            - test_node_14
       - release:
           filters:
             branches:
@@ -45,3 +84,4 @@ workflows:
           requires:
             - lint
             - test_node_14
+            - sonarcloud
