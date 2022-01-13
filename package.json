@@ -47,6 +47,7 @@
     "@shopify/restyle": "^1.4.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-masked-text": "^1.13.0",
+    "react-native-svg": "^12.1.1",
     "react-native-vector-icons": "^9.0.0"
   },
   "devDependencies": {
@@ -111,6 +112,7 @@
     "react-native": "0.64.3",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.8.0",
+    "react-native-svg-transformer": "^1.0.0",
     "react-native-web": "0.17.1",
     "react-test-renderer": "^16.13.1",
     "rollup": "^2.8.0",
@@ -127,9 +129,6 @@
   },
   "jest": {
     "preset": "react-native",
-    "setupFiles": [
-      "./jest-setup.js"
-    ],
     "setupFilesAfterEnv": [
       "@testing-library/jest-native/extend-expect"
     ],
@@ -153,6 +152,9 @@
       "json",
       "node"
     ],
+    "moduleNameMapper": {
+      "\\.svg": "<rootDir>/__mocks__/svgMock.js"
+    },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
   },
   "eslintIgnore": [

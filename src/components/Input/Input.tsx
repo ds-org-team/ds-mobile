@@ -9,10 +9,10 @@ import React, {
 } from 'react';
 import { Keyboard, TextInput, TouchableWithoutFeedback } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Theme } from '../../themes';
 import Box from '../Box';
 import { InputProps, InputRef, TextInputRef } from './interfaces';
+import Close from '../../../assets/icons/close.svg';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const optionsPerType: any = {
@@ -30,7 +30,6 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
     editable,
     multiline,
     numberOfLines,
-    icon,
     maxLength,
     keyboardType,
     keyboardAppearance,
@@ -42,6 +41,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
     options,
     value,
     secureTextEntry,
+    renderCustomIcon,
     ...props
   },
   ref,
@@ -142,17 +142,15 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
         />
       )}
 
-      {icon && isFilled && (
-        <TouchableWithoutFeedback onPress={handleClear}>
-          <Box ml="quark">
-            <Icon
-              name={icon}
-              size={24}
-              color={isFilled ? colors['primary-base'] : colors['neutral-dark']}
-            />
-          </Box>
-        </TouchableWithoutFeedback>
-      )}
+      {renderCustomIcon
+        ? renderCustomIcon()
+        : isFilled && (
+            <TouchableWithoutFeedback onPress={handleClear}>
+              <Box ml="quark">
+                <Close height={24} width={24} fill={colors['neutral-dark']} />
+              </Box>
+            </TouchableWithoutFeedback>
+          )}
     </Box>
   );
 };
