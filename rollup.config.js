@@ -1,4 +1,5 @@
 import typescript from 'rollup-plugin-typescript2';
+import svgicons from 'rollup-plugin-svg-icons';
 import image from '@rollup/plugin-image';
 import pkg from './package.json';
 
@@ -25,5 +26,8 @@ export default {
       typescript: require('typescript'),
     }),
     image(),
+    svgicons({
+      inputFolder: 'assets/icons',
+    }),
   ],
 };
