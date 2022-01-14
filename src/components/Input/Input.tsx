@@ -5,14 +5,12 @@ import React, {
   useCallback,
   useImperativeHandle,
   useRef,
-  useState,
 } from 'react';
-import { Keyboard, TextInput, TouchableWithoutFeedback } from 'react-native';
+import { Keyboard, TextInput } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
 import { Theme } from '../../themes';
 import Box from '../Box';
 import { InputProps, InputRef, TextInputRef } from './interfaces';
-import Close from '../../../assets/icons/close.svg';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const optionsPerType: any = {
@@ -41,12 +39,11 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
     options,
     value,
     secureTextEntry,
-    renderCustomIcon,
+    renderRightIcon,
     ...props
   },
   ref,
 ) => {
-  const [isFilled, setIsFilled] = useState(false);
   const inputElementRef = useRef<TextInputRef>(null);
 
   const { colors } = useTheme<Theme>();
@@ -60,8 +57,6 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
       if (inputElementRef.current) {
         inputElementRef.current.value = newValue;
       }
-
-      setIsFilled(!!inputElementRef.current?.value);
     },
     [onChangeText],
   );
@@ -69,7 +64,6 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   const handleClear = useCallback(() => {
     handleChange('');
     inputElementRef.current?.clear?.();
-    setIsFilled(false);
   }, [handleChange]);
 
   useImperativeHandle(ref, () => ({
@@ -142,15 +136,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
         />
       )}
 
-      {renderCustomIcon
-        ? renderCustomIcon()
-        : isFilled && (
-            <TouchableWithoutFeedback onPress={handleClear}>
-              <Box ml="quark">
-                <Close height={24} width={24} fill={colors['neutral-dark']} />
-              </Box>
-            </TouchableWithoutFeedback>
-          )}
+      {renderRightIcon && renderRightIcon()}
     </Box>
   );
 };

@@ -26,7 +26,7 @@ type InputProps = Partial<{
   h?: Custom.HeightComponent;
   type?: TextInputMaskType;
   options?: TextInputMaskOptionProp;
-  renderCustomIcon?: () => React.ReactElement;
+  renderRightIcon?: () => React.ReactElement;
 }> &
   Partial<BoxProps<Theme>> &
   TextInputProps;
