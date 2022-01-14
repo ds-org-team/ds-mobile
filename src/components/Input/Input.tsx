@@ -5,9 +5,11 @@ import React, {
   useCallback,
   useImperativeHandle,
   useRef,
+  useState,
 } from 'react';
-import { Keyboard, TextInput } from 'react-native';
+import { Keyboard, TextInput, TouchableWithoutFeedback } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
+import { Path, Svg } from 'react-native-svg';
 import { Theme } from '../../themes';
 import Box from '../Box';
 import { InputProps, InputRef, TextInputRef } from './interfaces';
@@ -44,6 +46,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   },
   ref,
 ) => {
+  const [isFilled, setIsFilled] = useState(false);
   const inputElementRef = useRef<TextInputRef>(null);
 
   const { colors } = useTheme<Theme>();
@@ -57,6 +60,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
       if (inputElementRef.current) {
         inputElementRef.current.value = newValue;
       }
+      setIsFilled(!!inputElementRef.current?.value);
     },
     [onChangeText],
   );
@@ -64,6 +68,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   const handleClear = useCallback(() => {
     handleChange('');
     inputElementRef.current?.clear?.();
+    setIsFilled(false);
   }, [handleChange]);
 
   useImperativeHandle(ref, () => ({
@@ -136,7 +141,18 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
         />
       )}
 
-      {renderRightIcon && renderRightIcon()}
+      {renderRightIcon
+        ? renderRightIcon()
+        : isFilled && (
+            <TouchableWithoutFeedback onPress={handleClear}>
+              <Svg width={24} height={24} viewBox="0 0 24 24">
+                <Path
+                  fill={colors['neutral-dark']}
+                  d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+                />
+              </Svg>
+            </TouchableWithoutFeedback>
+          )}
     </Box>
   );
 };
