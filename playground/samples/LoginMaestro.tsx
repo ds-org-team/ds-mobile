@@ -22,6 +22,7 @@ const LoginMaestro: React.FC = () => {
     password: '',
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [rawCpf, setRawCpf] = useState('');
 
   const cpfFieldRef = useRef<InputRef>(null);
   const passwordRef = useRef<InputRef>(null);
@@ -30,7 +31,7 @@ const LoginMaestro: React.FC = () => {
 
   const handleSubmit = () => {
     setResult({
-      cpf: cpfFieldRef.current?.value || '',
+      cpf: rawCpf,
       password: passwordRef.current?.value || '',
     });
     return result;
@@ -84,6 +85,9 @@ const LoginMaestro: React.FC = () => {
               onSubmitEditing={() => {
                 passwordRef.current?.focus?.();
               }}
+              onChangeText={(text, rawText) => {
+                setRawCpf(rawText || '');
+              }}
             />
 
             <TextField
@@ -94,7 +98,7 @@ const LoginMaestro: React.FC = () => {
               autoCapitalize="none"
               onSubmitEditing={handleSubmit}
               secureTextEntry={!showPassword}
-              renderCustomIcon={renderShowPasswordIcon}
+              renderRightIcon={renderShowPasswordIcon}
             />
 
             <Box flexDirection="row" mt="lg">

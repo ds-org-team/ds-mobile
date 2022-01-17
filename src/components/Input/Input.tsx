@@ -52,8 +52,10 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   const { colors } = useTheme<Theme>();
 
   const handleChange = useCallback(
-    (newValue: string) => {
-      if (onChangeText) {
+    (newValue: string, rawValue?: string) => {
+      if (onChangeText && rawValue) {
+        onChangeText(newValue, rawValue);
+      } else if (onChangeText) {
         onChangeText(newValue);
       }
 
@@ -98,6 +100,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           ref={inputElementRef as unknown as LegacyRef<TextInputMask>}
           placeholder={placeholder}
           placeholderTextColor={colors['neutral-dark']}
+          includeRawValueInChangeText
           onChangeText={handleChange}
           onSubmitEditing={() => {
             Keyboard.dismiss();
