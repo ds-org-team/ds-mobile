@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import { Keyboard, TextInput, TouchableWithoutFeedback } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Path, Svg } from 'react-native-svg';
 import { Theme } from '../../themes';
 import Box from '../Box';
 import { InputProps, InputRef, TextInputRef } from './interfaces';
@@ -30,7 +30,6 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
     editable,
     multiline,
     numberOfLines,
-    icon,
     maxLength,
     keyboardType,
     keyboardAppearance,
@@ -42,6 +41,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
     options,
     value,
     secureTextEntry,
+    renderRightIcon,
     ...props
   },
   ref,
@@ -52,15 +52,16 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   const { colors } = useTheme<Theme>();
 
   const handleChange = useCallback(
-    (newValue: string) => {
-      if (onChangeText) {
+    (newValue: string, rawValue?: string) => {
+      if (onChangeText && rawValue) {
+        onChangeText(newValue, rawValue);
+      } else if (onChangeText) {
         onChangeText(newValue);
       }
 
       if (inputElementRef.current) {
         inputElementRef.current.value = newValue;
       }
-
       setIsFilled(!!inputElementRef.current?.value);
     },
     [onChangeText],
@@ -99,6 +100,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           ref={inputElementRef as unknown as LegacyRef<TextInputMask>}
           placeholder={placeholder}
           placeholderTextColor={colors['neutral-dark']}
+          includeRawValueInChangeText
           onChangeText={handleChange}
           onSubmitEditing={() => {
             Keyboard.dismiss();
@@ -142,17 +144,18 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
         />
       )}
 
-      {icon && isFilled && (
-        <TouchableWithoutFeedback onPress={handleClear}>
-          <Box ml="quark">
-            <Icon
-              name={icon}
-              size={24}
-              color={isFilled ? colors['primary-base'] : colors['neutral-dark']}
-            />
-          </Box>
-        </TouchableWithoutFeedback>
-      )}
+      {renderRightIcon
+        ? renderRightIcon()
+        : isFilled && (
+            <TouchableWithoutFeedback onPress={handleClear}>
+              <Svg width={24} height={24} viewBox="0 0 24 24">
+                <Path
+                  fill={colors['neutral-dark']}
+                  d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+                />
+              </Svg>
+            </TouchableWithoutFeedback>
+          )}
     </Box>
   );
 };

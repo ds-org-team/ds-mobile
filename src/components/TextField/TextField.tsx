@@ -89,7 +89,6 @@ const TextField: React.ForwardRefRenderFunction<InputRef, TextFieldProps> = (
         borderRadius="sm"
         my="quark"
         px="xs"
-        icon="close"
         onFocus={handleFocus}
         onBlur={handleBlur}
         style={{

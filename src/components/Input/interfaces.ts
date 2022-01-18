@@ -1,4 +1,5 @@
 import { BoxProps } from '@shopify/restyle';
+import React from 'react';
 import { TextInputProps, TextInput } from 'react-native';
 import { TextInputMaskOptionProp } from 'react-native-masked-text';
 import { Theme } from '../../themes/institucional';
@@ -21,14 +22,15 @@ export type OptionsPerType = {
 
 type InputProps = Partial<{
   placeholder: string;
-  icon: string;
-  bw?: Custom.BorderWidth;
-  h?: Custom.HeightComponent;
-  type?: TextInputMaskType;
-  options?: TextInputMaskOptionProp;
+  bw: Custom.BorderWidth;
+  h: Custom.HeightComponent;
+  type: TextInputMaskType;
+  onChangeText: (text: string, rawText?: string) => void;
+  options: TextInputMaskOptionProp;
+  renderRightIcon: () => React.ReactElement;
 }> &
   Partial<BoxProps<Theme>> &
-  TextInputProps;
+  Omit<TextInputProps, 'onChangeText'>;
 
 type TextInputRef = HTMLInputElement &
   TextInput & {

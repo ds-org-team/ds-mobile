@@ -2,10 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "module": "es6",
     "moduleResolution": "node",
     "declaration": true,
@@ -17,10 +14,7 @@
     "strict": true,
     "target": "es6"
   },
-  "include": [
-    "src/**/*",
-    ".storybook/stories"
-  ],
+  "include": ["src/**/*", ".storybook/stories", "declarations.d.ts"],
   "exclude": [
     "node_modules",
     "**/*.stories.tsx",
