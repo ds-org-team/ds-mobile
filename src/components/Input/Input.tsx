@@ -49,12 +49,17 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   const [isFilled, setIsFilled] = useState(false);
   const inputElementRef = useRef<TextInputRef>(null);
 
+  const [text, setText] = useState('');
+  const [rawText, setRawText] = useState('');
+
   const { colors } = useTheme<Theme>();
 
   const handleChange = useCallback(
     (newValue: string, rawValue?: string) => {
+      setText(newValue);
       if (onChangeText && rawValue) {
         onChangeText(newValue, rawValue);
+        setRawText(rawValue);
       } else if (onChangeText) {
         onChangeText(newValue);
       }
@@ -95,6 +100,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
       {type ? (
         <TextInputMask
           type={type === 'date' ? 'custom' : type}
+          value={text}
           options={optionsPerType[type] || options}
           testID="Input"
           ref={inputElementRef as unknown as LegacyRef<TextInputMask>}
@@ -105,7 +111,6 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           onSubmitEditing={() => {
             Keyboard.dismiss();
           }}
-          value={inputElementRef.current?.value}
           editable={editable}
           multiline={multiline}
           maxLength={maxLength}
@@ -117,6 +122,11 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           selectionColor={colors['neutral-dark']}
           style={style}
           secureTextEntry={secureTextEntry}
+          customTextInputProps={{
+            ref: inputElementRef,
+            rawText,
+            onInitialData: setText,
+          }}
         />
       ) : (
         <TextInput
