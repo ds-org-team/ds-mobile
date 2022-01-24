@@ -28,6 +28,8 @@ type InputProps = Partial<{
   onChangeText: (text: string, rawText?: string) => void;
   options: TextInputMaskOptionProp;
   renderRightIcon: () => React.ReactElement;
+  onInitialData: (value: string | undefined) => void;
+  rawText: string;
 }> &
   Partial<BoxProps<Theme>> &
   Omit<TextInputProps, 'onChangeText'>;
