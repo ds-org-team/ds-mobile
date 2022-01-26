@@ -9,4 +9,5 @@ export type ListItemProps = {
   avatar?: ImageXorLabel;
   tags?: string[];
   bottomComponent?: ReactNode;
+  onPress?: () => void;
 };

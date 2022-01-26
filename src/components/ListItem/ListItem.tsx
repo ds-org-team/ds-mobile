@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableWithoutFeedback } from 'react-native';
 import { ListItemProps } from './interfaces';
 import Text from '../Text';
 import Avatar from '../Avatar';
@@ -14,6 +15,7 @@ const ListItem: React.FC<ListItemProps> = ({
   tags,
   rightComponent,
   bottomComponent,
+  onPress,
   ...props
 }) => {
   const renderAvatar = () => {
@@ -27,45 +29,47 @@ const ListItem: React.FC<ListItemProps> = ({
   };
 
   return (
-    <Box backgroundColor="transparent" {...props}>
-      <Box py="xs" px="xs" flexDirection="row" alignItems="center">
-        {avatar && renderAvatar()}
-        {icon && !avatar && <Icon h="xs" w="xs" name={icon} size={32} />}
-        <Box ml="xs" flexDirection="column" justifyContent="center">
-          <Text fs="md" fontWeight="500" color="neutral-darkest">
-            {title}
-          </Text>
-          {text && (
-            <Box>
-              <Text fs="md" fontWeight="400" color="neutral-dark">
-                {text}
-              </Text>
-            </Box>
-          )}
-          {tags && (
-            <Box flexDirection="row" mt="quark">
-              {tags.map((tag, i) => (
-                <Box key={tag + i} mr="quark">
-                  <Tag
-                    label={tag}
-                    size="small"
-                    backgroundColor="highlight-04-light"
-                    color="feedback-success-dark"
-                  />
-                </Box>
-              ))}
+    <TouchableWithoutFeedback onPress={onPress}>
+      <Box backgroundColor="transparent" {...props}>
+        <Box py="xs" px="xs" flexDirection="row" alignItems="center">
+          {avatar && renderAvatar()}
+          {icon && !avatar && <Icon h="xs" w="xs" name={icon} size={32} />}
+          <Box ml="xs" flexDirection="column" justifyContent="center">
+            <Text fs="md" fontWeight="500" color="neutral-darkest">
+              {title}
+            </Text>
+            {text && (
+              <Box>
+                <Text fs="md" fontWeight="400" color="neutral-dark">
+                  {text}
+                </Text>
+              </Box>
+            )}
+            {tags && (
+              <Box flexDirection="row" mt="quark">
+                {tags.map((tag, i) => (
+                  <Box key={tag + i} mr="quark">
+                    <Tag
+                      label={tag}
+                      size="small"
+                      backgroundColor="highlight-04-light"
+                      color="feedback-success-dark"
+                    />
+                  </Box>
+                ))}
+              </Box>
+            )}
+          </Box>
+          {rightComponent && (
+            <Box position="absolute" right={0} mx="xs" alignItems="flex-end">
+              {rightComponent}
             </Box>
           )}
         </Box>
-        {rightComponent && (
-          <Box position="absolute" right={0} mx="xs" alignItems="flex-end">
-            {rightComponent}
-          </Box>
-        )}
+        {bottomComponent}
+        <Box borderColor="neutral-light" borderBottomWidth={1} />
       </Box>
-      {bottomComponent}
-      <Box borderColor="neutral-light" borderBottomWidth={1} />
-    </Box>
+    </TouchableWithoutFeedback>
   );
 };
 
