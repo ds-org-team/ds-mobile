@@ -1,7 +1,6 @@
 import { useTheme } from '@shopify/restyle';
 import React, {
   forwardRef,
-  LegacyRef,
   useCallback,
   useImperativeHandle,
   useRef,
@@ -49,32 +48,50 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   const [isFilled, setIsFilled] = useState(false);
   const inputElementRef = useRef<TextInputRef>(null);
 
+  const [text, setText] = useState('');
+  const [rawText, setRawText] = useState<string | undefined>('');
+
   const { colors } = useTheme<Theme>();
 
   const handleChange = useCallback(
     (newValue: string, rawValue?: string) => {
+      setText(newValue);
+      setRawText(rawValue);
       if (onChangeText && rawValue) {
         onChangeText(newValue, rawValue);
       } else if (onChangeText) {
         onChangeText(newValue);
       }
-
       if (inputElementRef.current) {
-        inputElementRef.current.value = newValue;
+        inputElementRef.current.value = rawValue || newValue;
       }
       setIsFilled(!!inputElementRef.current?.value);
     },
     [onChangeText],
   );
 
+  const handleChangeMaskedText = useCallback(
+    (maskedText, unmaskedText) => {
+      setIsFilled(!!inputElementRef.current?.value);
+      setText(maskedText);
+      setRawText(unmaskedText);
+      if (onChangeText && unmaskedText) {
+        onChangeText(maskedText, unmaskedText);
+      } else if (onChangeText) {
+        onChangeText(unmaskedText);
+      }
+    },
+    [onChangeText],
+  );
+
   const handleClear = useCallback(() => {
-    handleChange('');
+    handleChange('', '');
     inputElementRef.current?.clear?.();
     setIsFilled(false);
   }, [handleChange]);
 
   useImperativeHandle(ref, () => ({
-    value: inputElementRef.current?.value?.replace(/[^a-z0-9]/gi, ''),
+    value: inputElementRef.current?.value,
     clear: () => handleClear(),
     focus: () => {
       inputElementRef.current?.focus?.();
@@ -83,6 +100,25 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
     },
     blur: () => inputElementRef.current?.blur?.(),
   }));
+
+  const renderRightComponent = useCallback(() => {
+    if (renderRightIcon) {
+      return renderRightIcon();
+    }
+    if (isFilled) {
+      return (
+        <TouchableWithoutFeedback onPress={handleClear}>
+          <Svg width={24} height={24} viewBox="0 0 24 24">
+            <Path
+              fill={colors['neutral-dark']}
+              d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+            />
+          </Svg>
+        </TouchableWithoutFeedback>
+      );
+    }
+    return <></>;
+  }, [colors, handleClear, isFilled, renderRightIcon]);
 
   return (
     <Box
@@ -95,17 +131,16 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
       {type ? (
         <TextInputMask
           type={type === 'date' ? 'custom' : type}
+          value={text || rawText}
           options={optionsPerType[type] || options}
           testID="Input"
-          ref={inputElementRef as unknown as LegacyRef<TextInputMask>}
           placeholder={placeholder}
           placeholderTextColor={colors['neutral-dark']}
           includeRawValueInChangeText
-          onChangeText={handleChange}
+          onChangeText={handleChangeMaskedText}
           onSubmitEditing={() => {
             Keyboard.dismiss();
           }}
-          value={inputElementRef.current?.value}
           editable={editable}
           multiline={multiline}
           maxLength={maxLength}
@@ -144,18 +179,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
         />
       )}
 
-      {renderRightIcon
-        ? renderRightIcon()
-        : isFilled && (
-            <TouchableWithoutFeedback onPress={handleClear}>
-              <Svg width={24} height={24} viewBox="0 0 24 24">
-                <Path
-                  fill={colors['neutral-dark']}
-                  d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                />
-              </Svg>
-            </TouchableWithoutFeedback>
-          )}
+      {renderRightComponent()}
     </Box>
   );
 };
