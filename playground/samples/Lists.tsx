@@ -26,42 +26,42 @@ const Lists: React.FC = () => (
       <List
         data={[
           {
-            label: 'Primeiro item',
-            avatar: 'https://picsum.photos/200',
+            title: 'Primeiro item',
+            avatar: { label: 'PI' },
             text: 'Observação',
           },
           {
-            label: 'Segundo item',
-            avatar: 'https://picsum.photos/300',
+            title: 'Segundo item',
+            avatar: { image: 'https://picsum.photos/300' },
             tags: ['aviso', 'detalhes'],
           },
           {
-            label: 'Terceiro item',
-            avatar: 'https://picsum.photos/400',
+            title: 'Terceiro item',
+            avatar: { image: 'https://picsum.photos/400' },
             text: 'Subtexto descritivo',
           },
           {
-            label: 'Item com Icon',
+            title: 'Item com Icon',
             text: 'Subtexto descritivo',
             icon: 'account',
           },
           {
-            label: 'Com checkbox item',
-            avatar: 'https://picsum.photos/777',
+            title: 'Com checkbox item',
+            avatar: { image: 'https://picsum.photos/777' },
             tags: ['checkbox', 'info'],
-            children: <Checkbox value onChange={() => undefined} />,
+            rightComponent: <Checkbox value onChange={() => undefined} />,
           },
           {
-            label: 'Com Switch item',
+            title: 'Com Switch item',
             icon: 'heart',
             tags: ['switch', 'value', 'make'],
-            children: <Switch value={false} onChange={() => undefined} />,
+            rightComponent: <Switch value={false} onChange={() => undefined} />,
           },
           {
-            label: 'Com button item',
-            avatar: 'https://picsum.photos/74',
+            title: 'Com button item',
+            avatar: { image: 'https://picsum.photos/74' },
             tags: ['switch', 'value', 'make'],
-            children: (
+            rightComponent: (
               <Button variant="tertiary" onPress={() => undefined}>
                 Button
               </Button>

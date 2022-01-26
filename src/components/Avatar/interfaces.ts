@@ -1,7 +1,7 @@
 import { ImageProps } from 'react-native';
 import { CustomBoxProps } from '../Box/interface';
 
-type ImageXorLabel =
+export type ImageXorLabel =
   | {
       image: string;
       label?: never;
