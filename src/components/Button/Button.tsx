@@ -28,7 +28,7 @@ const Button: React.FC<ButtonProps> = ({
   const { colors, borderRadii } = useTheme<Theme>();
 
   const variantBgColor: ColorsOptions = {
-    primary: !disabled ? 'primary-base' : 'neutral-lightest',
+    primary: !disabled ? 'action-primary' : 'neutral-lightest',
     secondary: !disabled ? 'transparent' : 'neutral-lightest',
     tertiary: 'transparent',
   };
@@ -40,8 +40,8 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   const variantBorderColor: ColorsOptions = {
-    primary: !disabled ? 'primary-base' : 'transparent',
-    secondary: !disabled ? 'primary-base' : 'transparent',
+    primary: !disabled ? 'action-primary' : 'transparent',
+    secondary: !disabled ? 'action-primary' : 'transparent',
     tertiary: 'transparent',
   };
 
@@ -53,20 +53,20 @@ const Button: React.FC<ButtonProps> = ({
 
   const variantColor: ColorsOptions = {
     primary: !disabled ? 'white' : 'neutral-base',
-    secondary: !disabled ? 'primary-base' : 'neutral-base',
-    tertiary: !disabled ? 'primary-base' : 'neutral-base',
+    secondary: !disabled ? 'action-primary' : 'neutral-base',
+    tertiary: !disabled ? 'action-primary' : 'neutral-base',
   };
 
   const variantIconColor = {
     primary: !disabled ? colors.white : colors['neutral-base'],
-    secondary: !disabled ? colors['primary-base'] : colors['neutral-base'],
-    tertiary: !disabled ? colors['primary-base'] : colors['neutral-base'],
+    secondary: !disabled ? colors['action-primary'] : colors['neutral-base'],
+    tertiary: !disabled ? colors['action-primary'] : colors['neutral-base'],
   };
 
   const variantLoadingColor = {
     primary: colors.white,
-    secondary: colors['primary-base'],
-    tertiary: colors['primary-base'],
+    secondary: colors['action-primary'],
+    tertiary: colors['action-primary'],
   };
 
   return (

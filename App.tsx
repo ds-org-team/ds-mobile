@@ -12,7 +12,7 @@ import {
   PublicSans_700Bold,
 } from '@expo-google-fonts/public-sans';
 
-import { themeInstitucional, ThemeProvider } from './src/themes';
+import { themeCoral, themeInstitucional, ThemeProvider } from './src/themes';
 import Forms from './playground/samples/Forms';
 import Playground from './playground';
 import LoginMaestro from './playground/samples/LoginMaestro';
@@ -30,7 +30,7 @@ const App: React.FC = () => {
   });
 
   const themeWithFont = {
-    ...themeInstitucional,
+    ...themeCoral,
     textVariants: {
       bold: {
         fontFamily: 'bold',
