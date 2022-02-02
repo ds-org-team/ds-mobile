@@ -8,12 +8,12 @@ import {
   shadowOffset,
   shadowOpacity,
   shadowRadius,
-  Theme,
 } from '../../themes';
 
 import Text from '../Text/Text';
 import Box from '../Box/Box';
 import { BorderWidthOptions, ButtonProps, ColorsOptions } from './interface';
+import { ITheme } from '../../themes/interface';
 
 const Button: React.FC<ButtonProps> = ({
   children,
@@ -25,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   ...props
 }) => {
-  const { colors, borderRadii } = useTheme<Theme>();
+  const { colors, borderRadii } = useTheme<ITheme>();
 
   const variantBgColor: ColorsOptions = {
     primary: !disabled ? 'action-primary' : 'neutral-lightest',
@@ -140,7 +140,7 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default createRestyleComponent<ButtonProps, Theme>(
+export default createRestyleComponent<ButtonProps, ITheme>(
   [opacity, shadowOffset, shadowRadius, shadowOpacity],
   Button,
 );

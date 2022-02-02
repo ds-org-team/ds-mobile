@@ -2,14 +2,14 @@ import { useTheme } from '@shopify/restyle';
 import React from 'react';
 import { Image } from 'react-native';
 import Box from '../Box';
-import { Theme } from '../../themes';
 import { AvatarProps } from './interfaces';
 import Text from '../Text';
+import { ITheme } from '../../themes/interface';
 
 const DIMENSIONS = { width: '100%', height: '100%' };
 
 const Avatar: React.FC<AvatarProps> = ({ image, label, ...props }) => {
-  const { borderRadii, colors } = useTheme<Theme>();
+  const { borderRadii, colors } = useTheme<ITheme>();
   const style = { ...DIMENSIONS, borderRadius: borderRadii.circular };
   const [fst, snd] = (label || '').split(' ');
   const initials = snd ? fst.replace(fst[1], snd) : fst;
@@ -24,7 +24,7 @@ const Avatar: React.FC<AvatarProps> = ({ image, label, ...props }) => {
       borderRadius="circular"
       alignItems="center"
       justifyContent="center"
-      backgroundColor={color as Custom.Colors}
+      // backgroundColor={color as Custom.Colors}
       {...props}
     >
       {image && !label && <Image style={style} source={{ uri: image }} />}

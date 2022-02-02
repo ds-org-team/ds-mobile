@@ -53,6 +53,7 @@
     "@babel/core": "^7.12.9",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@expo-google-fonts/inter": "^0.2.2",
     "@expo-google-fonts/public-sans": "^0.2.0",
     "@expo/webpack-config": "^0.16.2",
     "@react-native-community/eslint-config": "^2.0.0",

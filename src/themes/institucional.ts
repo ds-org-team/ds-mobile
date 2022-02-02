@@ -92,5 +92,4 @@ const theme = createTheme({
   borderRadii: borderRadius,
 });
 
-export type Theme = typeof theme;
 export default theme;

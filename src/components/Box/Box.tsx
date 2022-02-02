@@ -11,13 +11,13 @@ import {
   shadowOffset,
   shadowOpacity,
   shadowRadius,
-  Theme,
   heightComponent,
   widthComponent,
 } from '../../themes';
+import { ITheme } from '../../themes/interface';
 import { CustomBoxProps } from './interface';
 
-const Box = createBox<Theme>();
+const Box = createBox<ITheme>();
 
 const CustomBox: React.FC<CustomBoxProps> = ({
   children,
@@ -29,7 +29,7 @@ const CustomBox: React.FC<CustomBoxProps> = ({
   </Box>
 );
 
-export default createRestyleComponent<CustomBoxProps, Theme>(
+export default createRestyleComponent<CustomBoxProps, ITheme>(
   [
     borderRadius,
     borderWidth,

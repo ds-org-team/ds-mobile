@@ -1,16 +1,15 @@
 import { createTheme } from '../utils/theme';
-import { ITokens } from './interface';
 
-const tokens: ITokens = {
+const tokens = {
   colors: {
     background: {
-      default: '#FFF',
+      default: '#121A30',
       brand: '#1D5AF5',
     },
     fittings: {
       text: {
         primary: {
-          enabled: '#1A233D',
+          enabled: '#FDC500',
           disabled: '#58627F',
         },
       },
@@ -21,14 +20,14 @@ const tokens: ITokens = {
       select: '#E7F0FE',
     },
     action: {
-      primary: '#1D5AF5',
-      'primary-pressed': '#0E32B0',
+      primary: '#B68500',
+      'primary-pressed': '#B68500',
       confirm: '#15AB51',
-      'confirm-pressed': '#066347',
+      'confirm-pressed': '#15AB51',
       remove: '#D63429',
       'remove-pressed': '#D63429',
-      help: '#5487F9',
-      'help-pressed': '#0E32B0',
+      help: '#1D5AF5',
+      'help-pressed': '#1D5AF5',
     },
     feedback: {
       positive: {
@@ -185,6 +184,6 @@ const tokens: ITokens = {
   },
 };
 
-const coralTheme = createTheme(tokens);
+const theme = createTheme(tokens);
 
-export default coralTheme;
+export default theme;
