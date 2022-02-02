@@ -76,11 +76,11 @@ export const LINE_HEIGHTS = ['lg', 'md', 'sm', 'xs'] as const;
 export const LETTER_SPACINGS = ['lg', 'md', 'sm', 'xs'] as const;
 
 export const OPACITIES = [
-  'opacity-5',
-  'opacity-4',
-  'opacity-3',
-  'opacity-2',
-  'opacity-1',
+  'opacity-80',
+  'opacity-64',
+  'opacity-32',
+  'opacity-16',
+  'opacity-08',
 ] as const;
 
 export const SHADOWS = ['xs', 'sm', 'md', 'lg'] as const;

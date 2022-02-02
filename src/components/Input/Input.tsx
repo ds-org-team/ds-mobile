@@ -10,7 +10,7 @@ import React, {
 import { Keyboard, TextInput, TouchableWithoutFeedback } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Theme } from '../../themes';
+import { ITheme } from '../../themes/interface';
 import Box from '../Box';
 import { InputProps, InputRef, TextInputRef } from './interfaces';
 
@@ -49,7 +49,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   const [isFilled, setIsFilled] = useState(false);
   const inputElementRef = useRef<TextInputRef>(null);
 
-  const { colors } = useTheme<Theme>();
+  const { colors } = useTheme<ITheme>();
 
   const handleChange = useCallback(
     (newValue: string) => {
@@ -88,7 +88,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
       flexDirection="row"
       alignItems="center"
       testID="input-box"
-      bg="white"
+      bg="surface-default"
       {...props}
     >
       {type ? (
@@ -98,7 +98,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           testID="Input"
           ref={inputElementRef as unknown as LegacyRef<TextInputMask>}
           placeholder={placeholder}
-          placeholderTextColor={colors['neutral-dark']}
+          placeholderTextColor={colors['fittings-text-secondary-enabled']}
           onChangeText={handleChange}
           onSubmitEditing={() => {
             Keyboard.dismiss();
@@ -112,7 +112,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           returnKeyType={returnKeyType}
           numberOfLines={numberOfLines}
           autoCapitalize={autoCapitalize}
-          selectionColor={colors['neutral-dark']}
+          selectionColor={colors['fittings-text-secondary-enabled']}
           style={style}
           secureTextEntry={secureTextEntry}
         />
@@ -122,7 +122,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           testID="Input"
           ref={inputElementRef}
           placeholder={placeholder}
-          placeholderTextColor={colors['neutral-dark']}
+          placeholderTextColor={colors['fittings-text-secondary-enabled']}
           onChangeText={handleChange}
           onSubmitEditing={() => {
             Keyboard.dismiss();
@@ -136,7 +136,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           returnKeyType={returnKeyType}
           numberOfLines={numberOfLines}
           autoCapitalize={autoCapitalize}
-          selectionColor={colors['neutral-dark']}
+          selectionColor={colors['fittings-text-secondary-enabled']}
           style={style}
           secureTextEntry={secureTextEntry}
         />
@@ -148,7 +148,11 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
             <Icon
               name={icon}
               size={24}
-              color={isFilled ? colors['primary-base'] : colors['neutral-dark']}
+              color={
+                isFilled
+                  ? colors['action-main-primary']
+                  : colors['fittings-icon-primary-enabled']
+              }
             />
           </Box>
         </TouchableWithoutFeedback>

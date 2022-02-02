@@ -28,8 +28,8 @@ const Playground: React.FC<PlaygroundProps> = ({ navigation }) => {
           </Text>
 
           <Box
-            backgroundColor="neutral-lightest"
-            borderColor="black"
+            backgroundColor="background-default"
+            borderColor="fittings-text-primary-enabled"
             borderWidth={1}
             borderRadius="nano"
             mt="sm"
@@ -46,7 +46,7 @@ const Playground: React.FC<PlaygroundProps> = ({ navigation }) => {
                 { label: 'Armazzem', value: 'Armazzem' },
               ]}
             >
-              <Text m="nano" fs="lg" color="neutral-dark">
+              <Text m="nano" fs="lg" color="fittings-text-primary-enabled">
                 {selectTheme
                   ? `Você está com o tema: ${selectTheme}`
                   : 'Escolha um tema'}

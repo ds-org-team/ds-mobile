@@ -1,7 +1,7 @@
 import { BoxProps } from '@shopify/restyle';
 import { TextInputProps, TextInput } from 'react-native';
 import { TextInputMaskOptionProp } from 'react-native-masked-text';
-import { Theme } from '../../themes/institucional';
+import { ITheme } from '../../themes/interface';
 
 export type TextInputMaskType =
   | 'credit-card'
@@ -27,7 +27,7 @@ type InputProps = Partial<{
   type?: TextInputMaskType;
   options?: TextInputMaskOptionProp;
 }> &
-  Partial<BoxProps<Theme>> &
+  Partial<BoxProps<ITheme>> &
   TextInputProps;
 
 type TextInputRef = HTMLInputElement &

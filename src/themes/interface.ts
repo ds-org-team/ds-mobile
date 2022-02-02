@@ -1,5 +1,6 @@
 export type ITokens = {
   colors: {
+    transparent: string;
     background: {
       default: string;
       brand: string;
@@ -10,22 +11,61 @@ export type ITokens = {
           enabled: string;
           disabled: string;
         };
+        secondary: {
+          enabled: string;
+          disabled: string;
+        };
+        inverse: {
+          enabled: string;
+          disabled: string;
+        };
       };
+      border: {
+        primary: {
+          enabled: string;
+          disabled: string;
+        };
+        inverse: {
+          enabled: string;
+          disabled: string;
+        };
+      };
+      icon: {
+        primary: {
+          enabled: string;
+          disabled: string;
+        };
+        inverse: {
+          enabled: string;
+          disabled: string;
+        };
+      };
+      divider: string;
     };
     surface: {
       default: string;
       pressed: string;
       select: string;
+      disabled: string;
+      overlay: string;
     };
     action: {
-      primary: string;
-      'primary-pressed': string;
-      confirm: string;
-      'confirm-pressed': string;
-      remove: string;
-      'remove-pressed': string;
-      help: string;
-      'help-pressed': string;
+      main: {
+        primary: string;
+        pressed: string;
+      };
+      confirm: {
+        primary: string;
+        pressed: string;
+      };
+      remove: {
+        primary: string;
+        pressed: string;
+      };
+      help: {
+        primary: string;
+        pressed: string;
+      };
     };
     feedback: {
       positive: {
@@ -59,12 +99,6 @@ export type ITokens = {
       icon: string;
       text: string;
     };
-    black: string;
-    white: string;
-    neutral: {
-      lightest: string;
-      dark: string;
-    };
   };
   spacing: {
     quark: number;
@@ -73,13 +107,6 @@ export type ITokens = {
     sm: number;
     md: number;
     lg: number;
-  };
-  sizing: {
-    xs: number;
-    sm: number;
-    md: number;
-    lg: number;
-    xl: number;
   };
   screen: {
     breakpoints: {
@@ -106,25 +133,6 @@ export type ITokens = {
         fontWeight: string;
       };
     };
-    'line-height': {
-      lg: number;
-      md: number;
-      sm: number;
-      xs: number;
-    };
-    'letter-spacing': {
-      lg: number;
-      md: number;
-      sm: number;
-      xs: number;
-    };
-    size: {
-      xs: number;
-      sm: number;
-      md: number;
-      lg: number;
-      xl: number;
-    };
   };
   radius: {
     none: number;
@@ -134,51 +142,6 @@ export type ITokens = {
     lg: number;
     pill: number;
     circular: number;
-  };
-  opacity: {
-    'opacity-80': number;
-    'opacity-64': number;
-    'opacity-32': number;
-    'opacity-16': number;
-    'opacity-08': number;
-  };
-  shadows: {
-    offset: {
-      xs: { width: number; height: number };
-      sm: { width: number; height: number };
-      md: { width: number; height: number };
-      lg: { width: number; height: number };
-    };
-    radius: {
-      xs: number;
-      sm: number;
-      md: number;
-      lg: number;
-    };
-    opacity: {
-      xs: number;
-      sm: number;
-      md: number;
-      lg: number;
-    };
-  };
-  border: {
-    width: {
-      none: number;
-      xs: number;
-      sm: number;
-      md: number;
-      lg: number;
-    };
-    radius: {
-      none: number;
-      nano: number;
-      sm: number;
-      md: number;
-      lg: number;
-      pill: number;
-      circular: number;
-    };
   };
 };
 
@@ -201,14 +164,14 @@ export type ITheme = {
     'accent-fill': string;
     'accent-icon': string;
     'accent-text': string;
-    'action-confirm': string;
     'action-confirm-pressed': string;
-    'action-help': string;
+    'action-confirm-primary': string;
     'action-help-pressed': string;
-    'action-primary': string;
-    'action-primary-pressed': string;
-    'action-remove': string;
+    'action-help-primary': string;
+    'action-main-pressed': string;
+    'action-main-primary': string;
     'action-remove-pressed': string;
+    'action-remove-primary': string;
     'background-brand': string;
     'background-default': string;
     'feedback-informative-border': string;
@@ -227,11 +190,27 @@ export type ITheme = {
     'feedback-positive-fill': string;
     'feedback-positive-icon': string;
     'feedback-positive-text': string;
+    'fittings-border-inverse-disabled': string;
+    'fittings-border-inverse-enabled': string;
+    'fittings-border-primary-disabled': string;
+    'fittings-border-primary-enabled': string;
+    'fittings-divider': string;
+    'fittings-icon-inverse-disabled': string;
+    'fittings-icon-inverse-enabled': string;
+    'fittings-icon-primary-disabled': string;
+    'fittings-icon-primary-enabled': string;
+    'fittings-text-inverse-disabled': string;
+    'fittings-text-inverse-enabled': string;
     'fittings-text-primary-disabled': string;
     'fittings-text-primary-enabled': string;
+    'fittings-text-secondary-disabled': string;
+    'fittings-text-secondary-enabled': string;
     'surface-default': string;
+    'surface-disabled': string;
+    'surface-overlay': string;
     'surface-pressed': string;
     'surface-select': string;
+    transparent: string;
   };
   spacing: {
     lg: number;

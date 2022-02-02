@@ -2,13 +2,13 @@ import React, { forwardRef, useCallback, useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '@shopify/restyle';
-import { Theme } from '../../themes/institucional';
 
 import Text from '../Text';
 import Box from '../Box';
 import Input from '../Input';
 import { ColorOptions, TextFieldProps, TypeVariantHeight } from './interfaces';
 import { InputRef } from '../Input/interfaces';
+import { ITheme } from '../../themes/interface';
 
 const TextField: React.ForwardRefRenderFunction<InputRef, TextFieldProps> = (
   {
@@ -26,18 +26,18 @@ const TextField: React.ForwardRefRenderFunction<InputRef, TextFieldProps> = (
   ref,
 ) => {
   const [isFocused, setIsFocused] = useState(false);
-  const { colors } = useTheme<Theme>();
+  const { colors } = useTheme<ITheme>();
 
   const statusKeyPair = {
-    error: colors['feedback-error-base'],
-    success: colors['feedback-success-base'],
-    default: colors['neutral-dark'],
+    error: colors['feedback-negative-icon'],
+    success: colors['feedback-positive-icon'],
+    default: colors['fittings-icon-primary-enabled'],
   };
 
   const statusBorderColor: ColorOptions = {
-    error: 'feedback-error-base',
-    success: 'feedback-success-base',
-    default: 'neutral-dark',
+    error: 'feedback-negative-border',
+    success: 'feedback-positive-border',
+    default: 'fittings-border-primary-enabled',
   };
 
   const variantHeight: TypeVariantHeight = {
@@ -70,7 +70,7 @@ const TextField: React.ForwardRefRenderFunction<InputRef, TextFieldProps> = (
   return (
     <SafeAreaView>
       {!!label && (
-        <Text fs="md" fontWeight="700" color="neutral-darkest">
+        <Text fs="md" fontWeight="700" color="fittings-text-secondary-enabled">
           {label}
         </Text>
       )}
@@ -82,7 +82,9 @@ const TextField: React.ForwardRefRenderFunction<InputRef, TextFieldProps> = (
         autoCapitalize={autoCapitalize}
         returnKeyType={returnKeyType}
         borderColor={
-          isFocused ? 'primary-base' : statusBorderColor[status || 'default']
+          isFocused
+            ? 'feedback-informative-border'
+            : statusBorderColor[status || 'default']
         }
         bw="sm"
         value={value}
@@ -100,7 +102,7 @@ const TextField: React.ForwardRefRenderFunction<InputRef, TextFieldProps> = (
       <Box flexDirection="row" alignItems="center" height={16}>
         {renderIconPerStatus()}
         {!!assistiveText && (
-          <Text ml="quark" fs="sm" color="neutral-darkest">
+          <Text ml="quark" fs="sm" color="fittings-text-primary-enabled">
             {assistiveText}
           </Text>
         )}

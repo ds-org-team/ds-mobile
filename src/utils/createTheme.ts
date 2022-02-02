@@ -1,10 +1,7 @@
-import { createTheme as createThemeShopify, BaseTheme } from '@shopify/restyle';
+import { createTheme as createThemeShopify } from '@shopify/restyle';
+import { ITheme, ITokens } from '../themes/interface';
 
 type MapKeys = Map<string, string>;
-
-type IReturnKeys = {
-  [index: string]: string;
-};
 
 function visit(level: any, parent: string, keys: MapKeys) {
   if (typeof level === 'object') {
@@ -18,7 +15,7 @@ function visit(level: any, parent: string, keys: MapKeys) {
   keys.set(parent, level);
 }
 
-function generateKeysPalette(colors: any) {
+function generateKeysPalette(colors: any): ITheme['colors'] {
   const keys = new Map();
 
   Object.keys(colors).forEach((level: string) => {
@@ -28,53 +25,21 @@ function generateKeysPalette(colors: any) {
   return { ...Object.fromEntries(keys) };
 }
 
-function checkHasTokensNull(tokens: any) {
-  const {
-    colors,
-    spacing,
-    sizing,
-    screen,
-    font,
-    radius,
-    opacity,
-    shadows,
-    border,
-  } = tokens;
+function checkHasTokensNull(tokens: ITokens) {
+  const { colors, spacing, screen, font, radius } = tokens;
 
-  return (
-    !!colors &&
-    !!spacing &&
-    !!sizing &&
-    !!screen &&
-    !!font &&
-    !!radius &&
-    !!opacity &&
-    !!shadows &&
-    !!border
-  );
+  return !!colors && !!spacing && !!screen && !!font && !!radius;
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-function createTheme(tokens: any) {
+function createTheme(tokens: ITokens) {
   const hasNull = checkHasTokensNull(tokens);
 
   if (!hasNull) {
     throw new Error('Missing required Fields');
   }
 
-  const {
-    colors,
-    spacing,
-    sizing,
-    screen,
-    font,
-    radius,
-    opacity,
-    shadows,
-    border,
-  } = tokens;
-
-  // const palette = generateKeysPalette(colors);
+  const { colors, spacing, screen, font, radius } = tokens;
 
   const palette = generateKeysPalette(colors);
 
@@ -89,4 +54,4 @@ function createTheme(tokens: any) {
   return theme;
 }
 
-export { createTheme };
+export { createTheme, generateKeysPalette };

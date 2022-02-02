@@ -1,4 +1,4 @@
-import { createTheme } from '../utils/theme';
+import { createTheme } from '../utils/createTheme';
 
 const tokens = {
   colors: {

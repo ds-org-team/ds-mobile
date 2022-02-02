@@ -95,7 +95,7 @@ const LoginMaestro: React.FC = () => {
               Ouvidoria
             </Button>
             <Box alignItems="center">
-              <Text fs="sm" color="neutral-base">
+              <Text fs="sm" color="fittings-text-secondary-enabled">
                 Maestro v2.1.65 | v255
               </Text>
             </Box>

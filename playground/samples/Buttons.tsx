@@ -11,7 +11,7 @@ const Buttons: React.FC = () => (
       padding="sm"
       flexDirection="column"
       justifyContent="space-between"
-      backgroundColor="white"
+      backgroundColor="background-default"
     >
       <Text mb="sm">Primary / Icon / Disabled / Loading</Text>
 

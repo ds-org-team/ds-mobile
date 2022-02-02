@@ -1,6 +1,7 @@
-import { createTheme } from '../utils/theme';
+import { createTheme } from '../utils/createTheme';
+import { ITokens } from './interface';
 
-const tokens = {
+const tokens: ITokens = {
   colors: {
     background: {
       default: '#121A30',

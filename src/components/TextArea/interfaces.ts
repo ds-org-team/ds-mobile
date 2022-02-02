@@ -1,5 +1,5 @@
 import { KeyboardTypeOptions, ReturnKeyTypeOptions } from 'react-native';
-import { Theme } from '../../themes/institucional';
+import { ITheme } from '../../themes/interface';
 import { InputProps } from '../Input/interfaces';
 
 type TextAreaProps = {
@@ -22,7 +22,7 @@ type TypeVariantHeight = {
 };
 
 type ColorOptions = {
-  [index: string]: keyof Theme['colors'];
+  [index: string]: keyof ITheme['colors'];
 };
 
 export { TextAreaProps, TypeVariantHeight, ColorOptions };
