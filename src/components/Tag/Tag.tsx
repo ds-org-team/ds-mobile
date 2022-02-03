@@ -1,20 +1,20 @@
 import React from 'react';
 import { useTheme } from '@shopify/restyle';
-import { Theme } from '../../themes/institucional';
 import { TagProps } from './interfaces';
 import Text from '../Text';
 import Box from '../Box';
 import Icon from '../Icon';
+import { ITheme } from '../../themes/interface';
 
 const Tag: React.FC<TagProps> = ({ label, size, icon, color, ...props }) => {
-  const { colors } = useTheme<Theme>();
+  const { colors } = useTheme<ITheme>();
 
   return (
     <Box
       py="quark"
       px="nano"
       borderRadius="sm"
-      backgroundColor="highlight-03-light"
+      // backgroundColor="highlight-03-light"
       flexDirection="row"
       justifyContent="center"
       alignItems="center"
@@ -22,7 +22,7 @@ const Tag: React.FC<TagProps> = ({ label, size, icon, color, ...props }) => {
     >
       {icon && (
         <Icon
-          color={colors[color || 'highlight-03-dark']}
+          color={colors[color || 'fittings-text-primary-enabled']}
           name={icon}
           size={16}
         />
@@ -30,7 +30,7 @@ const Tag: React.FC<TagProps> = ({ label, size, icon, color, ...props }) => {
       <Text
         fs={size === 'small' ? 'xs' : 'sm'}
         fontWeight="500"
-        color={color || 'highlight-03-dark'}
+        color={color || 'fittings-text-primary-enabled'}
         m="quark"
       >
         {label}

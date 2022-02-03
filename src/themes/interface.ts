@@ -99,6 +99,28 @@ export type ITokens = {
       icon: string;
       text: string;
     };
+    decorative: {
+      one: {
+        primary: string;
+        inverse: string;
+      };
+      two: {
+        primary: string;
+        inverse: string;
+      };
+      tree: {
+        primary: string;
+        inverse: string;
+      };
+      four: {
+        primary: string;
+        inverse: string;
+      };
+      five: {
+        primary: string;
+        inverse: string;
+      };
+    };
   };
   spacing: {
     quark: number;
@@ -174,6 +196,16 @@ export type ITheme = {
     'action-remove-primary': string;
     'background-brand': string;
     'background-default': string;
+    'decorative-five-inverse': string;
+    'decorative-five-primary': string;
+    'decorative-four-inverse': string;
+    'decorative-four-primary': string;
+    'decorative-one-inverse': string;
+    'decorative-one-primary': string;
+    'decorative-tree-inverse': string;
+    'decorative-tree-primary': string;
+    'decorative-two-inverse': string;
+    'decorative-two-primary': string;
     'feedback-informative-border': string;
     'feedback-informative-fill': string;
     'feedback-informative-icon': string;

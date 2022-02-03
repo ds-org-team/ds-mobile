@@ -1,9 +1,9 @@
 import { BoxProps } from '@shopify/restyle';
-import { Theme } from '../../themes/institucional';
+import { ITheme } from '../../themes/interface';
 
 export type TagProps = {
   label: string;
   size: 'small' | 'medium';
   icon?: string;
-  color?: Exclude<Custom.Colors, 'black' | 'white'>;
-} & Partial<BoxProps<Theme>>;
+  color?: keyof ITheme['colors'];
+} & Partial<BoxProps<ITheme>>;

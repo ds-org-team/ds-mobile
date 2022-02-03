@@ -7,7 +7,7 @@ import { ITheme } from '../../themes/interface';
 const Text = createText<ITheme>();
 
 const CustomText: React.FC<CustomTextProps> = ({ children, ...props }) => (
-  <Text variant="regular" {...props}>
+  <Text variant="regular" color="fittings-text-primary-enabled" {...props}>
     {children}
   </Text>
 );

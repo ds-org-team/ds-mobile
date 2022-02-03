@@ -1,95 +1,175 @@
-import { createTheme } from '@shopify/restyle';
+import { createTheme } from '../utils/createTheme';
+import { ITokens } from './interface';
 
-const palette = {
-  transparent: 'transparent',
-  'primary-darkest': '#002559',
-  'primary-dark': '#093E87',
-  'primary-base': '#106CEE',
-  'primary-light': '#B8D9FF',
-  'primary-lightest': '#E5F1FF',
-  black: '#000000',
-  'neutral-darkest': '#2D3338',
-  'neutral-dark': '#5D6A75',
-  'neutral-base': '#B4BBC2',
-  'neutral-light': '#DFE2E5',
-  'neutral-lightest': '#F7F7F7',
-  white: '#FFFFFF',
-  'feedback-error-dark': '#990909',
-  'feedback-error-base': '#E20A0A',
-  'feedback-error-light': '#FFEDED',
-  'feedback-info-dark': '#093E87',
-  'feedback-info-base': '#106CEE',
-  'feedback-info-light': '#E5F1FF',
-  'feedback-success-dark': '#035203',
-  'feedback-success-base': '#00B649',
-  'feedback-success-light': '#E5FFE5',
-  'feedback-warning-dark': '#873200',
-  'feedback-warning-base': '#FF9C23',
-  'feedback-warning-light': '#FBEEE7',
-  'highlight-01-dark': '#524C00',
-  'highlight-01-base': '#EBDF3B',
-  'highlight-01-light': '#FCFBE6',
-  'highlight-02-dark': '#BA005D',
-  'highlight-02-base': '#F7258E',
-  'highlight-02-light': '#FDE3F0',
-  'highlight-03-dark': '#420099',
-  'highlight-03-base': '#6622C0',
-  'highlight-03-light': '#EEE6F8',
-  'highlight-04-dark': '#006A80',
-  'highlight-04-base': '#1FAFCC',
-  'highlight-04-light': '#E1F7FC',
-  'highlight-05-dark': '#007367',
-  'highlight-05-base': '#1DBFAF',
-  'highlight-05-light': '#DDF4F2',
+const tokens: ITokens = {
+  colors: {
+    transparent: 'transparent',
+    background: {
+      default: '#FFFFFF',
+      brand: '#1D5AF5',
+    },
+    fittings: {
+      text: {
+        primary: {
+          enabled: '#1A233D',
+          disabled: '#8F96A8',
+        },
+        secondary: {
+          enabled: '#58627F',
+          disabled: '#DADDE5',
+        },
+        inverse: {
+          enabled: '#FFFFFF',
+          disabled: '#8F96A8',
+        },
+      },
+      border: {
+        primary: {
+          enabled: '#58627F',
+          disabled: '#DADDE5',
+        },
+        inverse: {
+          enabled: '#FFFFFF',
+          disabled: '#8F96A8',
+        },
+      },
+      icon: {
+        primary: {
+          enabled: '#58627F',
+          disabled: '#DADDE5',
+        },
+        inverse: {
+          enabled: '#FFFFFF',
+          disabled: '#8F96A8',
+        },
+      },
+      divider: '#BDBDBD',
+    },
+    surface: {
+      default: '#FFFFFF',
+      pressed: '#D1E3FE',
+      select: '#E7F0FE',
+      disabled: '#F0F2FA',
+      overlay: '#58627F',
+    },
+    action: {
+      main: {
+        primary: '#1D5AF5',
+        pressed: '#09238E',
+      },
+      confirm: {
+        primary: '#15AB51',
+        pressed: '#066347',
+      },
+      remove: {
+        primary: '#D63429',
+        pressed: '#7C0D21',
+      },
+      help: {
+        primary: '#5487F9',
+        pressed: '#1D5AF5',
+      },
+    },
+    feedback: {
+      positive: {
+        fill: '#CEFACE',
+        border: '#15AB51',
+        icon: '#15AB51',
+        text: '#15AB51',
+      },
+      negative: {
+        fill: '#FCE4D4',
+        border: '#D63429',
+        icon: '#D63429',
+        text: '#D63429',
+      },
+      notice: {
+        fill: '#FFEECE',
+        border: '#FF780E',
+        icon: '#FF780E',
+        text: '#FF780E',
+      },
+      informative: {
+        fill: '#1D5AF5',
+        border: '#1D5AF5',
+        icon: '#1D5AF5',
+        text: '#1D5AF5',
+      },
+    },
+    accent: {
+      fill: '#1D5AF5',
+      border: '#1D5AF5',
+      icon: '#1D5AF5',
+      text: '#1D5AF5',
+    },
+    decorative: {
+      one: {
+        primary: '#FEF8CB',
+        inverse: '#795300',
+      },
+      two: {
+        primary: '#FFE3EF',
+        inverse: '#65167A',
+      },
+      tree: {
+        primary: '#F9E0FF',
+        inverse: '#38137A',
+      },
+      four: {
+        primary: '#E1FDF9',
+        inverse: '#13436D',
+      },
+      five: {
+        primary: '#F4FCCF',
+        inverse: '#396504',
+      },
+    },
+  },
+  spacing: {
+    quark: 4,
+    nano: 8,
+    xs: 16,
+    sm: 24,
+    md: 32,
+    lg: 40,
+  },
+  screen: {
+    breakpoints: {
+      phone: 0,
+      tablet: 768,
+    },
+  },
+  font: {
+    variants: {
+      bold: {
+        fontFamily: '"Public Sans", sans-serif',
+        fontWeight: '700',
+      },
+      semibold: {
+        fontFamily: '"Public Sans", sans-serif',
+        fontWeight: '600',
+      },
+      medium: {
+        fontFamily: '"Public Sans", sans-serif',
+        fontWeight: '500',
+      },
+      regular: {
+        fontFamily: '"Public Sans", sans-serif',
+        fontWeight: '400',
+      },
+    },
+  },
+  radius: {
+    none: 0,
+    nano: 4,
+    sm: 8,
+    md: 16,
+    lg: 24,
+    pill: 500,
+    circular: 9999,
+  },
 };
 
-const spacingInsetValues = {
-  quark: 4,
-  nano: 8,
-  xs: 16,
-  sm: 24,
-  md: 32,
-  lg: 40,
-};
+const coralTheme = createTheme(tokens);
 
-const textVariants = {
-  bold: {
-    fontFamily: '"Public Sans", sans-serif',
-    fontWeight: '700',
-  },
-  semibold: {
-    fontFamily: '"Public Sans", sans-serif',
-    fontWeight: '600',
-  },
-  medium: {
-    fontFamily: '"Public Sans", sans-serif',
-    fontWeight: '500',
-  },
-  regular: {
-    fontFamily: '"Public Sans", sans-serif',
-    fontWeight: '400',
-  },
-};
-
-const borderRadius = {
-  none: 0,
-  nano: 4,
-  sm: 8,
-  md: 16,
-  lg: 24,
-  pill: 500,
-  circular: 9999,
-};
-
-const theme = createTheme({
-  colors: palette,
-  spacing: spacingInsetValues,
-  breakpoints: {
-    phone: 0,
-    tablet: 768,
-  },
-  textVariants,
-  borderRadii: borderRadius,
-});
-
-export default theme;
+export default coralTheme;

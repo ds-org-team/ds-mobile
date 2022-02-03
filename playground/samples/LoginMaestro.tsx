@@ -31,77 +31,81 @@ const LoginMaestro: React.FC = () => {
   };
 
   return (
-    <KeyboardAwareScrollView
-      contentContainerStyle={{ flex: 1, backgroundColor: 'white' }}
-    >
-      <StatusBar />
+    <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+      <Box bg="background-default" height="100%">
+        <StatusBar />
 
-      <ScrollView>
-        <Box
-          pt="sm"
-          px="sm"
-          flexDirection="column"
-          justifyContent="center"
-          flex={1}
-        >
-          <Box mb="sm">
-            <Image source={pathImg} style={{ width: 75, height: 75 }} />
-          </Box>
-
-          <Box>
-            <TextField
-              ref={cpfFieldRef}
-              type="cpf"
-              label="CPF"
-              variant="medium"
-              placeholder="000.000.000-00"
-              autoCapitalize="none"
-              keyboardType="numeric"
-              onSubmitEditing={() => {
-                passwordRef.current?.focus?.();
-              }}
-            />
-
-            <TextField
-              ref={passwordRef}
-              label="Senha"
-              variant="medium"
-              placeholder="Digite sua senha"
-              autoCapitalize="none"
-              onSubmitEditing={handleSubmit}
-              secureTextEntry
-            />
-
-            <Box flexDirection="row" mt="lg">
-              <Button variant="secondary" mr="nano" onPress={() => undefined}>
-                Primeiro acesso
-              </Button>
-              <Button variant="primary" onPress={handleSubmit}>
-                Entrar
-              </Button>
+        <ScrollView>
+          <Box
+            pt="sm"
+            px="sm"
+            flexDirection="column"
+            justifyContent="center"
+            flex={1}
+          >
+            <Box mb="sm">
+              <Image source={pathImg} style={{ width: 75, height: 75 }} />
             </Box>
-          </Box>
 
-          <Button variant="tertiary" onPress={() => undefined} my="xs">
-            Esqueceu sua senha?
-          </Button>
+            <Box>
+              <TextField
+                ref={cpfFieldRef}
+                type="cpf"
+                label="CPF"
+                variant="medium"
+                placeholder="000.000.000-00"
+                autoCapitalize="none"
+                keyboardType="numeric"
+                onSubmitEditing={() => {
+                  passwordRef.current?.focus?.();
+                }}
+              />
 
-          <Box flexDirection="row" alignItems="center" justifyContent="center">
-            <Text mr="nano">Usar impressão digital</Text>
-            <Switch value={checked} onChange={() => setChecked(!checked)} />
-          </Box>
-          <Box alignItems="center" flexDirection="column" mt="lg">
-            <Button variant="tertiary" onPress={() => undefined}>
-              Ouvidoria
+              <TextField
+                ref={passwordRef}
+                label="Senha"
+                variant="medium"
+                placeholder="Digite sua senha"
+                autoCapitalize="none"
+                onSubmitEditing={handleSubmit}
+                secureTextEntry
+              />
+
+              <Box flexDirection="row" mt="lg">
+                <Button variant="secondary" mr="nano" onPress={() => undefined}>
+                  Primeiro acesso
+                </Button>
+                <Button variant="primary" onPress={handleSubmit}>
+                  Entrar
+                </Button>
+              </Box>
+            </Box>
+
+            <Button variant="tertiary" onPress={() => undefined} my="xs">
+              Esqueceu sua senha?
             </Button>
-            <Box alignItems="center">
-              <Text fs="sm" color="fittings-text-secondary-enabled">
-                Maestro v2.1.65 | v255
-              </Text>
+
+            <Box
+              flexDirection="row"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text mr="nano">Usar impressão digital</Text>
+              <Switch value={checked} onChange={() => setChecked(!checked)} />
+            </Box>
+            <Box alignItems="center" flexDirection="column" mt="lg">
+              <Button variant="tertiary" onPress={() => undefined}>
+                Ouvidoria
+              </Button>
+              <Box alignItems="center">
+                <Text fs="sm" color="fittings-text-secondary-enabled">
+                  Maestro v2.1.65 | v255
+                </Text>
+              </Box>
             </Box>
           </Box>
-        </Box>
-      </ScrollView>
+        </ScrollView>
+      </Box>
     </KeyboardAwareScrollView>
   );
 };

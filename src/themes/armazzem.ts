@@ -3,32 +3,72 @@ import { ITokens } from './interface';
 
 const tokens: ITokens = {
   colors: {
+    transparent: 'transparent',
     background: {
-      default: '#121A30',
-      brand: '#1D5AF5',
+      default: '#FFFFFF',
+      brand: '#B68500',
     },
     fittings: {
       text: {
         primary: {
-          enabled: '#FDC500',
-          disabled: '#58627F',
+          enabled: '#1A233D',
+          disabled: '#8F96A8',
+        },
+        secondary: {
+          enabled: '#58627F',
+          disabled: '#DADDE5',
+        },
+        inverse: {
+          enabled: '#FFFFFF',
+          disabled: '#8F96A8',
         },
       },
+      border: {
+        primary: {
+          enabled: '#58627F',
+          disabled: '#DADDE5',
+        },
+        inverse: {
+          enabled: '#FFFFFF',
+          disabled: '#8F96A8',
+        },
+      },
+      icon: {
+        primary: {
+          enabled: '#58627F',
+          disabled: '#DADDE5',
+        },
+        inverse: {
+          enabled: '#FFFFFF',
+          disabled: '#8F96A8',
+        },
+      },
+      divider: '#BDBDBD',
     },
     surface: {
       default: '#FFFFFF',
       pressed: '#D1E3FE',
       select: '#E7F0FE',
+      disabled: '#F0F2FA',
+      overlay: '#58627F',
     },
     action: {
-      primary: '#B68500',
-      'primary-pressed': '#B68500',
-      confirm: '#15AB51',
-      'confirm-pressed': '#15AB51',
-      remove: '#D63429',
-      'remove-pressed': '#D63429',
-      help: '#1D5AF5',
-      'help-pressed': '#1D5AF5',
+      main: {
+        primary: '#B68500',
+        pressed: '#795300',
+      },
+      confirm: {
+        primary: '#15AB51',
+        pressed: '#066347',
+      },
+      remove: {
+        primary: '#D63429',
+        pressed: '#7C0D21',
+      },
+      help: {
+        primary: '#5487F9',
+        pressed: '#0A7E19',
+      },
     },
     feedback: {
       positive: {
@@ -50,23 +90,39 @@ const tokens: ITokens = {
         text: '#FF780E',
       },
       informative: {
-        fill: '#D1E3FE',
-        border: '#1D5AF5',
-        icon: '#1D5AF5',
-        text: '#1D5AF5',
+        fill: '#0A7E19',
+        border: '#0A7E19',
+        icon: '#0A7E19',
+        text: '#0A7E19',
       },
     },
     accent: {
-      fill: '#1D5AF5',
-      border: '#1D5AF5',
-      icon: '#1D5AF5',
-      text: '#1D5AF5',
+      fill: '#0A7E19',
+      border: '#0A7E19',
+      icon: '#0A7E19',
+      text: '#0A7E19',
     },
-    black: '#000',
-    white: '#fff',
-    neutral: {
-      lightest: '#fff',
-      dark: '#212121',
+    decorative: {
+      one: {
+        primary: '#FEF8CB',
+        inverse: '#795300',
+      },
+      two: {
+        primary: '#FFE3EF',
+        inverse: '#65167A',
+      },
+      tree: {
+        primary: '#F9E0FF',
+        inverse: '#38137A',
+      },
+      four: {
+        primary: '#E1FDF9',
+        inverse: '#13436D',
+      },
+      five: {
+        primary: '#F4FCCF',
+        inverse: '#396504',
+      },
     },
   },
   spacing: {
@@ -76,13 +132,6 @@ const tokens: ITokens = {
     sm: 24,
     md: 32,
     lg: 40,
-  },
-  sizing: {
-    xs: 16,
-    sm: 20,
-    md: 24,
-    lg: 32,
-    xl: 48,
   },
   screen: {
     breakpoints: {
@@ -109,25 +158,6 @@ const tokens: ITokens = {
         fontWeight: '400',
       },
     },
-    'line-height': {
-      lg: 32,
-      md: 25.6,
-      sm: 19.2,
-      xs: 16,
-    },
-    'letter-spacing': {
-      lg: 1.5,
-      md: 0.5,
-      sm: 0,
-      xs: -1.5,
-    },
-    size: {
-      xs: 16,
-      sm: 20,
-      md: 24,
-      lg: 32,
-      xl: 48,
-    },
   },
   radius: {
     none: 0,
@@ -137,51 +167,6 @@ const tokens: ITokens = {
     lg: 24,
     pill: 500,
     circular: 9999,
-  },
-  opacity: {
-    'opacity-80': 0.8,
-    'opacity-64': 0.64,
-    'opacity-32': 0.32,
-    'opacity-16': 0.16,
-    'opacity-08': 0.08,
-  },
-  shadows: {
-    offset: {
-      xs: { width: 0, height: 1.5 },
-      sm: { width: 0, height: 4 },
-      md: { width: 0, height: 10 },
-      lg: { width: 0, height: 16 },
-    },
-    radius: {
-      xs: 3.5,
-      sm: 8,
-      md: 16,
-      lg: 32,
-    },
-    opacity: {
-      xs: 0.12,
-      sm: 0.1,
-      md: 0.1,
-      lg: 0.1,
-    },
-  },
-  border: {
-    width: {
-      none: 0,
-      xs: 1,
-      sm: 2,
-      md: 4,
-      lg: 8,
-    },
-    radius: {
-      none: 0,
-      nano: 4,
-      sm: 8,
-      md: 16,
-      lg: 24,
-      pill: 500,
-      circular: 9999,
-    },
   },
 };
 

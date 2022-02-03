@@ -19,7 +19,7 @@ import {
   Inter_700Bold,
 } from '@expo-google-fonts/inter';
 
-import coral from '../../src/themes/coral';
+import coral from '../../src/themes/institucional';
 import armazzem from '../../src/themes/armazzem';
 import maestroLight from '../../src/themes/maestro_light';
 import maestroDark from '../../src/themes/maestro_dark';

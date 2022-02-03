@@ -2,11 +2,11 @@ import React from 'react';
 import { useTheme } from '@shopify/restyle';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { IconProps } from './interfaces';
-import { Theme } from '../../themes';
 import Box from '../Box';
+import { ITheme } from '../../themes/interface';
 
 const Icon: React.FC<IconProps> = ({ name, color, size, ...props }) => {
-  const { colors } = useTheme<Theme>();
+  const { colors } = useTheme<ITheme>();
 
   return (
     <Box
@@ -19,7 +19,7 @@ const Icon: React.FC<IconProps> = ({ name, color, size, ...props }) => {
       <MaterialIcon
         name={name}
         size={size || 16}
-        color={color || colors['neutral-dark']}
+        color={color || colors['fittings-icon-primary-enabled']}
       />
     </Box>
   );

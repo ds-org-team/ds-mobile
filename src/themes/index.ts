@@ -1,4 +1,4 @@
-export { default as themeCoral } from './coral';
+export { default as themeCoral } from './institucional';
 export { default as themeInstitucional } from './institucional';
 export * from './institucional';
 export * from './properties';

@@ -18,7 +18,7 @@ const Lists: React.FC = () => (
       padding="sm"
       flexDirection="column"
       justifyContent="space-between"
-      backgroundColor="white"
+      backgroundColor="background-default"
       height="100%"
     >
       <Text mb="sm">Lists / ListItem</Text>

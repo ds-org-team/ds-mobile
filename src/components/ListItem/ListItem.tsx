@@ -20,12 +20,16 @@ const ListItem: React.FC<ListItemProps> = ({
       {avatar && <Avatar image={avatar} />}
       {icon && !avatar && <Icon h="xs" w="xs" name={icon} size={32} />}
       <Box ml="xs" flexDirection="column" justifyContent="center">
-        <Text fs="md" fontWeight="500" color="neutral-darkest">
+        <Text fs="md" fontWeight="500" color="fittings-text-primary-enabled">
           {label}
         </Text>
         {text && (
           <Box>
-            <Text fs="md" fontWeight="400" color="neutral-dark">
+            <Text
+              fs="sm"
+              fontWeight="400"
+              color="fittings-text-secondary-enabled"
+            >
               {text}
             </Text>
           </Box>
@@ -37,8 +41,8 @@ const ListItem: React.FC<ListItemProps> = ({
                 <Tag
                   label={tag}
                   size="small"
-                  backgroundColor="highlight-04-light"
-                  color="feedback-success-dark"
+                  backgroundColor="decorative-two-primary"
+                  color="decorative-two-inverse"
                 />
               </Box>
             ))}
@@ -51,7 +55,7 @@ const ListItem: React.FC<ListItemProps> = ({
         </Box>
       )}
     </Box>
-    <Box borderColor="neutral-light" borderBottomWidth={1} />
+    <Box borderColor="fittings-divider" borderBottomWidth={1} />
   </Box>
 );
 
