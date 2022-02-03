@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { TouchableWithoutFeedback } from 'react-native';
 import { ListItemProps } from './interfaces';
 import Text from '../Text';
@@ -16,6 +16,7 @@ const ListItem: React.FC<ListItemProps> = ({
   rightComponent,
   bottomComponent,
   onPress,
+  inverse,
   ...props
 }) => {
   const renderAvatar = () => {
@@ -28,6 +29,34 @@ const ListItem: React.FC<ListItemProps> = ({
     return <></>;
   };
 
+  const renderTitle = useCallback(
+    (txt: string) =>
+      inverse ? (
+        <Text fs="md" fontWeight="400" color="neutral-dark">
+          {txt}
+        </Text>
+      ) : (
+        <Text fs="md" fontWeight="500" color="neutral-darkest">
+          {txt}
+        </Text>
+      ),
+    [inverse],
+  );
+
+  const renderInfo = useCallback(
+    (txt: string) =>
+      inverse ? (
+        <Text fs="md" fontWeight="500" color="neutral-darkest">
+          {txt}
+        </Text>
+      ) : (
+        <Text fs="md" fontWeight="400" color="neutral-dark">
+          {txt}
+        </Text>
+      ),
+    [inverse],
+  );
+
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <Box backgroundColor="transparent" {...props}>
@@ -35,16 +64,8 @@ const ListItem: React.FC<ListItemProps> = ({
           {avatar && renderAvatar()}
           {icon && !avatar && <Icon h="xs" w="xs" name={icon} size={32} />}
           <Box ml="xs" flexDirection="column" justifyContent="center">
-            <Text fs="md" fontWeight="500" color="neutral-darkest">
-              {title}
-            </Text>
-            {text && (
-              <Box>
-                <Text fs="md" fontWeight="400" color="neutral-dark">
-                  {text}
-                </Text>
-              </Box>
-            )}
+            {renderTitle(title)}
+            {text && renderInfo(text)}
             {tags && (
               <Box flexDirection="row" mt="quark">
                 {tags.map((tag, i) => (

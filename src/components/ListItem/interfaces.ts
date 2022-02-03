@@ -10,4 +10,5 @@ export type ListItemProps = {
   tags?: string[];
   bottomComponent?: ReactNode;
   onPress?: () => void;
+  inverse?: boolean;
 };
