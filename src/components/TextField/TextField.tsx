@@ -91,11 +91,11 @@ const TextField: React.ForwardRefRenderFunction<InputRef, TextFieldProps> = (
         borderRadius="sm"
         my="quark"
         px="xs"
-        icon="close"
         onFocus={handleFocus}
         onBlur={handleBlur}
         style={{
           flex: 1,
+          color: colors['fittings-text-primary-enabled'],
         }}
         {...props}
       />

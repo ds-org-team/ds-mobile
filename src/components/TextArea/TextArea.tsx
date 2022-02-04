@@ -90,6 +90,7 @@ const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
           flex: 1,
           fontFamily: textVariants?.regular?.fontFamily,
           textAlignVertical: 'top',
+          color: colors['fittings-text-primary-enabled'],
         }}
         {...props}
       />

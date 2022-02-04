@@ -1,4 +1,5 @@
 import typescript from 'rollup-plugin-typescript2';
+import image from '@rollup/plugin-image';
 import pkg from './package.json';
 
 export default {
@@ -23,5 +24,6 @@ export default {
       tsconfig: 'tsconfig.build.json',
       typescript: require('typescript'),
     }),
+    image(),
   ],
 };
