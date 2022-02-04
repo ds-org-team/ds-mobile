@@ -1,4 +1,4 @@
-import { createTheme } from '../utils/createTheme';
+import { createTheme } from '../utils/theme';
 import { ITokens } from './interface';
 
 const tokens: ITokens = {
@@ -170,6 +170,6 @@ const tokens: ITokens = {
   },
 };
 
-const coralTheme = createTheme(tokens);
+const theme = createTheme(tokens);
 
-export default coralTheme;
+export default theme;

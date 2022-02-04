@@ -1,7 +1,8 @@
-import { createTheme } from '../utils/createTheme';
+import { extendTheme } from '../utils/theme';
 import { ITokens } from './interface';
+import themeInstitucional from './institucional';
 
-const tokens: ITokens = {
+const tokens: Partial<ITokens> = {
   colors: {
     transparent: 'transparent',
     background: {
@@ -125,51 +126,8 @@ const tokens: ITokens = {
       },
     },
   },
-  spacing: {
-    quark: 4,
-    nano: 8,
-    xs: 16,
-    sm: 24,
-    md: 32,
-    lg: 40,
-  },
-  screen: {
-    breakpoints: {
-      phone: 0,
-      tablet: 768,
-    },
-  },
-  font: {
-    variants: {
-      bold: {
-        fontFamily: '"Public Sans", sans-serif',
-        fontWeight: '700',
-      },
-      semibold: {
-        fontFamily: '"Public Sans", sans-serif',
-        fontWeight: '600',
-      },
-      medium: {
-        fontFamily: '"Public Sans", sans-serif',
-        fontWeight: '500',
-      },
-      regular: {
-        fontFamily: '"Public Sans", sans-serif',
-        fontWeight: '400',
-      },
-    },
-  },
-  radius: {
-    none: 0,
-    nano: 4,
-    sm: 8,
-    md: 16,
-    lg: 24,
-    pill: 500,
-    circular: 9999,
-  },
 };
 
-const theme = createTheme(tokens);
+const theme = extendTheme(tokens, themeInstitucional);
 
 export default theme;

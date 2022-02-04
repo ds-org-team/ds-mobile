@@ -54,4 +54,23 @@ function createTheme(tokens: ITokens) {
   return theme;
 }
 
-export { createTheme, generateKeysPalette };
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+function extendTheme(tokens: Partial<ITokens>, model: ITheme) {
+  const { colors, spacing, screen, font, radius } = tokens;
+
+  const palette = generateKeysPalette(colors);
+
+  const usefulTokens = {
+    colors: palette || model.colors,
+    spacing: spacing || model.spacing,
+    breakpoints: screen?.breakpoints || model.breakpoints,
+    textVariants: font?.variants || model.textVariants,
+    borderRadii: radius || model.borderRadii,
+  };
+
+  const theme = createThemeShopify(usefulTokens);
+
+  return theme;
+}
+
+export { createTheme, extendTheme };

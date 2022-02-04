@@ -255,19 +255,19 @@ export type ITheme = {
   textVariants: {
     bold: {
       fontFamily: string;
-      fontWeight: number;
+      fontWeight: string;
     };
     medium: {
       fontFamily: string;
-      fontWeight: number;
+      fontWeight: string;
     };
     regular: {
       fontFamily: string;
-      fontWeight: number;
+      fontWeight: string;
     };
     semibold: {
       fontFamily: string;
-      fontWeight: number;
+      fontWeight: string;
     };
   };
 };

@@ -1,7 +1,8 @@
-import { createTheme } from '../utils/createTheme';
+import { extendTheme } from '../utils/theme';
 import { ITokens } from './interface';
+import themeInstitucional from './institucional';
 
-const tokens: ITokens = {
+const tokens: Partial<ITokens> = {
   colors: {
     transparent: 'transparent',
     background: {
@@ -170,6 +171,6 @@ const tokens: ITokens = {
   },
 };
 
-const theme = createTheme(tokens);
+const theme = extendTheme(tokens, themeInstitucional);
 
 export default theme;
