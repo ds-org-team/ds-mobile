@@ -2,7 +2,7 @@ import React from 'react';
 import { cleanup, fireEvent, render } from '@testing-library/react-native';
 import { ThemeProvider } from '@shopify/restyle';
 import Checkbox from './Checkbox';
-import themeMaestro from '../../themes/maestro';
+import { themeInstitucional } from '../../themes';
 
 afterEach(cleanup);
 
@@ -11,7 +11,7 @@ jest.mock('react-native-vector-icons/MaterialCommunityIcons', () => 'Icon');
 it('should be marked', () => {
   let value = false;
   const { getByTestId } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <Checkbox
         label="Label da checkbox"
         value={value}
@@ -28,7 +28,7 @@ it('should be marked', () => {
 
 it('should have label', () => {
   const { getByTestId } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <Checkbox label="Label da checkbox" value onChange={() => undefined} />
     </ThemeProvider>,
   );
@@ -40,7 +40,7 @@ it('should have label', () => {
 
 test('should Checkbox render required feedback', async () => {
   const { toJSON } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <Checkbox
         label="Label da checkbox"
         required
@@ -55,7 +55,7 @@ test('should Checkbox render required feedback', async () => {
 
 test('should Checkbox render correctly', async () => {
   const { toJSON } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <Checkbox label="Label da checkbox" value onChange={() => undefined} />
     </ThemeProvider>,
   );

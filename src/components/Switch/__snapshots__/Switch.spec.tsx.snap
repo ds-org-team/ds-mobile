@@ -27,8 +27,8 @@ exports[`should Checkbox render correctly 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "backgroundColor": "rgba(10, 126, 25, 1)",
-        "borderColor": "#5D6A75",
+        "backgroundColor": "rgba(29, 90, 245, 1)",
+        "borderColor": "#58627F",
         "borderRadius": 25,
         "borderWidth": 0,
         "height": 24,

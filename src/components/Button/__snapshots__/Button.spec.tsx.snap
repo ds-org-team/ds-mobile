@@ -6,14 +6,14 @@ exports[`should Button render correctly 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#0A7E19",
-        "borderColor": "#0A7E19",
+        "backgroundColor": "#1D5AF5",
+        "borderColor": "#FFFFFF",
         "borderRadius": 4,
         "display": "flex",
         "flexShrink": 5,
         "justifyContent": "center",
         "minHeight": 48,
-        "shadowColor": "#000000",
+        "shadowColor": "#1A233D",
       },
       Array [
         Object {
@@ -80,7 +80,7 @@ exports[`should Button render correctly 1`] = `
             Object {
               "color": "#FFFFFF",
               "display": "flex",
-              "fontFamily": "\\"Inter\\", sans-serif",
+              "fontFamily": "\\"Public Sans\\", sans-serif",
               "fontWeight": "600",
             },
             Array [
@@ -95,8 +95,9 @@ exports[`should Button render correctly 1`] = `
           style={
             Array [
               Object {
+                "color": "#1A233D",
                 "display": "flex",
-                "fontFamily": "\\"Inter\\", sans-serif",
+                "fontFamily": "\\"Public Sans\\", sans-serif",
                 "fontWeight": "400",
               },
               Array [

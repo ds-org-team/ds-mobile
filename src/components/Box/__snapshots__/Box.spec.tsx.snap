@@ -16,13 +16,13 @@ exports[`should be Box render correctly 1`] = `
 />
 `;
 
-exports[`should be large as margin 1`] = `
+exports[`should be action-main-primary as background-color 1`] = `
 <View
   style={
     Array [
       Object {
+        "backgroundColor": "#1D5AF5",
         "display": "flex",
-        "margin": 40,
       },
       Array [
         Object {},
@@ -33,13 +33,13 @@ exports[`should be large as margin 1`] = `
 />
 `;
 
-exports[`should be primaryBase as background-color 1`] = `
+exports[`should be large as margin 1`] = `
 <View
   style={
     Array [
       Object {
-        "backgroundColor": "#0A7E19",
         "display": "flex",
+        "margin": 40,
       },
       Array [
         Object {},

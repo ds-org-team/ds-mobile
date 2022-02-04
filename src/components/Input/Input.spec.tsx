@@ -2,7 +2,7 @@ import React from 'react';
 import { cleanup, fireEvent, render } from '@testing-library/react-native';
 import { ThemeProvider } from '@shopify/restyle';
 import Input from './Input';
-import themeMaestro from '../../themes/maestro';
+import { themeInstitucional } from '../../themes';
 
 afterEach(cleanup);
 
@@ -10,7 +10,7 @@ jest.mock('react-native-vector-icons/MaterialCommunityIcons', () => 'Icon');
 
 test('should have a placeholder passed by prop', () => {
   const { getAllByPlaceholderText } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <Input placeholder="Placeholder" />
     </ThemeProvider>,
   );
@@ -23,7 +23,7 @@ test('should render input from user', () => {
   let value = 'Texto inicial';
 
   const { getByTestId } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <Input
         placeholder="Placeholder"
         value={value}
@@ -42,7 +42,7 @@ test('should render input from user', () => {
 
 test('should Input render correctly', async () => {
   const { toJSON } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <Input placeholder="Placeholder" />
     </ThemeProvider>,
   );

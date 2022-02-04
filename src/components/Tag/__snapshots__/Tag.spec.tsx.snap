@@ -6,7 +6,6 @@ exports[`should Checkbox render correctly 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#EEE6F8",
         "borderRadius": 8,
         "display": "flex",
         "flexDirection": "row",
@@ -25,9 +24,9 @@ exports[`should Checkbox render correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "#420099",
+          "color": "#1A233D",
           "display": "flex",
-          "fontFamily": "\\"Inter\\", sans-serif",
+          "fontFamily": "\\"Public Sans\\", sans-serif",
           "fontWeight": "500",
           "margin": 4,
         },

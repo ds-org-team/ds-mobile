@@ -6,9 +6,9 @@ Array [
     style={
       Array [
         Object {
-          "color": "#2D3338",
+          "color": "#1A233D",
           "display": "flex",
-          "fontFamily": "\\"Inter\\", sans-serif",
+          "fontFamily": "\\"Public Sans\\", sans-serif",
           "fontWeight": "700",
           "marginBottom": 8,
         },
@@ -51,8 +51,8 @@ Array [
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#FFFFFF",
-          "borderColor": "#B4BBC2",
+          "backgroundColor": "transparent",
+          "borderColor": "#58627F",
           "borderRadius": 12,
           "borderWidth": 2,
           "height": 24,
@@ -88,8 +88,9 @@ Array [
       style={
         Array [
           Object {
+            "color": "#1A233D",
             "display": "flex",
-            "fontFamily": "\\"Inter\\", sans-serif",
+            "fontFamily": "\\"Public Sans\\", sans-serif",
             "fontWeight": "400",
             "marginLeft": 8,
           },
@@ -131,8 +132,8 @@ Array [
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#FFFFFF",
-          "borderColor": "#B4BBC2",
+          "backgroundColor": "transparent",
+          "borderColor": "#58627F",
           "borderRadius": 12,
           "borderWidth": 2,
           "height": 24,
@@ -168,8 +169,9 @@ Array [
       style={
         Array [
           Object {
+            "color": "#1A233D",
             "display": "flex",
-            "fontFamily": "\\"Inter\\", sans-serif",
+            "fontFamily": "\\"Public Sans\\", sans-serif",
             "fontWeight": "400",
             "marginLeft": 8,
           },

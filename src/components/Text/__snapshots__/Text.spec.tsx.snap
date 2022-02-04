@@ -5,8 +5,9 @@ exports[`should Text render correctly 1`] = `
   style={
     Array [
       Object {
+        "color": "#1A233D",
         "display": "flex",
-        "fontFamily": "\\"Inter\\", sans-serif",
+        "fontFamily": "\\"Public Sans\\", sans-serif",
         "fontWeight": "400",
       },
       Array [

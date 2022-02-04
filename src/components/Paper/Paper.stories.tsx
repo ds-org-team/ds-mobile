@@ -30,10 +30,10 @@ export const BasicPaper = ({ bg }: Props): React.ReactNode => (
     flexDirection="row"
     justifyContent="space-between"
     alignItems="baseline"
-    bg="feedback-info-base"
+    bg={bg || 'feedback-positive-fill'}
   >
-    <Box width={100} height={100} bg="black" />
-    <Box width={100} height={100} ml="md" bg="black" />
+    <Box width={100} height={100} bg="action-main-primary" />
+    <Box width={100} height={100} ml="md" bg="action-main-primary" />
   </Paper>
 );
 

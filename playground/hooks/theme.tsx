@@ -23,6 +23,7 @@ import coral from '../../src/themes/institucional';
 import armazzem from '../../src/themes/armazzem';
 import maestroLight from '../../src/themes/maestro_light';
 import maestroDark from '../../src/themes/maestro_dark';
+import { ITheme } from '../../src';
 
 interface ThemeContextData {
   setNewTheme: (value: string) => void;
@@ -31,7 +32,7 @@ interface ThemeContextData {
 const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
 
 const ThemeProvider: React.FC = ({ children }) => {
-  const [theme, setTheme] = useState<any>(null);
+  const [theme, setTheme] = useState<ITheme>({} as ITheme);
 
   const [fontsLoaded] = useFonts({
     regularPublicSans: PublicSans_400Regular,
@@ -44,74 +45,90 @@ const ThemeProvider: React.FC = ({ children }) => {
     boldInter: Inter_700Bold,
   });
 
-  const coralWithFont = {
+  const coralWithFont: ITheme = {
     ...coral,
     textVariants: {
       bold: {
         fontFamily: 'boldPublicSans',
+        fontWeight: '700',
       },
       semibold: {
         fontFamily: 'semiboldPublicSans',
+        fontWeight: '600',
       },
       medium: {
         fontFamily: 'mediumPublicSans',
+        fontWeight: '500',
       },
       regular: {
         fontFamily: 'regularPublicSans',
+        fontWeight: '400',
       },
     },
   };
 
-  const armazzemWithFont = {
+  const armazzemWithFont: ITheme = {
     ...armazzem,
     textVariants: {
       bold: {
         fontFamily: 'boldInter',
+        fontWeight: '700',
       },
       semibold: {
         fontFamily: 'semiboldInter',
+        fontWeight: '600',
       },
       medium: {
         fontFamily: 'mediumInter',
+        fontWeight: '500',
       },
       regular: {
         fontFamily: 'regularInter',
+        fontWeight: '400',
       },
     },
   };
 
-  const maestroLightWithFont = {
+  const maestroLightWithFont: ITheme = {
     ...maestroLight,
     textVariants: {
       bold: {
         fontFamily: 'boldInter',
+        fontWeight: '700',
       },
       semibold: {
         fontFamily: 'semiboldInter',
+        fontWeight: '600',
       },
       medium: {
         fontFamily: 'mediumInter',
+        fontWeight: '500',
       },
       regular: {
         fontFamily: 'regularInter',
+        fontWeight: '400',
       },
     },
   };
 
-  const maestroDarkWithFont = {
+  const maestroDarkWithFont: ITheme = {
     ...maestroDark,
     textVariants: {
       bold: {
         fontFamily: 'boldInter',
+        fontWeight: '700',
       },
       semibold: {
         fontFamily: 'semiboldInter',
+        fontWeight: '600',
       },
       medium: {
         fontFamily: 'mediumInter',
+        fontWeight: '500',
       },
       regular: {
         fontFamily: 'regularInter',
+        fontWeight: '400',
       },
     },
   };

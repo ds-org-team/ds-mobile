@@ -12,7 +12,7 @@ exports[`should be TextArea render correctly 1`] = `
         Object {
           "alignItems": "center",
           "backgroundColor": "#FFFFFF",
-          "borderColor": "#5D6A75",
+          "borderColor": "#58627F",
           "borderRadius": 8,
           "display": "flex",
           "flexDirection": "row",
@@ -37,13 +37,14 @@ exports[`should be TextArea render correctly 1`] = `
       onChangeText={[Function]}
       onSubmitEditing={[Function]}
       placeholder="Placeholder"
-      placeholderTextColor="#5D6A75"
+      placeholderTextColor="#58627F"
       rejectResponderTermination={true}
-      selectionColor="#5D6A75"
+      selectionColor="#58627F"
       style={
         Object {
+          "color": "#1A233D",
           "flex": 1,
-          "fontFamily": "\\"Inter\\", sans-serif",
+          "fontFamily": "\\"Public Sans\\", sans-serif",
           "textAlignVertical": "top",
         }
       }
@@ -79,9 +80,9 @@ exports[`should have a error feedback 1`] = `
     style={
       Array [
         Object {
-          "color": "#2D3338",
+          "color": "#58627F",
           "display": "flex",
-          "fontFamily": "\\"Inter\\", sans-serif",
+          "fontFamily": "\\"Public Sans\\", sans-serif",
           "fontWeight": "700",
         },
         Array [
@@ -102,7 +103,7 @@ exports[`should have a error feedback 1`] = `
         Object {
           "alignItems": "center",
           "backgroundColor": "#FFFFFF",
-          "borderColor": "#E20A0A",
+          "borderColor": "#D63429",
           "borderRadius": 8,
           "display": "flex",
           "flexDirection": "row",
@@ -127,13 +128,14 @@ exports[`should have a error feedback 1`] = `
       onChangeText={[Function]}
       onSubmitEditing={[Function]}
       placeholder="Placeholder"
-      placeholderTextColor="#5D6A75"
+      placeholderTextColor="#58627F"
       rejectResponderTermination={true}
-      selectionColor="#5D6A75"
+      selectionColor="#58627F"
       style={
         Object {
+          "color": "#1A233D",
           "flex": 1,
-          "fontFamily": "\\"Inter\\", sans-serif",
+          "fontFamily": "\\"Public Sans\\", sans-serif",
           "textAlignVertical": "top",
         }
       }
@@ -169,9 +171,9 @@ exports[`should have a success feedback 1`] = `
     style={
       Array [
         Object {
-          "color": "#2D3338",
+          "color": "#58627F",
           "display": "flex",
-          "fontFamily": "\\"Inter\\", sans-serif",
+          "fontFamily": "\\"Public Sans\\", sans-serif",
           "fontWeight": "700",
         },
         Array [
@@ -192,7 +194,7 @@ exports[`should have a success feedback 1`] = `
         Object {
           "alignItems": "center",
           "backgroundColor": "#FFFFFF",
-          "borderColor": "#00B649",
+          "borderColor": "#15AB51",
           "borderRadius": 8,
           "display": "flex",
           "flexDirection": "row",
@@ -217,13 +219,14 @@ exports[`should have a success feedback 1`] = `
       onChangeText={[Function]}
       onSubmitEditing={[Function]}
       placeholder="Placeholder"
-      placeholderTextColor="#5D6A75"
+      placeholderTextColor="#58627F"
       rejectResponderTermination={true}
-      selectionColor="#5D6A75"
+      selectionColor="#58627F"
       style={
         Object {
+          "color": "#1A233D",
           "flex": 1,
-          "fontFamily": "\\"Inter\\", sans-serif",
+          "fontFamily": "\\"Public Sans\\", sans-serif",
           "textAlignVertical": "top",
         }
       }

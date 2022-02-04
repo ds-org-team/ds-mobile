@@ -3,7 +3,7 @@ import { ITheme, ITokens } from '../themes/interface';
 
 type MapKeys = Map<string, string>;
 
-function visit(level: any, parent: string, keys: MapKeys) {
+function visit(level: never, parent: string, keys: MapKeys) {
   if (typeof level === 'object') {
     Object.keys(level).forEach((prop: string) => {
       visit(level[prop], `${parent}-${prop}`, keys);
@@ -15,7 +15,7 @@ function visit(level: any, parent: string, keys: MapKeys) {
   keys.set(parent, level);
 }
 
-function generateKeysPalette(colors: any): ITheme['colors'] {
+function generateKeysPalette(colors: never): ITheme['colors'] {
   const keys = new Map();
 
   Object.keys(colors).forEach((level: string) => {
@@ -41,7 +41,7 @@ function createTheme(tokens: ITokens) {
 
   const { colors, spacing, screen, font, radius } = tokens;
 
-  const palette = generateKeysPalette(colors);
+  const palette = generateKeysPalette(colors as never);
 
   const theme = createThemeShopify({
     colors: palette,
@@ -58,7 +58,7 @@ function createTheme(tokens: ITokens) {
 function extendTheme(tokens: Partial<ITokens>, model: ITheme) {
   const { colors, spacing, screen, font, radius } = tokens;
 
-  const palette = generateKeysPalette(colors);
+  const palette = generateKeysPalette(colors as never);
 
   const usefulTokens = {
     colors: palette || model.colors,
