@@ -32,7 +32,7 @@ interface ThemeContextData {
 const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
 
 const ThemeProvider: React.FC = ({ children }) => {
-  const [theme, setTheme] = useState<ITheme>({} as ITheme);
+  const [theme, setTheme] = useState<ITheme>(null as never);
 
   const [fontsLoaded] = useFonts({
     regularPublicSans: PublicSans_400Regular,
