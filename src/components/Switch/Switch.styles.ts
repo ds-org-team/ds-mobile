@@ -1,6 +1,7 @@
 import { useTheme } from '@shopify/restyle';
 import { Animated, ViewStyle } from 'react-native';
-import { borderWidthValues, Theme } from '../../themes';
+import { borderWidthValues } from '../../themes';
+import { ITheme } from '../../themes/interface';
 
 type UseStyleProps = {
   disabled?: boolean;
@@ -17,16 +18,19 @@ interface Styles {
 }
 
 const useStyles = ({ disabled }: UseStyleProps): Styles => {
-  const theme = useTheme<Theme>();
+  const theme = useTheme<ITheme>();
 
   const dynamicStyles = {
     container: (anim: Animated.Value): ViewStyle => ({
       alignItems: 'center',
       backgroundColor: disabled
-        ? theme.colors['neutral-light']
+        ? theme.colors['surface-disabled']
         : (anim.interpolate({
             inputRange: [0, 1],
-            outputRange: [theme.colors.white, theme.colors['primary-base']],
+            outputRange: [
+              theme.colors.transparent,
+              theme.colors['feedback-informative-fill'],
+            ],
           }) as unknown as string),
       borderRadius: 25,
       height: 24,
@@ -39,8 +43,8 @@ const useStyles = ({ disabled }: UseStyleProps): Styles => {
             outputRange: [borderWidthValues.sm, 0],
           }) as unknown as number),
       borderColor: disabled
-        ? theme.colors['neutral-base']
-        : theme.colors['neutral-dark'],
+        ? theme.colors['fittings-border-primary-disabled']
+        : theme.colors['fittings-border-primary-enabled'],
     }),
     circle: (anim: Animated.Value): ViewStyle => ({
       transform: [
@@ -52,10 +56,13 @@ const useStyles = ({ disabled }: UseStyleProps): Styles => {
         },
       ],
       backgroundColor: disabled
-        ? theme.colors['neutral-base']
+        ? theme.colors['fittings-icon-primary-disabled']
         : (anim.interpolate({
             inputRange: [0, 1],
-            outputRange: [theme.colors['neutral-dark'], theme.colors.white],
+            outputRange: [
+              theme.colors['fittings-icon-primary-enabled'],
+              theme.colors['fittings-icon-inverse-enabled'],
+            ],
           }) as unknown as string),
     }),
   };

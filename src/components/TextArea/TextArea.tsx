@@ -3,13 +3,13 @@ import React, { useState, forwardRef, useCallback } from 'react';
 import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '@shopify/restyle';
-import { Theme } from '../../themes/institucional';
 
 import Text from '../Text';
 import Input from '../Input';
 import Box from '../Box';
 import { ColorOptions, TextAreaProps, TypeVariantHeight } from './interfaces';
 import { InputRef } from '../Input/interfaces';
+import { ITheme } from '../../themes/interface';
 
 const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
   {
@@ -28,12 +28,12 @@ const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
 ) => {
   const [isFocused, setIsFocused] = useState(false);
   const [countChar, setCountChar] = useState(0);
-  const { colors, textVariants } = useTheme<Theme>();
+  const { colors, textVariants } = useTheme<ITheme>();
 
   const statusKeyPair = {
-    error: colors['feedback-error-base'],
-    success: colors['feedback-success-base'],
-    default: colors['neutral-dark'],
+    error: colors['feedback-negative-icon'],
+    success: colors['feedback-positive-icon'],
+    default: colors['fittings-icon-primary-enabled'],
   };
 
   const variantHeight: TypeVariantHeight = {
@@ -42,9 +42,9 @@ const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
   };
 
   const statusBorderColor: ColorOptions = {
-    error: 'feedback-error-base',
-    success: 'feedback-success-base',
-    default: 'neutral-dark',
+    error: 'feedback-negative-border',
+    success: 'feedback-positive-border',
+    default: 'fittings-border-primary-enabled',
   };
 
   const handleFocus = useCallback(() => {
@@ -58,7 +58,7 @@ const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
   return (
     <SafeAreaView>
       {!!label && (
-        <Text fs="md" fontWeight="700" color="neutral-darkest">
+        <Text fs="md" fontWeight="700" color="fittings-text-secondary-enabled">
           {label}
         </Text>
       )}
@@ -69,7 +69,9 @@ const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
         h={variantHeight[variant]}
         bw="sm"
         borderColor={
-          isFocused ? 'primary-base' : statusBorderColor[status || 'default']
+          isFocused
+            ? 'feedback-informative-border'
+            : statusBorderColor[status || 'default']
         }
         borderRadius="sm"
         multiline
@@ -88,6 +90,7 @@ const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
           flex: 1,
           fontFamily: textVariants?.regular?.fontFamily,
           textAlignVertical: 'top',
+          color: colors['fittings-text-primary-enabled'],
         }}
         {...props}
       />
@@ -113,13 +116,13 @@ const TextArea: React.ForwardRefRenderFunction<InputRef, TextAreaProps> = (
                 color={statusKeyPair[status || 'default']}
               />
             )}
-            <Text ml="quark" fs="sm" color="neutral-darkest">
+            <Text ml="quark" fs="sm" color="fittings-text-primary-enabled">
               {assistiveText}
             </Text>
           </Box>
         )}
         {!!maxLength && (
-          <Text color="neutral-dark">
+          <Text color="fittings-text-primary-enabled">
             {countChar}/{maxLength}
           </Text>
         )}

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { BoxProps, TextProps } from '@shopify/restyle';
-import { Theme } from '../../themes/institucional';
+import { ITheme } from '../../themes/interface';
 
 type ButtonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
@@ -9,16 +9,16 @@ type ButtonProps = {
   children?: ReactNode;
   onPress: () => void;
   loading?: boolean;
-  textProps?: TextProps<Theme>;
+  textProps?: TextProps<ITheme>;
   bw?: Custom.BorderWidth;
   op?: Custom.Opacity;
   sof?: Custom.Shadow;
   sr?: Custom.Shadow;
   sop?: Custom.Shadow;
-} & Partial<BoxProps<Theme>>;
+} & Partial<BoxProps<ITheme>>;
 
 type ColorsOptions = {
-  [index: string]: keyof Theme['colors'];
+  [index: string]: keyof ITheme['colors'];
 };
 
 type BorderWidthOptions = {

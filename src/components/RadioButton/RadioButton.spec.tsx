@@ -2,7 +2,7 @@ import React, { createRef } from 'react';
 import { cleanup, fireEvent, render } from '@testing-library/react-native';
 import { ThemeProvider } from '@shopify/restyle';
 import RadioButton from './RadioButton';
-import { themeMaestro } from '../../themes';
+import { themeInstitucional } from '../../themes';
 import { RadioButtonRef } from './interfaces';
 
 afterEach(cleanup);
@@ -18,7 +18,7 @@ it('should be like initial value', () => {
   ];
 
   render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <RadioButton
         ref={ref}
         initial={0}
@@ -41,7 +41,7 @@ it('should be changed value', () => {
   ];
 
   const { getByText } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <RadioButton
         ref={ref}
         initial={0}
@@ -65,7 +65,7 @@ test('should RadioButton render correctly', async () => {
   ];
 
   const { toJSON } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <RadioButton label="RadioButton Label" options={radioButtonOptions} />
     </ThemeProvider>,
   );

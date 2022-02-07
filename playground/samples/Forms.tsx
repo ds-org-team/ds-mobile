@@ -56,7 +56,7 @@ const Forms: React.FC = () => {
         padding="sm"
         flexDirection="column"
         justifyContent="space-between"
-        backgroundColor="white"
+        backgroundColor="background-default"
       >
         <Box>
           <TextField

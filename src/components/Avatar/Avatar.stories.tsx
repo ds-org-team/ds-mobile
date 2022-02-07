@@ -20,10 +20,10 @@ export default {
   },
 };
 
-export const Default = ({ label }: any): React.ReactNode => (
+export const Default = ({ label }: never): React.ReactNode => (
   <Avatar label={label} />
 );
 
-export const WithImage = ({ image }: any): React.ReactNode => (
+export const WithImage = ({ image }: never): React.ReactNode => (
   <Avatar image={image} />
 );

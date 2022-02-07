@@ -8,12 +8,12 @@ import {
   shadowOffset,
   shadowOpacity,
   shadowRadius,
-  Theme,
 } from '../../themes';
 
 import Text from '../Text/Text';
 import Box from '../Box/Box';
 import { BorderWidthOptions, ButtonProps, ColorsOptions } from './interface';
+import { ITheme } from '../../themes/interface';
 
 const Button: React.FC<ButtonProps> = ({
   children,
@@ -25,24 +25,30 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   ...props
 }) => {
-  const { colors, borderRadii } = useTheme<Theme>();
+  const { colors, borderRadii } = useTheme<ITheme>();
 
   const variantBgColor: ColorsOptions = {
-    primary: !disabled ? 'primary-base' : 'neutral-lightest',
-    secondary: !disabled ? 'transparent' : 'neutral-lightest',
+    primary: !disabled ? 'action-main-primary' : 'surface-disabled',
+    secondary: !disabled ? 'transparent' : 'surface-disabled',
     tertiary: 'transparent',
   };
 
   const variantPressedBgColor = {
-    primary: colors['primary-dark'],
-    secondary: colors.white,
-    tertiary: colors.white,
+    primary: colors['action-main-pressed'],
+    secondary: colors.transparent,
+    tertiary: colors.transparent,
   };
 
-  const variantBorderColor: ColorsOptions = {
-    primary: !disabled ? 'primary-base' : 'transparent',
-    secondary: !disabled ? 'primary-base' : 'transparent',
-    tertiary: 'transparent',
+  const variantPressedTextColor: ColorsOptions = {
+    primary: 'fittings-text-inverse-enabled',
+    secondary: 'action-main-pressed',
+    tertiary: 'action-main-pressed',
+  };
+
+  const variantPressedBorderColor: ColorsOptions = {
+    primary: 'fittings-text-inverse-enabled',
+    secondary: 'action-main-pressed',
+    tertiary: 'action-main-pressed',
   };
 
   const variantBorderWidth: BorderWidthOptions = {
@@ -52,30 +58,42 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   const variantColor: ColorsOptions = {
-    primary: !disabled ? 'white' : 'neutral-base',
-    secondary: !disabled ? 'primary-base' : 'neutral-base',
-    tertiary: !disabled ? 'primary-base' : 'neutral-base',
+    primary: !disabled
+      ? 'fittings-text-inverse-enabled'
+      : 'fittings-text-secondary-disabled',
+    secondary: !disabled
+      ? 'action-main-primary'
+      : 'fittings-text-secondary-disabled',
+    tertiary: !disabled
+      ? 'action-main-primary'
+      : 'fittings-text-secondary-disabled',
   };
 
   const variantIconColor = {
-    primary: !disabled ? colors.white : colors['neutral-base'],
-    secondary: !disabled ? colors['primary-base'] : colors['neutral-base'],
-    tertiary: !disabled ? colors['primary-base'] : colors['neutral-base'],
+    primary: !disabled
+      ? colors['fittings-icon-inverse-enabled']
+      : colors['fittings-icon-inverse-disabled'],
+    secondary: !disabled
+      ? colors['action-main-primary']
+      : colors['fittings-icon-primary-disabled'],
+    tertiary: !disabled
+      ? colors['action-main-primary']
+      : colors['fittings-icon-primary-disabled'],
   };
 
   const variantLoadingColor = {
-    primary: colors.white,
-    secondary: colors['primary-base'],
-    tertiary: colors['primary-base'],
+    primary: colors['fittings-icon-inverse-enabled'],
+    secondary: colors['action-main-primary'],
+    tertiary: colors['action-main-primary'],
   };
 
   return (
     <Box
       backgroundColor={variantBgColor[variant]}
-      borderColor={variantBorderColor[variant]}
+      borderColor={variantPressedBorderColor[variant]}
       bw={variantBorderWidth[variant]}
       borderRadius="nano"
-      shadowColor="black"
+      shadowColor="fittings-text-primary-enabled"
       minHeight={{ phone: 48, tablet: 48 }}
       alignItems="center"
       justifyContent="center"
@@ -127,7 +145,11 @@ const Button: React.FC<ButtonProps> = ({
               <Text
                 fontWeight="600"
                 fs="md"
-                color={pressed ? 'primary-light' : variantColor[variant]}
+                color={
+                  pressed
+                    ? variantPressedTextColor[variant]
+                    : variantColor[variant]
+                }
                 {...textProps}
               >
                 {children}
@@ -140,7 +162,7 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default createRestyleComponent<ButtonProps, Theme>(
+export default createRestyleComponent<ButtonProps, ITheme>(
   [opacity, shadowOffset, shadowRadius, shadowOpacity],
   Button,
 );

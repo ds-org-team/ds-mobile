@@ -8,7 +8,7 @@ import Eye from '../assets/icons/eye.svg';
 import EyeOff from '../assets/icons/eye-off.svg';
 
 import pathImg from '../../assets/client/icon.webp';
-import { Theme } from '../../src/themes';
+import { ITheme } from '../../src/themes/interface';
 
 type ResultType = {
   cpf: string;
@@ -27,7 +27,7 @@ const LoginMaestro: React.FC = () => {
   const cpfFieldRef = useRef<InputRef>(null);
   const passwordRef = useRef<InputRef>(null);
 
-  const { colors } = useTheme<Theme>();
+  const { colors } = useTheme<ITheme>();
 
   const handleSubmit = () => {
     setResult({
@@ -42,95 +42,101 @@ const LoginMaestro: React.FC = () => {
       return (
         <EyeOff
           onPress={() => setShowPassword(!showPassword)}
-          fill={colors['neutral-dark']}
+          fill={colors['fittings-icon-primary-disabled']}
         />
       );
     }
     return (
       <Eye
         onPress={() => setShowPassword(!showPassword)}
-        fill={colors['neutral-dark']}
+        fill={colors['fittings-icon-primary-enabled']}
       />
     );
   };
 
   return (
     <KeyboardAwareScrollView
-      contentContainerStyle={{ flex: 1, backgroundColor: 'white' }}
+      contentContainerStyle={{ flex: 1 }}
       keyboardShouldPersistTaps="handled"
     >
-      <StatusBar />
+      <Box bg="background-default" height="100%">
+        <StatusBar />
 
-      <ScrollView keyboardShouldPersistTaps="handled">
-        <Box
-          pt="sm"
-          px="sm"
-          flexDirection="column"
-          justifyContent="center"
-          flex={1}
-        >
-          <Box mb="sm">
-            <Image source={pathImg} style={{ width: 75, height: 75 }} />
-          </Box>
+        <ScrollView keyboardShouldPersistTaps="handled">
+          <Box
+            pt="sm"
+            px="sm"
+            flexDirection="column"
+            justifyContent="center"
+            flex={1}
+          >
+            <Box mb="sm">
+              <Image source={pathImg} style={{ width: 75, height: 75 }} />
+            </Box>
 
-          <Box>
-            <TextField
-              ref={cpfFieldRef}
-              type="cpf"
-              label="CPF"
-              variant="medium"
-              placeholder="000.000.000-00"
-              autoCapitalize="none"
-              keyboardType="numeric"
-              onSubmitEditing={() => {
-                passwordRef.current?.focus?.();
-              }}
-              onChangeText={(text, rawText) => {
-                setRawCpf(rawText || '');
-              }}
-            />
+            <Box>
+              <TextField
+                ref={cpfFieldRef}
+                type="cpf"
+                label="CPF"
+                variant="medium"
+                placeholder="000.000.000-00"
+                autoCapitalize="none"
+                keyboardType="numeric"
+                onSubmitEditing={() => {
+                  passwordRef.current?.focus?.();
+                }}
+                onChangeText={(_, rawText) => {
+                  setRawCpf(rawText || '');
+                }}
+              />
 
-            <TextField
-              ref={passwordRef}
-              label="Senha"
-              variant="medium"
-              placeholder="Digite sua senha"
-              autoCapitalize="none"
-              onSubmitEditing={handleSubmit}
-              secureTextEntry={!showPassword}
-              renderRightIcon={renderShowPasswordIcon}
-            />
+              <TextField
+                ref={passwordRef}
+                label="Senha"
+                variant="medium"
+                placeholder="Digite sua senha"
+                autoCapitalize="none"
+                onSubmitEditing={handleSubmit}
+                secureTextEntry={!showPassword}
+                renderRightIcon={renderShowPasswordIcon}
+              />
 
-            <Box flexDirection="row" mt="lg">
-              <Button variant="secondary" mr="nano" onPress={() => undefined}>
-                Primeiro acesso
+              <Box flexDirection="row" mt="lg">
+                <Button variant="secondary" mr="nano" onPress={() => undefined}>
+                  Primeiro acesso
+                </Button>
+                <Button variant="primary" onPress={handleSubmit}>
+                  Entrar
+                </Button>
+              </Box>
+
+              <Button variant="tertiary" onPress={() => undefined} my="xs">
+                Esqueceu sua senha?
               </Button>
-              <Button variant="primary" onPress={handleSubmit}>
-                Entrar
-              </Button>
+
+              <Box
+                flexDirection="row"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Text mr="nano">Usar impressão digital</Text>
+                <Switch value={checked} onChange={() => setChecked(!checked)} />
+              </Box>
+              <Box alignItems="center" flexDirection="column" mt="lg">
+                <Button variant="tertiary" onPress={() => undefined}>
+                  Ouvidoria
+                </Button>
+                <Box alignItems="center">
+                  <Text fs="sm" color="fittings-text-secondary-enabled">
+                    Maestro v2.1.65 | v255
+                  </Text>
+                </Box>
+              </Box>
             </Box>
           </Box>
-
-          <Button variant="tertiary" onPress={() => undefined} my="xs">
-            Esqueceu sua senha?
-          </Button>
-
-          <Box flexDirection="row" alignItems="center" justifyContent="center">
-            <Text mr="nano">Usar impressão digital</Text>
-            <Switch value={checked} onChange={() => setChecked(!checked)} />
-          </Box>
-          <Box alignItems="center" flexDirection="column" mt="lg">
-            <Button variant="tertiary" onPress={() => undefined}>
-              Ouvidoria
-            </Button>
-            <Box alignItems="center">
-              <Text fs="sm" color="neutral-base">
-                Maestro v2.1.65 | v255
-              </Text>
-            </Box>
-          </Box>
-        </Box>
-      </ScrollView>
+        </ScrollView>
+      </Box>
     </KeyboardAwareScrollView>
   );
 };

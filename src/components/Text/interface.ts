@@ -1,6 +1,6 @@
 import { TextProps } from '@shopify/restyle';
 import { ReactNode } from 'react';
-import { Theme } from '../../themes/institucional';
+import { ITheme } from '../../themes/interface';
 
 type CustomTextProps = Partial<{
   children?: ReactNode;
@@ -9,6 +9,6 @@ type CustomTextProps = Partial<{
   ls?: Custom.LetterSpacing;
   testID?: string;
 }> &
-  Partial<TextProps<Theme>>;
+  Partial<TextProps<ITheme>>;
 
 export { CustomTextProps };

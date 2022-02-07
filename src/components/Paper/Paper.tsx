@@ -10,8 +10,8 @@ import {
   shadowOffset,
   shadowOpacity,
   shadowRadius,
-  Theme,
 } from '../../themes';
+import { ITheme } from '../../themes/interface';
 import Box from '../Box';
 import { CustomPaperProps } from './interfaces';
 import useStyles from './Paper.styles';
@@ -53,7 +53,7 @@ const CustomPaper: React.FC<CustomPaperProps> = ({
   ...props
 }: CustomPaperProps) => {
   const styles = useStyles();
-  const { spacing } = useTheme<Theme>();
+  const { spacing } = useTheme<ITheme>();
   const pressableProps = {
     onPress,
     onPressIn,
@@ -75,7 +75,7 @@ const CustomPaper: React.FC<CustomPaperProps> = ({
 
   return (
     <Box
-      bg="white"
+      bg="surface-default"
       minHeight="auto"
       minWidth="auto"
       br="md"
@@ -155,7 +155,7 @@ const CustomPaper: React.FC<CustomPaperProps> = ({
   );
 };
 
-export default createRestyleComponent<CustomPaperProps, Theme>(
+export default createRestyleComponent<CustomPaperProps, ITheme>(
   [
     borderRadius,
     borderWidth,

@@ -1,12 +1,13 @@
-import { createTheme } from '../utils/theme';
+import { extendTheme } from '../utils/theme';
 import { ITokens } from './interface';
+import themeInstitucional from './institucional';
 
-const tokens: ITokens = {
+const tokens: Partial<ITokens> = {
   colors: {
     transparent: 'transparent',
     background: {
       default: '#FFFFFF',
-      brand: '#1D5AF5',
+      brand: '#B68500',
     },
     fittings: {
       text: {
@@ -54,8 +55,8 @@ const tokens: ITokens = {
     },
     action: {
       main: {
-        primary: '#1D5AF5',
-        pressed: '#09238E',
+        primary: '#B68500',
+        pressed: '#795300',
       },
       confirm: {
         primary: '#15AB51',
@@ -67,7 +68,7 @@ const tokens: ITokens = {
       },
       help: {
         primary: '#5487F9',
-        pressed: '#1D5AF5',
+        pressed: '#0A7E19',
       },
     },
     feedback: {
@@ -90,17 +91,17 @@ const tokens: ITokens = {
         text: '#FF780E',
       },
       informative: {
-        fill: '#1D5AF5',
-        border: '#1D5AF5',
-        icon: '#1D5AF5',
-        text: '#1D5AF5',
+        fill: '#0A7E19',
+        border: '#0A7E19',
+        icon: '#0A7E19',
+        text: '#0A7E19',
       },
     },
     accent: {
-      fill: '#1D5AF5',
-      border: '#1D5AF5',
-      icon: '#1D5AF5',
-      text: '#1D5AF5',
+      fill: '#0A7E19',
+      border: '#0A7E19',
+      icon: '#0A7E19',
+      text: '#0A7E19',
     },
     decorative: {
       one: {
@@ -125,51 +126,8 @@ const tokens: ITokens = {
       },
     },
   },
-  spacing: {
-    quark: 4,
-    nano: 8,
-    xs: 16,
-    sm: 24,
-    md: 32,
-    lg: 40,
-  },
-  screen: {
-    breakpoints: {
-      phone: 0,
-      tablet: 768,
-    },
-  },
-  font: {
-    variants: {
-      bold: {
-        fontFamily: '"Public Sans", sans-serif',
-        fontWeight: '700',
-      },
-      semibold: {
-        fontFamily: '"Public Sans", sans-serif',
-        fontWeight: '600',
-      },
-      medium: {
-        fontFamily: '"Public Sans", sans-serif',
-        fontWeight: '500',
-      },
-      regular: {
-        fontFamily: '"Public Sans", sans-serif',
-        fontWeight: '400',
-      },
-    },
-  },
-  radius: {
-    none: 0,
-    nano: 4,
-    sm: 8,
-    md: 16,
-    lg: 24,
-    pill: 500,
-    circular: 9999,
-  },
 };
 
-const theme = createTheme(tokens);
+const theme = extendTheme(tokens, themeInstitucional);
 
 export default theme;

@@ -32,11 +32,11 @@ const ListItem: React.FC<ListItemProps> = ({
   const renderTitle = useCallback(
     (txt: string) =>
       inverse ? (
-        <Text fs="md" fontWeight="400" color="neutral-dark">
+        <Text fs="md" fontWeight="400" color="fittings-text-secondary-enabled">
           {txt}
         </Text>
       ) : (
-        <Text fs="md" fontWeight="500" color="neutral-darkest">
+        <Text fs="md" fontWeight="500" color="fittings-text-primary-enabled">
           {txt}
         </Text>
       ),
@@ -46,11 +46,11 @@ const ListItem: React.FC<ListItemProps> = ({
   const renderInfo = useCallback(
     (txt: string) =>
       inverse ? (
-        <Text fs="md" fontWeight="500" color="neutral-darkest">
+        <Text fs="md" fontWeight="500" color="fittings-text-primary-enabled">
           {txt}
         </Text>
       ) : (
-        <Text fs="md" fontWeight="400" color="neutral-dark">
+        <Text fs="md" fontWeight="400" color="fittings-text-secondary-enabled">
           {txt}
         </Text>
       ),
@@ -73,8 +73,8 @@ const ListItem: React.FC<ListItemProps> = ({
                     <Tag
                       label={tag}
                       size="small"
-                      backgroundColor="highlight-04-light"
-                      color="feedback-success-dark"
+                      backgroundColor="decorative-two-primary"
+                      color="decorative-two-inverse"
                     />
                   </Box>
                 ))}
@@ -88,7 +88,7 @@ const ListItem: React.FC<ListItemProps> = ({
           )}
         </Box>
         {bottomComponent}
-        <Box borderColor="neutral-light" borderBottomWidth={1} />
+        <Box borderColor="fittings-divider" borderBottomWidth={1} />
       </Box>
     </TouchableWithoutFeedback>
   );

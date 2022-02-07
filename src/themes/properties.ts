@@ -15,7 +15,7 @@ export const borderRadiusValues = {
   md: 16,
   lg: 24,
   pill: 500,
-  circular: '50%' as unknown as number,
+  circular: 999,
 };
 
 export const sizeHeightValues = {
@@ -44,10 +44,10 @@ export const fontSizeValues = {
 };
 
 export const lineHeightValues = {
-  lg: '200%',
-  md: '160%',
-  sm: '130%',
-  xs: '100%',
+  lg: 32,
+  md: 25.6,
+  sm: 19.2,
+  xs: 16,
 };
 
 export const letterSpacingValues = {
@@ -58,11 +58,11 @@ export const letterSpacingValues = {
 };
 
 export const opacityValues = {
-  'opacity-5': 0.8,
-  'opacity-4': 0.64,
-  'opacity-3': 0.32,
-  'opacity-2': 0.16,
-  'opacity-1': 0.08,
+  'opacity-80': 0.8,
+  'opacity-64': 0.64,
+  'opacity-32': 0.32,
+  'opacity-16': 0.16,
+  'opacity-08': 0.08,
 };
 
 export const shadowOffsetValues = {

@@ -3,7 +3,7 @@ import { cleanup, fireEvent, render } from '@testing-library/react-native';
 import { ThemeProvider } from '@shopify/restyle';
 import Button from './Button';
 import Text from '../Text';
-import themeMaestro from '../../themes/maestro';
+import { themeInstitucional } from '../../themes';
 
 afterEach(cleanup);
 
@@ -12,7 +12,7 @@ jest.mock('react-native-vector-icons/MaterialCommunityIcons', () => 'Icon');
 test('should execute press event function', () => {
   const onEventMock = jest.fn();
   const { getByTestId } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <Button variant="primary" onPress={onEventMock}>
         <Text>Button</Text>
       </Button>
@@ -25,8 +25,9 @@ test('should execute press event function', () => {
 
 test('should be primary base colored', () => {
   const onEventMock = jest.fn();
+
   const { getByTestId } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <Button variant="primary" onPress={onEventMock}>
         <Text>Button</Text>
       </Button>
@@ -34,14 +35,15 @@ test('should be primary base colored', () => {
   );
 
   expect(getByTestId('button-box').props.style[0].backgroundColor).toBe(
-    '#0A7E19',
+    '#1D5AF5',
   );
 });
 
 test('should be neutral lightest colored', () => {
   const onEventMock = jest.fn();
+
   const { getByTestId } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <Button variant="primary" disabled onPress={onEventMock}>
         <Text>Button</Text>
       </Button>
@@ -49,13 +51,13 @@ test('should be neutral lightest colored', () => {
   );
 
   expect(getByTestId('button-box').props.style[0].backgroundColor).toBe(
-    '#F7F7F7',
+    '#F0F2FA',
   );
 });
 
 test('should Button render correctly', async () => {
   const { toJSON } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <Button variant="primary" onPress={() => undefined}>
         <Text>Label Button</Text>
       </Button>

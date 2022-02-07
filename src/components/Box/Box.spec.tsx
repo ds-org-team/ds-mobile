@@ -1,15 +1,16 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react-native';
 import { ThemeProvider } from '@shopify/restyle';
-import themeMaestro from '../../themes/maestro';
+import { themeInstitucional } from '../../themes';
+
 import Box from './Box';
 
 afterEach(cleanup);
 
-test('should be primaryBase as background-color', async () => {
+test('should be action-main-primary as background-color', async () => {
   const { toJSON } = render(
-    <ThemeProvider theme={themeMaestro}>
-      <Box backgroundColor="primary-base" />
+    <ThemeProvider theme={themeInstitucional}>
+      <Box backgroundColor="action-main-primary" />
     </ThemeProvider>,
   );
 
@@ -18,7 +19,7 @@ test('should be primaryBase as background-color', async () => {
 
 test('should be large as margin', async () => {
   const { toJSON } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <Box margin="lg" />
     </ThemeProvider>,
   );

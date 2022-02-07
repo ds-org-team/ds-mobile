@@ -1,6 +1,6 @@
 import { useTheme } from '@shopify/restyle';
 import { StyleSheet, ViewStyle } from 'react-native';
-import { Theme } from '../..';
+import { ITheme } from '../../themes/interface';
 
 interface Props {
   checked: boolean;
@@ -17,17 +17,17 @@ const useStyles = ({
   disabled,
   required,
 }: Props): StyleSheet.NamedStyles<Styles> => {
-  const theme = useTheme<Theme>();
+  const { colors } = useTheme<ITheme>();
 
   let borderColor;
-  if (disabled) borderColor = theme.colors['neutral-light'];
-  else if (required) borderColor = theme.colors['feedback-error-base'];
-  else borderColor = theme.colors['neutral-base'];
+  if (disabled) borderColor = colors['fittings-border-primary-disabled'];
+  else if (required) borderColor = colors['feedback-negative-border'];
+  else borderColor = colors['fittings-border-primary-enabled'];
 
   let bg;
-  if (disabled) bg = theme.colors['neutral-light'];
-  else if (checked) bg = theme.colors['feedback-info-base'];
-  else bg = theme.colors.white;
+  if (disabled) bg = colors['surface-disabled'];
+  else if (checked) bg = colors['feedback-informative-fill'];
+  else bg = colors.transparent;
 
   return StyleSheet.create({
     checkBox: {

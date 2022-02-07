@@ -2,7 +2,7 @@ import { BoxProps } from '@shopify/restyle';
 import React from 'react';
 import { TextInputProps, TextInput } from 'react-native';
 import { TextInputMaskOptionProp } from 'react-native-masked-text';
-import { Theme } from '../../themes/institucional';
+import { ITheme } from '../../themes/interface';
 
 export type TextInputMaskType =
   | 'credit-card'
@@ -31,7 +31,7 @@ type InputProps = Partial<{
   onInitialData: (value: string | undefined) => void;
   rawText: string;
 }> &
-  Partial<BoxProps<Theme>> &
+  Partial<BoxProps<ITheme>> &
   Omit<TextInputProps, 'onChangeText'>;
 
 type TextInputRef = HTMLInputElement &

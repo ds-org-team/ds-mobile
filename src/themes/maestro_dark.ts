@@ -1,25 +1,26 @@
-import { createTheme } from '../utils/theme';
+import { extendTheme } from '../utils/theme';
 import { ITokens } from './interface';
+import themeInstitucional from './institucional';
 
-const tokens: ITokens = {
+const tokens: Partial<ITokens> = {
   colors: {
     transparent: 'transparent',
     background: {
-      default: '#FFFFFF',
-      brand: '#1D5AF5',
+      default: '#0C1224',
+      brand: '#0A7E19',
     },
     fittings: {
       text: {
         primary: {
-          enabled: '#1A233D',
+          enabled: '#FFFFFF',
           disabled: '#8F96A8',
         },
         secondary: {
-          enabled: '#58627F',
+          enabled: '#8F96A8',
           disabled: '#DADDE5',
         },
         inverse: {
-          enabled: '#FFFFFF',
+          enabled: '#0C1224',
           disabled: '#8F96A8',
         },
       },
@@ -43,10 +44,10 @@ const tokens: ITokens = {
           disabled: '#8F96A8',
         },
       },
-      divider: '#BDBDBD',
+      divider: '#232D4A',
     },
     surface: {
-      default: '#FFFFFF',
+      default: '#0C1224',
       pressed: '#D1E3FE',
       select: '#E7F0FE',
       disabled: '#F0F2FA',
@@ -54,8 +55,8 @@ const tokens: ITokens = {
     },
     action: {
       main: {
-        primary: '#1D5AF5',
-        pressed: '#09238E',
+        primary: '#66B368',
+        pressed: '#114A28',
       },
       confirm: {
         primary: '#15AB51',
@@ -67,7 +68,7 @@ const tokens: ITokens = {
       },
       help: {
         primary: '#5487F9',
-        pressed: '#1D5AF5',
+        pressed: '#0A7E19',
       },
     },
     feedback: {
@@ -90,17 +91,17 @@ const tokens: ITokens = {
         text: '#FF780E',
       },
       informative: {
-        fill: '#1D5AF5',
-        border: '#1D5AF5',
-        icon: '#1D5AF5',
-        text: '#1D5AF5',
+        fill: '#0A7E19',
+        border: '#0A7E19',
+        icon: '#0A7E19',
+        text: '#0A7E19',
       },
     },
     accent: {
-      fill: '#1D5AF5',
-      border: '#1D5AF5',
-      icon: '#1D5AF5',
-      text: '#1D5AF5',
+      fill: '#0A7E19',
+      border: '#0A7E19',
+      icon: '#0A7E19',
+      text: '#0A7E19',
     },
     decorative: {
       one: {
@@ -170,6 +171,6 @@ const tokens: ITokens = {
   },
 };
 
-const theme = createTheme(tokens);
+const theme = extendTheme(tokens, themeInstitucional);
 
 export default theme;

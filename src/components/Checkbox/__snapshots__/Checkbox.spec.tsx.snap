@@ -32,8 +32,8 @@ exports[`should Checkbox render correctly 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "backgroundColor": "#106CEE",
-        "borderColor": "#B4BBC2",
+        "backgroundColor": "#1D5AF5",
+        "borderColor": "#58627F",
         "borderRadius": 4,
         "borderWidth": 0,
         "height": 24,
@@ -53,9 +53,9 @@ exports[`should Checkbox render correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "#2D3338",
+          "color": "#1A233D",
           "display": "flex",
-          "fontFamily": "\\"Inter\\", sans-serif",
+          "fontFamily": "\\"Public Sans\\", sans-serif",
           "fontWeight": "400",
           "marginLeft": 8,
         },
@@ -105,8 +105,8 @@ exports[`should Checkbox render required feedback 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "backgroundColor": "#106CEE",
-        "borderColor": "#E20A0A",
+        "backgroundColor": "#1D5AF5",
+        "borderColor": "#D63429",
         "borderRadius": 4,
         "borderWidth": 0,
         "height": 24,
@@ -126,9 +126,9 @@ exports[`should Checkbox render required feedback 1`] = `
     style={
       Array [
         Object {
-          "color": "#2D3338",
+          "color": "#1A233D",
           "display": "flex",
-          "fontFamily": "\\"Inter\\", sans-serif",
+          "fontFamily": "\\"Public Sans\\", sans-serif",
           "fontWeight": "400",
           "marginLeft": 8,
         },

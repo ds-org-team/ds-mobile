@@ -1,14 +1,14 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react-native';
 import { ThemeProvider } from '@shopify/restyle';
-import themeMaestro from '../../themes/maestro';
+import { themeInstitucional } from '../../themes';
 import Text from './Text';
 
 afterEach(cleanup);
 
 test('should Text render correctly', async () => {
   const { toJSON } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <Text>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. In totam
         dolorum ab vel ratione blanditiis amet tempora et doloribus dignissimos

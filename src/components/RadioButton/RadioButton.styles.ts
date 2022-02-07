@@ -1,6 +1,6 @@
 import { useTheme } from '@shopify/restyle';
 import { StyleSheet, ViewStyle } from 'react-native';
-import { Theme } from '../../themes';
+import { ITheme } from '../../themes/interface';
 
 interface Props {
   checked: boolean;
@@ -17,18 +17,18 @@ const useStyles = ({
   disabled,
   required,
 }: Props): StyleSheet.NamedStyles<Styles> => {
-  const theme = useTheme<Theme>();
+  const theme = useTheme<ITheme>();
 
   let borderColor;
-  if (disabled) borderColor = theme.colors['neutral-light'];
-  else if (checked) borderColor = theme.colors['primary-base'];
-  else if (required) borderColor = theme.colors['feedback-error-base'];
-  else borderColor = theme.colors['neutral-base'];
+  if (disabled) borderColor = theme.colors['fittings-border-primary-disabled'];
+  else if (checked) borderColor = theme.colors['feedback-informative-border'];
+  else if (required) borderColor = theme.colors['feedback-negative-border'];
+  else borderColor = theme.colors['fittings-border-primary-enabled'];
 
   let bg;
-  if (disabled) bg = theme.colors['neutral-light'];
+  if (disabled) bg = theme.colors['surface-disabled'];
   // else if (checked) bg = theme.colors['feedback-info-base'];
-  else bg = theme.colors.white;
+  else bg = theme.colors.transparent;
 
   return StyleSheet.create({
     radioButtonItem: {

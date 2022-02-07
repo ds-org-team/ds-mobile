@@ -19,7 +19,12 @@ const RadioButton: React.ForwardRefRenderFunction<
 
   return (
     <>
-      <Text fs="md" fontWeight="700" color="neutral-darkest" mb="nano">
+      <Text
+        fs="md"
+        fontWeight="700"
+        color="fittings-text-primary-enabled"
+        mb="nano"
+      >
         {label}
       </Text>
       {options.map(item => (

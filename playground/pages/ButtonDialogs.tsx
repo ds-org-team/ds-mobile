@@ -1,13 +1,13 @@
 import React from 'react';
 import { ScrollView, StatusBar } from 'react-native';
-import { Box, Button, Text, Pressable } from '../../src/components';
+import { Box, Button, Text, Paper } from '../../src/components';
 
 const ButtonDialogs: React.FC = () => (
   <>
     <StatusBar />
 
     <ScrollView>
-      <Box padding="sm" backgroundColor="white">
+      <Box padding="sm" bg="background-default">
         <Text>Variantes</Text>
 
         <Button variant="primary" mt="sm" onPress={() => undefined}>
@@ -116,9 +116,9 @@ const ButtonDialogs: React.FC = () => (
 
         <Text>Pressable</Text>
         <Box flex={1} flexDirection="row">
-          <Pressable alignItems="center" p="sm" mt="sm">
+          <Paper alignItems="center" p="sm" mt="sm">
             <Text>Pressable</Text>
-          </Pressable>
+          </Paper>
         </Box>
       </Box>
     </ScrollView>

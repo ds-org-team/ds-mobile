@@ -11,28 +11,26 @@ const Buttons: React.FC = () => (
       padding="sm"
       flexDirection="column"
       justifyContent="space-between"
-      backgroundColor="white"
+      backgroundColor="background-default"
     >
       <Text mb="sm">Primary / Icon / Disabled / Loading</Text>
 
-      <Button onPress={() => Alert.alert('clicked!')}>
-        <Text>Button primary</Text>
-      </Button>
+      <Button onPress={() => Alert.alert('clicked!')}>Button primary</Button>
 
       <Button my="lg" onPress={() => Alert.alert('clicked!')}>
-        <Text>Button with Emoji 👋</Text>
+        Button with Emoji 👋
       </Button>
 
       <Button icon="check-circle" onPress={() => Alert.alert('clicked!')}>
-        <Text>Button with Icon</Text>
+        Button with Icon
       </Button>
 
       <Button disabled my="lg" onPress={() => Alert.alert('clicked!')}>
-        <Text>Button primary disabled</Text>
+        Button primary disabled
       </Button>
 
       <Button loading onPress={() => Alert.alert('clicked!')}>
-        <Text>Button primary loading</Text>
+        Button primary loading
       </Button>
 
       <Text my="sm">Secondary / Icon / Disabled / Loading</Text>

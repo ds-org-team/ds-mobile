@@ -2,7 +2,7 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react-native';
 import { ThemeProvider } from '@shopify/restyle';
 import TextField from './TextField';
-import themeMaestro from '../../themes/maestro';
+import { themeInstitucional } from '../../themes';
 
 afterEach(cleanup);
 
@@ -10,7 +10,7 @@ jest.mock('react-native-vector-icons/MaterialCommunityIcons', () => 'Icon');
 
 test('should have a placeholder passed by prop', () => {
   const { getAllByPlaceholderText } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <TextField
         variant="medium"
         placeholder="Placeholder"
@@ -24,7 +24,7 @@ test('should have a placeholder passed by prop', () => {
 
 test('should have a label passed by prop', () => {
   const { getAllByText } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <TextField
         label="Label do TextArea"
         variant="medium"
@@ -38,7 +38,7 @@ test('should have a label passed by prop', () => {
 
 test('should have a success feedback', () => {
   const { toJSON } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <TextField
         label="Label do TextArea"
         variant="medium"
@@ -53,7 +53,7 @@ test('should have a success feedback', () => {
 
 test('should have a error feedback', () => {
   const { toJSON } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <TextField
         label="Label do TextArea"
         variant="medium"
@@ -68,7 +68,7 @@ test('should have a error feedback', () => {
 
 test('should TextField render correctly', async () => {
   const { toJSON } = render(
-    <ThemeProvider theme={themeMaestro}>
+    <ThemeProvider theme={themeInstitucional}>
       <TextField variant="medium" placeholder="Placeholder" />
     </ThemeProvider>,
   );

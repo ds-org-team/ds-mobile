@@ -9,7 +9,7 @@ import React, {
 import { Keyboard, TextInput, TouchableWithoutFeedback } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
 import { Path, Svg } from 'react-native-svg';
-import { Theme } from '../../themes';
+import { ITheme } from '../../themes/interface';
 import Box from '../Box';
 import { InputProps, InputRef, TextInputRef } from './interfaces';
 
@@ -51,7 +51,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
   const [text, setText] = useState('');
   const [rawText, setRawText] = useState<string | undefined>('');
 
-  const { colors } = useTheme<Theme>();
+  const { colors } = useTheme<ITheme>();
 
   const handleChange = useCallback(
     (newValue: string, rawValue?: string) => {
@@ -72,7 +72,9 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
 
   const handleChangeMaskedText = useCallback(
     (maskedText, unmaskedText) => {
-      setIsFilled(!!inputElementRef.current?.value);
+      if (maskedText || unmaskedText) {
+        setIsFilled(true);
+      }
       setText(maskedText);
       setRawText(unmaskedText);
       if (onChangeText && unmaskedText) {
@@ -110,7 +112,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
         <TouchableWithoutFeedback onPress={handleClear}>
           <Svg width={24} height={24} viewBox="0 0 24 24">
             <Path
-              fill={colors['neutral-dark']}
+              fill={colors['fittings-icon-primary-enabled']}
               d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
             />
           </Svg>
@@ -125,7 +127,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
       flexDirection="row"
       alignItems="center"
       testID="input-box"
-      bg="white"
+      bg="surface-default"
       {...props}
     >
       {type ? (
@@ -135,7 +137,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           options={optionsPerType[type] || options}
           testID="Input"
           placeholder={placeholder}
-          placeholderTextColor={colors['neutral-dark']}
+          placeholderTextColor={colors['fittings-text-secondary-enabled']}
           includeRawValueInChangeText
           onChangeText={handleChangeMaskedText}
           onSubmitEditing={() => {
@@ -149,7 +151,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           returnKeyType={returnKeyType}
           numberOfLines={numberOfLines}
           autoCapitalize={autoCapitalize}
-          selectionColor={colors['neutral-dark']}
+          selectionColor={colors['fittings-text-secondary-enabled']}
           style={style}
           secureTextEntry={secureTextEntry}
         />
@@ -159,7 +161,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           testID="Input"
           ref={inputElementRef}
           placeholder={placeholder}
-          placeholderTextColor={colors['neutral-dark']}
+          placeholderTextColor={colors['fittings-text-secondary-enabled']}
           onChangeText={handleChange}
           onSubmitEditing={() => {
             Keyboard.dismiss();
@@ -173,7 +175,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
           returnKeyType={returnKeyType}
           numberOfLines={numberOfLines}
           autoCapitalize={autoCapitalize}
-          selectionColor={colors['neutral-dark']}
+          selectionColor={colors['fittings-text-secondary-enabled']}
           style={style}
           secureTextEntry={secureTextEntry}
         />
